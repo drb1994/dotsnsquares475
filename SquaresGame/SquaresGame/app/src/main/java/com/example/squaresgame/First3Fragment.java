@@ -9,11 +9,11 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.example.squaresgame.databinding.FragmentFirst2Binding;
+import com.example.squaresgame.databinding.FragmentFirst3Binding;
 
-public class First2Fragment extends Fragment {
+public class First3Fragment extends Fragment {
 
-    private FragmentFirst2Binding binding;
+    private FragmentFirst3Binding binding;
 
     @Override
     public View onCreateView(
@@ -21,7 +21,7 @@ public class First2Fragment extends Fragment {
             Bundle savedInstanceState
     ) {
 
-        binding = FragmentFirst2Binding.inflate(inflater, container, false);
+        binding = FragmentFirst3Binding.inflate(inflater, container, false);
         return binding.getRoot();
 
     }
@@ -32,8 +32,8 @@ public class First2Fragment extends Fragment {
         binding.buttonFirst.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavHostFragment.findNavController(First2Fragment.this)
-                        .navigate(R.id.action_First2Fragment_to_Second2Fragment);
+                NavHostFragment.findNavController(First3Fragment.this)
+                        .navigate(R.id.action_First3Fragment_to_Second3Fragment);
             }
         });
     }
