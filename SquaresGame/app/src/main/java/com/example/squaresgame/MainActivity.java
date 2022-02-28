@@ -17,6 +17,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void onPlay(View view) {
         Intent intent = new Intent(this, SettingsActivity.class);
+        intent.putExtra("from","play");
+        startActivity(intent);
+    }
+    public void onSettings(View view) {
+        Intent intent = new Intent(this, SettingsActivity.class);
+        intent.putExtra("from","settings");
         startActivity(intent);
     }
 }
