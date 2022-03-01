@@ -7,7 +7,7 @@
     android:background="#FFFFFF">
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/ib_undo_button"
         android:layout_width="65dp"
         android:layout_height="65dp"
         android:layout_marginStart="16dp"
@@ -17,7 +17,7 @@
         app:srcCompat="@android:drawable/ic_menu_revert" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/ib_tutorial_button"
         android:layout_width="65dp"
         android:layout_height="65dp"
         android:layout_marginEnd="16dp"
@@ -27,7 +27,7 @@
         app:srcCompat="@android:drawable/ic_menu_help" />
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/ib_pause_menu"
         android:layout_width="65dp"
         android:layout_height="65dp"
         android:layout_marginBottom="8dp"
@@ -37,7 +37,7 @@
         app:srcCompat="@android:drawable/ic_media_pause" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/iv_game_board"
         android:layout_width="297dp"
         android:layout_height="294dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -47,7 +47,7 @@
         app:srcCompat="@drawable/squares4x4" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tv_player_one_score"
         android:layout_width="110dp"
         android:layout_height="80dp"
         android:layout_marginStart="55dp"
@@ -62,7 +62,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tv_player_two_score"
         android:layout_width="110dp"
         android:layout_height="80dp"
         android:layout_marginTop="70dp"
@@ -74,23 +74,23 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/tv_player_one_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Player 1"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintStart_toStartOf="@+id/textView" />
+        app:layout_constraintBottom_toTopOf="@+id/tv_player_one_score"
+        app:layout_constraintEnd_toEndOf="@+id/tv_player_one_score"
+        app:layout_constraintStart_toStartOf="@+id/tv_player_one_score" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/tv_player_two_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Player 2"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
-        app:layout_constraintEnd_toEndOf="@+id/textView2"
-        app:layout_constraintStart_toStartOf="@+id/textView2" />
+        app:layout_constraintBottom_toTopOf="@+id/tv_player_two_score"
+        app:layout_constraintEnd_toEndOf="@+id/tv_player_two_score"
+        app:layout_constraintStart_toStartOf="@+id/tv_player_two_score" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
