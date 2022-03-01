@@ -1,18 +1,14 @@
 package com.example.squaresgame;
 
-import static java.util.logging.Logger.*;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
-import android.widget.Button;
-
-import java.util.logging.Logger;
 
 public class SettingsActivity extends AppCompatActivity {
     Button playerOneColorButton;
@@ -74,6 +70,48 @@ public class SettingsActivity extends AppCompatActivity {
     public void onStartGame(View view) {
         Intent intent = new Intent(this, GameBoardActivity.class);
         startActivity(intent);
+    }
+
+    public void onBoardSelect(View view) {
+        Button smallButton = findViewById(R.id.small_board_btn);
+        Button mediumButton = findViewById(R.id.medium_board_btn);
+        Button largeButton = findViewById(R.id.large_board_btn);
+
+        switch (view.getId()) {
+            case R.id.small_board_btn:
+                //RESET OTHER BTNS
+                mediumButton.setBackgroundColor(Color.parseColor("#ACACAC"));
+                mediumButton.setTextColor(Color.parseColor("#000000"));
+                largeButton.setBackgroundColor(Color.parseColor("#ACACAC"));
+                largeButton.setTextColor(Color.parseColor("#000000"));
+                //SET PRESSED BTN
+                smallButton.setBackgroundColor(Color.parseColor("#000000"));
+                smallButton.setTextColor(Color.parseColor("#FFFFFF"));
+                System.out.println("small");
+                break;
+            case R.id.medium_board_btn:
+                //RESET OTHER BTNS
+                smallButton.setBackgroundColor(Color.parseColor("#ACACAC"));
+                smallButton.setTextColor(Color.parseColor("#000000"));
+                largeButton.setBackgroundColor(Color.parseColor("#ACACAC"));
+                largeButton.setTextColor(Color.parseColor("#000000"));
+                //SET PRESSED BTN
+                mediumButton.setBackgroundColor(Color.parseColor("#000000"));
+                mediumButton.setTextColor(Color.parseColor("#FFFFFF"));
+                System.out.println("medium");
+                break;
+            case R.id.large_board_btn:
+                //RESET OTHER BTNS
+                smallButton.setBackgroundColor(Color.parseColor("#ACACAC"));
+                smallButton.setTextColor(Color.parseColor("#000000"));
+                mediumButton.setBackgroundColor(Color.parseColor("#ACACAC"));
+                mediumButton.setTextColor(Color.parseColor("#000000"));
+                //SET PRESSED BTN
+                largeButton.setBackgroundColor(Color.parseColor("#000000"));
+                largeButton.setTextColor(Color.parseColor("#FFFFFF"));
+                System.out.println("large");
+                break;
+        }
     }
 
 }
