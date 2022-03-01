@@ -18,6 +18,7 @@ public class GameBoardActivity extends AppCompatActivity {
 
         undo_last_move = findViewById(R.id.ib_undo_button);
         // minor change to merge
+        // maybe add a second comment will help
         undo_last_move.setOnClickListener(view -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
