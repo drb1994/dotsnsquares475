@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:paddingEnd="16dp"
+    android:paddingBottom="16dp"
+    android:background="@drawable/dialog_shape_color_picker"
+    tools:ignore="RtlSymmetry">
+
+    <ImageButton
+        android:id="@+id/cyan"
+        style="@style/color_button"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/cyan"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/cyan" />
+
+    <ImageButton
+        android:id="@+id/blue"
+        style="@style/color_button"
+        android:contentDescription="@string/blue"
+        app:layout_constraintStart_toEndOf="@+id/cyan"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/blue" />
+
+    <ImageButton
+        android:id="@+id/purple"
+        style="@style/color_button"
+        android:contentDescription="@string/purple"
+        app:layout_constraintStart_toEndOf="@+id/blue"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/purple" />
+
+    <ImageButton
+        android:id="@+id/green3"
+        style="@style/color_button"
+        android:contentDescription="@string/green_3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cyan"
+        app:tint="@color/green3" />
+
+    <ImageButton
+        android:id="@+id/green4"
+        style="@style/color_button"
+        android:contentDescription="@string/green_4"
+        app:layout_constraintStart_toEndOf="@+id/green3"
+        app:layout_constraintTop_toBottomOf="@+id/blue"
+        app:tint="@color/green4" />
+
+    <ImageButton
+        android:id="@+id/green5"
+        style="@style/color_button"
+        android:contentDescription="@string/green_5"
+        app:layout_constraintStart_toEndOf="@+id/green4"
+        app:layout_constraintTop_toBottomOf="@+id/purple"
+        app:tint="@color/green5" />
+</androidx.constraintlayout.widget.ConstraintLayout>
