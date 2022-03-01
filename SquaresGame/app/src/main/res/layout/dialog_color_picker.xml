@@ -17,7 +17,13 @@
         android:contentDescription="@string/cyan"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/cyan" />
+        android:background="@color/cyan" />
+
+    <View
+        android:id="@+id/cyan_taken"
+        style="@style/color_button_taken"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/blue"
@@ -25,7 +31,13 @@
         android:contentDescription="@string/blue"
         app:layout_constraintStart_toEndOf="@+id/cyan"
         app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/blue" />
+        android:background="@color/blue" />
+
+    <View
+        android:id="@+id/blue_taken"
+        style="@style/color_button_taken"
+        app:layout_constraintStart_toEndOf="@+id/cyan_taken"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/purple"
@@ -33,7 +45,13 @@
         android:contentDescription="@string/purple"
         app:layout_constraintStart_toEndOf="@+id/blue"
         app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/purple" />
+        android:background="@color/purple" />
+
+    <View
+        android:id="@+id/purple_taken"
+        style="@style/color_button_taken"
+        app:layout_constraintStart_toEndOf="@+id/blue_taken"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/green3"
@@ -41,7 +59,13 @@
         android:contentDescription="@string/green_3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cyan"
-        app:tint="@color/green3" />
+        android:background="@color/green3" />
+
+    <View
+        android:id="@+id/green3_taken"
+        style="@style/color_button_taken"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cyan_taken" />
 
     <ImageButton
         android:id="@+id/green4"
@@ -49,7 +73,13 @@
         android:contentDescription="@string/green_4"
         app:layout_constraintStart_toEndOf="@+id/green3"
         app:layout_constraintTop_toBottomOf="@+id/blue"
-        app:tint="@color/green4" />
+        android:background="@color/green4" />
+
+    <View
+        android:id="@+id/green4_taken"
+        style="@style/color_button_taken"
+        app:layout_constraintStart_toEndOf="@+id/green3_taken"
+        app:layout_constraintTop_toBottomOf="@+id/blue_taken" />
 
     <ImageButton
         android:id="@+id/green5"
@@ -57,5 +87,11 @@
         android:contentDescription="@string/green_5"
         app:layout_constraintStart_toEndOf="@+id/green4"
         app:layout_constraintTop_toBottomOf="@+id/purple"
-        app:tint="@color/green5" />
+        android:background="@color/green5" />
+
+    <View
+        android:id="@+id/green5_taken"
+        style="@style/color_button_taken"
+        app:layout_constraintStart_toEndOf="@+id/green4_taken"
+        app:layout_constraintTop_toBottomOf="@+id/purple_taken" />
 </androidx.constraintlayout.widget.ConstraintLayout>

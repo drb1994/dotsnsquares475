@@ -7,4 +7,12 @@
         <item name="srcCompat">@drawable/color_button</item>
         <item name="android:layout_margin">16dp</item>
     </style>
+
+    <style  name="color_button_taken">
+        <item name="android:background">@drawable/color_button_taken</item>
+        <item name="android:layout_margin">16dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_width">50dp</item>
+        <item name="android:visibility">invisible</item>
+    </style>
 </resources>

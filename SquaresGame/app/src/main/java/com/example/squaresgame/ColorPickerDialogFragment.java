@@ -1,7 +1,7 @@
 package com.example.squaresgame;
 
-import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.StateListDrawable;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,14 +10,18 @@ import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.DialogFragment;
+
+import java.util.Objects;
 
 public class ColorPickerDialogFragment extends DialogFragment {
     private final ImageButton[] colorButton = new ImageButton[6];
+    Player player;
+    int takenColor;
 
-    public ColorPickerDialogFragment() {
-        //Must remain empty
+    public ColorPickerDialogFragment(Player player, int takenColor) {
+        this.player = player;
+        this.takenColor = takenColor;
     }
 
     @Override
@@ -25,28 +29,37 @@ public class ColorPickerDialogFragment extends DialogFragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.dialog_color_picker, container, false);
 
-        //Initialize the buttons
-        colorButton[0] = view.findViewById(R.id.cyan);
-        colorButton[1] = view.findViewById(R.id.blue);
-        colorButton[2] = view.findViewById(R.id.purple);
-        colorButton[3] = view.findViewById(R.id.green3);
-        colorButton[4] = view.findViewById(R.id.green4);
-        colorButton[5] = view.findViewById(R.id.green5);
+        int[] idButton = new int[] {R.id.cyan, R.id.blue, R.id.purple, R.id.green3, R.id.green4, R.id.green5};
+        View[] taken = new View[6];
+        int[] idView = new int[] {R.id.cyan_taken, R.id.blue_taken, R.id.purple_taken, R.id.green3_taken, R.id.green4_taken, R.id.green5_taken};
+        int[] color = new int[] {R.color.cyan, R.color.blue, R.color.purple, R.color.green3, R.color.green4, R.color.green5};
 
-        //On click listener for each button
-        for (ImageButton imageButton : colorButton) {
-            imageButton.setOnClickListener(view1 -> {
-                //Send back color selected
-                dismiss();
-            });
+        //Initialize the buttons
+        for(int i = 0; i < colorButton.length; i++) {
+            //Have to declare this outside the lambda expression, so that I can use it inside
+            int num = i;
+            //Find the button by id
+            colorButton[num] = view.findViewById(idButton[i]);
+
+            //If the color of the button is taken by the other player
+            if(color[num] == takenColor) {
+                //Set the taken drawable (an X over the button) to visible and do not set an onClickListener
+                taken[num] = view.findViewById(idView[i]);
+                taken[num].setVisibility(View.VISIBLE);
+            }
+            else {
+                //Set the onClickListener
+                colorButton[num].setOnClickListener(view1 -> {
+                    //Set the players color to the chosen one
+                    player.setColor(color[num]);
+                    //Update the color on settings page
+                    ((SettingsActivity) requireActivity()).updatePlayerColor(player);
+                    //Dismiss the dialog
+                    dismiss();
+                });
+            }
         }
 
         return view;
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
     }
 }
