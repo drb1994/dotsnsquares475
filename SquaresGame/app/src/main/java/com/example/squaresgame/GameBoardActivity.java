@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.Intent;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,6 +24,8 @@ public class GameBoardActivity extends AppCompatActivity {
 
     Player playerOne, playerTwo;
 
+    private int playerTurn = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +41,8 @@ public class GameBoardActivity extends AppCompatActivity {
         tutorial_button = findViewById(R.id.ib_tutorial_button);
         player_one_score = findViewById(R.id.tv_player_one_score);
         player_two_score = findViewById(R.id.tv_player_two_score);
+
+        scoreboardConfig();
 
         // Undo button functionality
         undo_last_move.setOnClickListener(view -> {
@@ -68,5 +73,31 @@ public class GameBoardActivity extends AppCompatActivity {
             pauseMenu.show(fm, null);
         });
         //End of pause button functionality
+    }
+    public void onChangeTurn(View view) {
+        if(playerTurn == 1) {
+            playerTurn = 2;
+            scoreboardConfig();
+        }
+        else if(playerTurn == 2) {
+            playerTurn = 1;
+            scoreboardConfig();
+        }
+    }
+    public void scoreboardConfig() {
+        TextView scoreboardPlayerOne = findViewById(R.id.tv_player_one_score);
+        TextView scoreboardPlayerTwo = findViewById(R.id.tv_player_two_score);
+
+        if(playerTurn == 1) {
+            //player 1s turn
+            scoreboardPlayerOne.setBackgroundColor(getResources().getColor(playerOne.getColor()));
+            scoreboardPlayerTwo.setBackgroundColor(Color.parseColor("#FFFFFF"));
+        }
+        else if(playerTurn == 2) {
+            //player 2s turn
+            scoreboardPlayerTwo.setBackgroundColor(getResources().getColor(playerTwo.getColor()));
+            scoreboardPlayerOne.setBackgroundColor(Color.parseColor("#FFFFFF"));
+        }
+
     }
 }
