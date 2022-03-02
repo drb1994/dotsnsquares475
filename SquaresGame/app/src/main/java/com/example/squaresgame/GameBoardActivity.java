@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 public class GameBoardActivity extends AppCompatActivity {
 
-    ImageButton undo_last_move, pause, pause_button, tutorial_button;
+    ImageButton undo_last_move, pause_button, tutorial_button;
     TextView player_one_score, player_two_score;
 
     Integer undo = 1;
@@ -59,11 +59,14 @@ public class GameBoardActivity extends AppCompatActivity {
             alert.show();
         });
         // End of undo button functionality
-        pause = findViewById(R.id.ib_pause_menu);
-        pause.setOnClickListener(view -> {
+
+        // Pause button functionality
+        pause_button = findViewById(R.id.ib_pause_menu);
+        pause_button.setOnClickListener(view -> {
             FragmentManager fm = getSupportFragmentManager();
             PauseDialogFragment pauseMenu = new PauseDialogFragment(playerOne, playerTwo);
             pauseMenu.show(fm, null);
         });
+        //End of pause button functionality
     }
 }
