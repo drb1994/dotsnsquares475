@@ -1,23 +1,37 @@
 package com.example.squaresgame;
 
 import android.app.AlertDialog;
-import android.app.Notification;
+
+import android.content.Intent;
+
+
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class GameBoardActivity extends AppCompatActivity {
-    ImageButton undo_last_move, pause_button, tutorial_button;
+
+    ImageButton undo_last_move, pause, pause_button, tutorial_button;
     TextView player_one_score, player_two_score;
 
     Integer undo = 1;
+
+    Player playerOne, playerTwo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_screen);
+
+        Intent intent = getIntent();
+        Bundle players = intent.getExtras();
+        playerOne = (Player) players.get("Player One");
+        playerTwo = (Player) players.get("Player Two");
 
         undo_last_move = findViewById(R.id.ib_undo_button);
         pause_button = findViewById(R.id.ib_pause_menu);
@@ -45,9 +59,11 @@ public class GameBoardActivity extends AppCompatActivity {
             alert.show();
         });
         // End of undo button functionality
-
-        pause_button.setOnClickListener(view -> {
-
+        pause = findViewById(R.id.ib_pause_menu);
+        pause.setOnClickListener(view -> {
+            FragmentManager fm = getSupportFragmentManager();
+            PauseDialogFragment pauseMenu = new PauseDialogFragment(playerOne, playerTwo);
+            pauseMenu.show(fm, null);
         });
     }
 }

@@ -7,16 +7,13 @@ import android.os.Bundle;
 import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
-    Player playerOne;
-    Player playerTwo;
+    Player playerOne = new Player(1, R.color.cyan);
+    Player playerTwo = new Player(2, R.color.green3);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        playerOne = new Player(1, R.color.cyan);
-        playerTwo = new Player(2, R.color.green3);
     }
 
     public void onPlay(View view) {
@@ -29,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("from","play");
         startActivity(intent);
     }
+
     public void onSettings(View view) {
         Intent intent = new Intent(this, SettingsActivity.class);
         //Create a bundle to send players to SettingsActivity

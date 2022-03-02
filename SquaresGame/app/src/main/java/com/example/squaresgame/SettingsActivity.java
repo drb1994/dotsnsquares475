@@ -11,9 +11,10 @@ import android.view.View;
 import android.widget.Button;
 
 public class SettingsActivity extends AppCompatActivity {
-    Button playerOneColorButton;
-    Button playerTwoColorButton;
+    Button playerOneColorButton, playerTwoColorButton;
+    Player playerOne, playerTwo;
     private Button btn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,8 +22,8 @@ public class SettingsActivity extends AppCompatActivity {
         //Retrieve the players from the bundle
         Intent intent = getIntent();
         Bundle players = intent.getExtras();
-        Player playerOne = (Player) players.get("Player One");
-        Player playerTwo = (Player) players.get("Player Two");
+        playerOne = (Player) players.get("Player One");
+        playerTwo = (Player) players.get("Player Two");
 
         setContentView(R.layout.activity_settings);
 
@@ -69,6 +70,11 @@ public class SettingsActivity extends AppCompatActivity {
 
     public void onStartGame(View view) {
         Intent intent = new Intent(this, GameBoardActivity.class);
+        //Create a bundle to send players to GameBoardActivity
+        Bundle players = new Bundle();
+        players.putSerializable("Player One", playerOne);
+        players.putSerializable("Player Two", playerTwo);
+        intent.putExtras(players);
         startActivity(intent);
     }
 
