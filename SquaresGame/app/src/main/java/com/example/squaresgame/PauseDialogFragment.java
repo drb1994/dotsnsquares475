@@ -33,7 +33,7 @@ public class PauseDialogFragment extends DialogFragment {
             players.putSerializable("Player One", playerOne);
             players.putSerializable("Player Two", playerTwo);
             intent.putExtras(players);
-            intent.putExtra("from","settings");
+            intent.putExtra("from","");
             startActivity(intent);
         });
 
@@ -45,7 +45,7 @@ public class PauseDialogFragment extends DialogFragment {
             players.putSerializable("Player One", playerOne);
             players.putSerializable("Player Two", playerTwo);
             intent.putExtras(players);
-            intent.putExtra("from","settings");
+            intent.putExtra("from","");
             //Close the current activity
             requireActivity().finish();
             startActivity(intent);
