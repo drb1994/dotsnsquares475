@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -68,5 +69,13 @@ public class GameBoardActivity extends AppCompatActivity {
             pauseMenu.show(fm, null);
         });
         //End of pause button functionality
+
+        //Tutorial button functionality
+
+        //End tutorial button functionality
+    }
+    public void onTutorial(View view) {
+        Intent intent = new Intent(this, TutorialActivity.class);
+        startActivity(intent);
     }
 }
