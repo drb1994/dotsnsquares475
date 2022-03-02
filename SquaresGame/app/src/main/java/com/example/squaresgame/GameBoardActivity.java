@@ -10,10 +10,11 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
-import android.view.View;
+import android.view.Gravity;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class GameBoardActivity extends AppCompatActivity {
     ImageButton undo_last_move, pause_button, tutorial_button;
@@ -45,23 +46,22 @@ public class GameBoardActivity extends AppCompatActivity {
 
         // Undo button functionality
         undo_last_move.setOnClickListener(view -> {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            if(undo == 1) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-            builder.setMessage("Are you sure you want to undo the last move?")
-                    .setPositiveButton("OK", (dialogInterface, i) -> {
-                        if(undo == 1){
+                builder.setMessage("Are you sure you want to undo the last move?")
+                        .setPositiveButton("OK", (dialogInterface, i) -> {
                             changeColor();
                             undo -= 1;
-                        } else if(undo == 0){
-                            androidx.appcompat.app.AlertDialog.Builder builder1 = new androidx.appcompat.app.AlertDialog.Builder(this);
-                            builder1.setMessage("You can only undo the previous move");
-                            androidx.appcompat.app.AlertDialog alert1 = builder1.create();
-                            alert1.show();
-                        }
-                    }).setNegativeButton("Cancel", null);
+                        }).setNegativeButton("Cancel", null);
 
-            AlertDialog alert = builder.create();
-            alert.show();
+                AlertDialog alert = builder.create();
+                alert.show();
+            }
+            else if (undo == 0){
+                Toast toast = Toast.makeText(this, "You can only undo the previous move", Toast.LENGTH_LONG);
+                toast.show();
+            }
         });
         // End of undo button functionality
 
