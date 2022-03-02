@@ -6,7 +6,7 @@
     android:layout_width="wrap_content"
     android:paddingEnd="16dp"
     android:paddingBottom="16dp"
-    android:background="@drawable/dialog_shape_color_picker"
+    android:background="@drawable/dialog_shape"
     tools:ignore="RtlSymmetry">
 
     <ImageButton

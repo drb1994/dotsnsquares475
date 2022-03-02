@@ -1,18 +1,12 @@
 package com.example.squaresgame;
 
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
-
-import java.util.Objects;
 
 public class ColorPickerDialogFragment extends DialogFragment {
     private final ImageButton[] colorButton = new ImageButton[6];
