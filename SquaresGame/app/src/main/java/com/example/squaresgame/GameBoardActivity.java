@@ -20,7 +20,7 @@ public class GameBoardActivity extends AppCompatActivity {
     ImageButton undo_last_move, pause_button, tutorial_button;
     TextView player_one_score, player_two_score;
 
-    Integer undo = 1;
+    Integer undo = 0;
 
     Player playerOne, playerTwo;
 
@@ -51,6 +51,7 @@ public class GameBoardActivity extends AppCompatActivity {
             builder.setMessage("Are you sure you want to undo the last move?")
                     .setPositiveButton("OK", (dialogInterface, i) -> {
                         if(undo == 1){
+                            onChangeTurn(view);
                             undo -= 1;
                         } else if(undo == 0){
                             androidx.appcompat.app.AlertDialog.Builder builder1 = new androidx.appcompat.app.AlertDialog.Builder(this);
@@ -77,10 +78,12 @@ public class GameBoardActivity extends AppCompatActivity {
     public void onChangeTurn(View view) {
         if(playerTurn == 1) {
             playerTurn = 2;
+            undo = 1;
             scoreboardConfig();
         }
         else if(playerTurn == 2) {
             playerTurn = 1;
+            undo = 1;
             scoreboardConfig();
         }
     }
