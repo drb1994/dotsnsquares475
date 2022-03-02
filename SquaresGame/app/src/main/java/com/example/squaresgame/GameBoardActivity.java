@@ -1,7 +1,10 @@
 package com.example.squaresgame;
 
 import android.app.AlertDialog;
+
 import android.content.Intent;
+
+
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,9 +12,13 @@ import androidx.fragment.app.FragmentManager;
 
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 public class GameBoardActivity extends AppCompatActivity {
-    ImageButton undo_last_move, pause;
+
+    ImageButton undo_last_move, pause, pause_button, tutorial_button;
+    TextView player_one_score, player_two_score;
+
     Integer undo = 1;
 
     Player playerOne, playerTwo;
@@ -27,7 +34,12 @@ public class GameBoardActivity extends AppCompatActivity {
         playerTwo = (Player) players.get("Player Two");
 
         undo_last_move = findViewById(R.id.ib_undo_button);
-        
+        pause_button = findViewById(R.id.ib_pause_menu);
+        tutorial_button = findViewById(R.id.ib_tutorial_button);
+        player_one_score = findViewById(R.id.tv_player_one_score);
+        player_two_score = findViewById(R.id.tv_player_two_score);
+
+        // Undo button functionality
         undo_last_move.setOnClickListener(view -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
@@ -46,7 +58,7 @@ public class GameBoardActivity extends AppCompatActivity {
             AlertDialog alert = builder.create();
             alert.show();
         });
-
+        // End of undo button functionality
         pause = findViewById(R.id.ib_pause_menu);
         pause.setOnClickListener(view -> {
             FragmentManager fm = getSupportFragmentManager();
