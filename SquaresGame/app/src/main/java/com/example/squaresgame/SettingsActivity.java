@@ -86,38 +86,38 @@ public class SettingsActivity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.small_board_btn:
                 //RESET OTHER BTNS
-                mediumButton.setBackgroundColor(Color.parseColor("#ACACAC"));
-                mediumButton.setTextColor(Color.parseColor("#000000"));
-                largeButton.setBackgroundColor(Color.parseColor("#ACACAC"));
-                largeButton.setTextColor(Color.parseColor("#000000"));
+                deselectButton(mediumButton);
+                deselectButton(largeButton);
                 //SET PRESSED BTN
-                smallButton.setBackgroundColor(Color.parseColor("#000000"));
-                smallButton.setTextColor(Color.parseColor("#FFFFFF"));
+                selectButton(smallButton);
                 System.out.println("small");
                 break;
             case R.id.medium_board_btn:
                 //RESET OTHER BTNS
-                smallButton.setBackgroundColor(Color.parseColor("#ACACAC"));
-                smallButton.setTextColor(Color.parseColor("#000000"));
-                largeButton.setBackgroundColor(Color.parseColor("#ACACAC"));
-                largeButton.setTextColor(Color.parseColor("#000000"));
+                deselectButton(smallButton);
+                deselectButton(largeButton);
                 //SET PRESSED BTN
-                mediumButton.setBackgroundColor(Color.parseColor("#000000"));
-                mediumButton.setTextColor(Color.parseColor("#FFFFFF"));
+                selectButton(mediumButton);
                 System.out.println("medium");
                 break;
             case R.id.large_board_btn:
                 //RESET OTHER BTNS
-                smallButton.setBackgroundColor(Color.parseColor("#ACACAC"));
-                smallButton.setTextColor(Color.parseColor("#000000"));
-                mediumButton.setBackgroundColor(Color.parseColor("#ACACAC"));
-                mediumButton.setTextColor(Color.parseColor("#000000"));
+                deselectButton(smallButton);
+                deselectButton(mediumButton);
                 //SET PRESSED BTN
-                largeButton.setBackgroundColor(Color.parseColor("#000000"));
-                largeButton.setTextColor(Color.parseColor("#FFFFFF"));
+                selectButton(largeButton);
                 System.out.println("large");
                 break;
         }
+    }
+
+    public void deselectButton(Button button) {
+        button.setBackgroundColor(Color.parseColor("#ACACAC"));
+        button.setTextColor(Color.parseColor("#000000"));
+    }
+    public void selectButton(Button button) {
+        button.setBackgroundColor(Color.parseColor("#000000"));
+        button.setTextColor(Color.parseColor("#FFFFFF"));
     }
 
 }
