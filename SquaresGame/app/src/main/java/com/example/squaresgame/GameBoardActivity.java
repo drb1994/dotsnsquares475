@@ -11,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
 import android.view.Gravity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -73,7 +75,6 @@ public class GameBoardActivity extends AppCompatActivity {
             pauseMenu.show(fm, null);
         });
         //End of pause button functionality
-
         game_board.setOnClickListener(view -> {
             changeColor();
             undo = 1;
@@ -97,5 +98,12 @@ public class GameBoardActivity extends AppCompatActivity {
         } else {
             currentTurn = 0;
         }
+        //Tutorial button functionality
+
+        //End tutorial button functionality
+    }
+    public void onTutorial(View view) {
+        Intent intent = new Intent(this, TutorialActivity.class);
+        startActivity(intent);
     }
 }
