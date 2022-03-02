@@ -14,6 +14,7 @@ public class SettingsActivity extends AppCompatActivity {
     Button playerOneColorButton, playerTwoColorButton;
     Player playerOne, playerTwo;
     private Button btn;
+    private boolean boardSelected = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,19 +70,22 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void onStartGame(View view) {
-        Intent intent = new Intent(this, GameBoardActivity.class);
-        //Create a bundle to send players to GameBoardActivity
-        Bundle players = new Bundle();
-        players.putSerializable("Player One", playerOne);
-        players.putSerializable("Player Two", playerTwo);
-        intent.putExtras(players);
-        startActivity(intent);
+        if(boardSelected) {
+            Intent intent = new Intent(this, GameBoardActivity.class);
+            //Create a bundle to send players to GameBoardActivity
+            Bundle players = new Bundle();
+            players.putSerializable("Player One", playerOne);
+            players.putSerializable("Player Two", playerTwo);
+            intent.putExtras(players);
+            startActivity(intent);
+        }
     }
 
     public void onBoardSelect(View view) {
         Button smallButton = findViewById(R.id.small_board_btn);
         Button mediumButton = findViewById(R.id.medium_board_btn);
         Button largeButton = findViewById(R.id.large_board_btn);
+        Button startButton = findViewById(R.id.start_game_btn);
 
         switch (view.getId()) {
             case R.id.small_board_btn:
@@ -89,7 +93,7 @@ public class SettingsActivity extends AppCompatActivity {
                 deselectButton(mediumButton);
                 deselectButton(largeButton);
                 //SET PRESSED BTN
-                selectButton(smallButton);
+                selectButton(smallButton, startButton);
                 System.out.println("small");
                 break;
             case R.id.medium_board_btn:
@@ -97,7 +101,7 @@ public class SettingsActivity extends AppCompatActivity {
                 deselectButton(smallButton);
                 deselectButton(largeButton);
                 //SET PRESSED BTN
-                selectButton(mediumButton);
+                selectButton(mediumButton, startButton);
                 System.out.println("medium");
                 break;
             case R.id.large_board_btn:
@@ -105,7 +109,7 @@ public class SettingsActivity extends AppCompatActivity {
                 deselectButton(smallButton);
                 deselectButton(mediumButton);
                 //SET PRESSED BTN
-                selectButton(largeButton);
+                selectButton(largeButton, startButton);
                 System.out.println("large");
                 break;
         }
@@ -115,9 +119,11 @@ public class SettingsActivity extends AppCompatActivity {
         button.setBackgroundColor(Color.parseColor("#ACACAC"));
         button.setTextColor(Color.parseColor("#000000"));
     }
-    public void selectButton(Button button) {
-        button.setBackgroundColor(Color.parseColor("#000000"));
-        button.setTextColor(Color.parseColor("#FFFFFF"));
+    public void selectButton(Button buttonSelected, Button startButton) {
+        buttonSelected.setBackgroundColor(Color.parseColor("#000000"));
+        buttonSelected.setTextColor(Color.parseColor("#FFFFFF"));
+        startButton.setBackgroundColor(Color.parseColor("#34eb34"));
+        boardSelected = true;
     }
 
 }
