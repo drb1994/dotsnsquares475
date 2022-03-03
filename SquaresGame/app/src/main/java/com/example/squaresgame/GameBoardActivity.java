@@ -23,7 +23,7 @@ public class GameBoardActivity extends AppCompatActivity {
     TextView player_one_score, player_two_score;
     ImageView game_board;
 
-    Integer undo = 1, currentTurn = 0;
+    Integer undo = 0, currentTurn = 0;
 
     Player playerOne, playerTwo;
 
