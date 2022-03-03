@@ -5,15 +5,28 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
     Player playerOne = new Player(1, R.color.cyan);
     Player playerTwo = new Player(2, R.color.green3);
 
+    protected AlphaAnimation fadeInTop = new AlphaAnimation(0.0f , 1.0f ) ;
+    protected AlphaAnimation fadeInLeft = new AlphaAnimation(0.0f , 1.0f ) ;
+    protected AlphaAnimation fadeInBottom = new AlphaAnimation(0.0f , 1.0f ) ;
+    protected AlphaAnimation fadeInRight = new AlphaAnimation(0.0f , 1.0f ) ;
+
+    ImageView topBar;
+    ImageView leftBar;
+    ImageView bottomBar;
+    ImageView rightBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        startAnimation();
     }
 
     public void onPlay(View view) {
@@ -36,5 +49,34 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtras(players);
         intent.putExtra("from","settings");
         startActivity(intent);
+    }
+    private void startAnimation() {
+        topBar = findViewById(R.id.top_bar);
+        leftBar = findViewById(R.id.left_bar);
+        bottomBar = findViewById(R.id.bottom_bar);
+        rightBar = findViewById(R.id.right_bar);
+
+        topBar.setBackgroundColor(getResources().getColor(R.color.blue));
+        leftBar.setBackgroundColor(getResources().getColor(R.color.cyan));
+        bottomBar.setBackgroundColor(getResources().getColor(R.color.green3));
+        rightBar.setBackgroundColor(getResources().getColor(R.color.green5));
+
+        fadeInTop.setDuration(1200);
+        fadeInTop.setFillAfter(true);
+        fadeInLeft.setDuration(1200);
+        fadeInLeft.setFillAfter(true);
+        fadeInBottom.setDuration(1200);
+        fadeInBottom.setFillAfter(true);
+        fadeInRight.setDuration(1200);
+        fadeInRight.setFillAfter(true);
+
+        fadeInLeft.setStartOffset(600);
+        fadeInBottom.setStartOffset(1200);
+        fadeInRight.setStartOffset(1800);
+
+        topBar.startAnimation(fadeInTop);
+        leftBar.startAnimation(fadeInLeft);
+        bottomBar.startAnimation(fadeInBottom);
+        rightBar.startAnimation(fadeInRight);
     }
 }

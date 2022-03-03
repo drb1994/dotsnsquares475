@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,36 +9,115 @@
 
     <ImageView
         android:id="@+id/main_logo"
-        android:layout_width="156dp"
-        android:layout_height="161dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.284"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="156dp"
         app:srcCompat="@drawable/squares_logo" />
 
     <Button
         android:id="@+id/play_btn"
         android:layout_width="186dp"
         android:layout_height="46dp"
-        android:layout_marginTop="32dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="308dp"
         android:onClick="onPlay"
-        android:text="Play"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_logo" />
+        android:text="Play" />
 
     <Button
         android:id="@+id/settings_btn"
-        android:layout_width="186dp"
+        android:layout_width="180dp"
         android:layout_height="46dp"
-        android:layout_marginTop="32dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="246dp"
         android:onClick="onSettings"
-        android:text="Settings"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/play_btn" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:text="Settings" />
+
+    <ImageView
+        android:id="@+id/top_left_circle"
+        android:translationZ="90dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="75dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="285dp"
+        app:srcCompat="@drawable/black_circle" />
+
+    <ImageView
+        android:id="@+id/top_right_circle"
+        android:translationZ="90dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="100dp"
+        android:layout_marginRight="75dp"
+        app:srcCompat="@drawable/black_circle" />
+
+    <ImageView
+        android:id="@+id/bottom_right_circle"
+        android:translationZ="90dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="325dp"
+        android:layout_marginRight="75dp"
+        app:srcCompat="@drawable/black_circle" />
+
+    <ImageView
+        android:id="@+id/bottom_left_circle"
+        android:translationZ="90dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="75dp"
+        android:layout_marginTop="325dp"
+        app:srcCompat="@drawable/black_circle" />
+
+    <ImageView
+        android:id="@+id/top_bar"
+        android:layout_width="210dp"
+        android:layout_height="10dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="110dp" />
+
+    <ImageView
+        android:id="@+id/bottom_bar"
+        android:layout_width="210dp"
+        android:layout_height="10dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="335dp" />
+
+    <ImageView
+        android:id="@+id/left_bar"
+        android:layout_width="10dp"
+        android:layout_height="210dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="85dp"
+        android:layout_marginTop="120dp" />
+
+    <ImageView
+        android:id="@+id/right_bar"
+        android:layout_width="10dp"
+        android:layout_height="210dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="85dp"
+        android:layout_marginTop="120dp" />
+
+
+
+
+</RelativeLayout>
