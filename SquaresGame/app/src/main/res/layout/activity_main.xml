@@ -18,23 +18,26 @@
 
     <Button
         android:id="@+id/play_btn"
-        android:layout_width="186dp"
-        android:layout_height="46dp"
+        android:layout_width="205dp"
+        android:layout_height="60dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="308dp"
+        android:layout_marginBottom="276dp"
         android:onClick="onPlay"
-        android:text="Play" />
+        android:text="Play"
+        android:textAlignment="center"
+        android:textSize="24sp" />
 
     <Button
         android:id="@+id/settings_btn"
         android:layout_width="180dp"
-        android:layout_height="46dp"
+        android:layout_height="60dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="246dp"
+        android:layout_marginBottom="176dp"
         android:onClick="onSettings"
-        android:text="Settings" />
+        android:text="Settings"
+        android:textSize="24sp" />
 
     <ImageView
         android:id="@+id/top_left_circle"
@@ -122,9 +125,9 @@
         android:layout_width="wrap_content"
         android:layout_height="64dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="600dp"
         android:layout_centerHorizontal="true"
-        android:backgroundTint="#FF0000"
+        android:layout_marginTop="580dp"
+        android:backgroundTint="#C9FF8181"
         android:onClick="onClearSettings"
         android:text="Clear Saved Preferences" />
 

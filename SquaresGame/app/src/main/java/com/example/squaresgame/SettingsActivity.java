@@ -59,7 +59,23 @@ public class SettingsActivity extends AppCompatActivity {
                 btn.setText("Set Rules");
                 btn.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
-                        startActivity(new Intent(SettingsActivity.this, MainActivity.class));
+                        if(boardSelected) {
+                            Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
+
+                            if(savePreferences){
+                                editor.putInt("p1color", playerOne.getColor());
+                                editor.putInt("p2color", playerTwo.getColor());
+                                editor.putBoolean("fb", flipBoard);
+                                editor.apply();
+                            }
+
+                            //Create a bundle to send players to GameBoardActivity
+                            Bundle players = new Bundle();
+                            players.putSerializable("Player One", playerOne);
+                            players.putSerializable("Player Two", playerTwo);
+                            intent.putExtras(players);
+                            startActivity(intent);
+                        }
                     }
                 });
             }
@@ -86,8 +102,8 @@ public class SettingsActivity extends AppCompatActivity {
             Intent intent = new Intent(this, GameBoardActivity.class);
 
             if(savePreferences){
-                editor.putInt("p1color", getResources().getColor(playerOne.getColor()));
-                editor.putInt("p2color", getResources().getColor(playerTwo.getColor()));
+                editor.putInt("p1color", playerOne.getColor());
+                editor.putInt("p2color", playerTwo.getColor());
                 editor.putBoolean("fb", flipBoard);
                 editor.apply();
             }
@@ -146,7 +162,7 @@ public class SettingsActivity extends AppCompatActivity {
     public void selectButton(Button buttonSelected, Button startButton) {
         buttonSelected.setBackgroundColor(Color.parseColor("#000000"));
         buttonSelected.setTextColor(Color.parseColor("#FFFFFF"));
-        startButton.setBackgroundColor(Color.parseColor("#34eb34"));
+        startButton.setBackgroundColor(getResources().getColor(R.color.green3));
         boardSelected = true;
     }
 
