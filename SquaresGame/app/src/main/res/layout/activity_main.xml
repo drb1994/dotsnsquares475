@@ -117,7 +117,16 @@
         android:layout_marginRight="85dp"
         android:layout_marginTop="120dp" />
 
-
+    <Button
+        android:id="@+id/clear_prefs_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="600dp"
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="#FF0000"
+        android:onClick="onClearSettings"
+        android:text="Clear Saved Preferences" />
 
 
 </RelativeLayout>

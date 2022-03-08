@@ -2,8 +2,11 @@ package com.example.squaresgame;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.widget.ImageView;
@@ -22,22 +25,46 @@ public class MainActivity extends AppCompatActivity {
     ImageView bottomBar;
     ImageView rightBar;
 
+    SharedPreferences prefs;
+    SharedPreferences.Editor editor;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         startAnimation();
+
+        editor = prefs.edit();
+
+        System.out.println(prefs.getAll());
     }
 
     public void onPlay(View view) {
-        Intent intent = new Intent(this, SettingsActivity.class);
-        //Create a bundle to send players to SettingsActivity
-        Bundle players = new Bundle();
-        players.putSerializable("Player One", playerOne);
-        players.putSerializable("Player Two", playerTwo);
-        intent.putExtras(players);
-        intent.putExtra("from","play");
-        startActivity(intent);
+        if(prefs.getBoolean("sp",false)){
+            Intent intent = new Intent(this, GameBoardActivity.class);
+            Bundle players = new Bundle();
+            players.putSerializable("Player One",playerOne);
+            players.putSerializable("Player Two",playerTwo);
+            intent.putExtras(players);
+            startActivity(intent);
+        }else{
+            Intent intent = new Intent(this, SettingsActivity.class);
+            //Create a bundle to send players to SettingsActivity
+            Bundle players = new Bundle();
+            players.putSerializable("Player One", playerOne);
+            players.putSerializable("Player Two", playerTwo);
+            intent.putExtras(players);
+            intent.putExtra("from","play");
+            startActivity(intent);
+        }
+    }
+
+    public void onClearSettings(View view) {
+        editor.clear();
+        editor.apply();
     }
 
     public void onSettings(View view) {
