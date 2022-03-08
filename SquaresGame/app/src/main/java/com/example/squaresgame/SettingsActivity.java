@@ -3,18 +3,26 @@ package com.example.squaresgame;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Switch;
 
 public class SettingsActivity extends AppCompatActivity {
     Button playerOneColorButton, playerTwoColorButton;
     Player playerOne, playerTwo;
     private Button btn;
     private boolean boardSelected = false;
+    private boolean savePreferences = false;
+    private boolean flipBoard = false;
+    SharedPreferences prefs;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +34,8 @@ public class SettingsActivity extends AppCompatActivity {
         playerOne = (Player) players.get("Player One");
         playerTwo = (Player) players.get("Player Two");
 
+
+
         setContentView(R.layout.activity_settings);
 
         playerOneColorButton = findViewById(R.id.player_one_color_btn);
@@ -36,6 +46,10 @@ public class SettingsActivity extends AppCompatActivity {
         playerTwoColorButton.setBackgroundColor(getResources().getColor(playerTwo.getColor()));
         playerTwoColorButton.setOnClickListener(view -> showColorPickerDialog(playerTwo, playerOne.getColor()));
 
+        //PREFERENCES
+        prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        editor = prefs.edit();
+        System.out.println(prefs.getAll());
         //IF NAV'D FROM SETTINGS BUTTON
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -50,8 +64,6 @@ public class SettingsActivity extends AppCompatActivity {
                 });
             }
         }
-
-
     }
 
     public void showColorPickerDialog(Player player, int takenColor) {
@@ -72,6 +84,14 @@ public class SettingsActivity extends AppCompatActivity {
     public void onStartGame(View view) {
         if(boardSelected) {
             Intent intent = new Intent(this, GameBoardActivity.class);
+
+            if(savePreferences){
+                editor.putInt("p1color", getResources().getColor(playerOne.getColor()));
+                editor.putInt("p2color", getResources().getColor(playerTwo.getColor()));
+                editor.putBoolean("fb", flipBoard);
+                editor.apply();
+            }
+
             //Create a bundle to send players to GameBoardActivity
             Bundle players = new Bundle();
             players.putSerializable("Player One", playerOne);
@@ -94,7 +114,8 @@ public class SettingsActivity extends AppCompatActivity {
                 deselectButton(largeButton);
                 //SET PRESSED BTN
                 selectButton(smallButton, startButton);
-                System.out.println("small");
+                //SET SAVED PREF
+                editor.putString("boardsize", "small");
                 break;
             case R.id.medium_board_btn:
                 //RESET OTHER BTNS
@@ -102,7 +123,8 @@ public class SettingsActivity extends AppCompatActivity {
                 deselectButton(largeButton);
                 //SET PRESSED BTN
                 selectButton(mediumButton, startButton);
-                System.out.println("medium");
+                //SET SAVED PREF
+                editor.putString("boardsize", "medium");
                 break;
             case R.id.large_board_btn:
                 //RESET OTHER BTNS
@@ -110,7 +132,8 @@ public class SettingsActivity extends AppCompatActivity {
                 deselectButton(mediumButton);
                 //SET PRESSED BTN
                 selectButton(largeButton, startButton);
-                System.out.println("large");
+                //SET SAVED PREF
+                editor.putString("boardsize","large");
                 break;
         }
     }
@@ -119,11 +142,20 @@ public class SettingsActivity extends AppCompatActivity {
         button.setBackgroundColor(Color.parseColor("#ACACAC"));
         button.setTextColor(Color.parseColor("#000000"));
     }
+
     public void selectButton(Button buttonSelected, Button startButton) {
         buttonSelected.setBackgroundColor(Color.parseColor("#000000"));
         buttonSelected.setTextColor(Color.parseColor("#FFFFFF"));
         startButton.setBackgroundColor(Color.parseColor("#34eb34"));
         boardSelected = true;
+    }
+
+    public void onSavePreferences(View view) {
+        savePreferences = !savePreferences;
+        editor.putBoolean("sp",savePreferences);
+    }
+    public void onFlipBoard(View view) {
+        flipBoard = !flipBoard;
     }
 
 }
