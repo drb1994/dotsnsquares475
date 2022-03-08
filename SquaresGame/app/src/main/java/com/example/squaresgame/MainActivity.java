@@ -5,10 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
+import android.widget.Button;
 import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
@@ -28,18 +31,32 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences prefs;
     SharedPreferences.Editor editor;
 
+    Button startButton;
+    Button clearButton;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         startAnimation();
-
+        startButton = findViewById(R.id.play_btn);
+        clearButton = findViewById(R.id.clear_prefs_btn);
         editor = prefs.edit();
 
+        //IF SAVED PREFERENCES EXIST
         System.out.println(prefs.getAll());
+        if(!prefs.getAll().isEmpty()){
+            //startButton.getBackground().setColorFilter(getResources().getColor(R.color.green3), PorterDuff.Mode.MULTIPLY);
+            startButton.setBackgroundColor(getResources().getColor(R.color.green3));
+            playerOne.setColor(prefs.getInt("p1color", 0));
+            playerTwo.setColor(prefs.getInt("p2color", 0));
+        }else{
+            clearButton.setVisibility(View.INVISIBLE);
+        }
     }
 
     public void onPlay(View view) {
@@ -63,6 +80,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClearSettings(View view) {
+        startButton = findViewById(R.id.play_btn);
+        clearButton = findViewById(R.id.clear_prefs_btn);
+        startButton.setBackgroundColor(Color.parseColor("#0088FF"));
+        clearButton.setVisibility(View.INVISIBLE);
         editor.clear();
         editor.apply();
     }
