@@ -2,10 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_height="wrap_content"
-    android:layout_width="wrap_content">
+    android:layout_height="235dp"
+    android:layout_width="235dp"
+    android:layout_gravity="center">
 
-    <ImageButton
+    <ImageView
         android:id="@+id/connect_1_2"
         style="@style/connect_horizontal"
         app:layout_constraintStart_toEndOf="@id/circle1"
@@ -13,7 +14,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:contentDescription="@string/connect_circles_1_and_2" />
 
-    <ImageButton
+    <ImageView
         android:id="@+id/connect_2_3"
         style="@style/connect_horizontal"
         app:layout_constraintStart_toEndOf="@id/circle2"
@@ -21,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:contentDescription="@string/connect_circles_2_and_3"/>
 
-    <ImageButton
+    <ImageView
         android:id="@+id/connect_3_4"
         style="@style/connect_horizontal"
         app:layout_constraintStart_toEndOf="@id/circle3"
@@ -29,97 +30,97 @@
         app:layout_constraintTop_toTopOf="parent"
         android:contentDescription="@string/connect_circles_3_and_4"/>
 
-    <ImageButton
+    <ImageView
         android:id="@+id/connect_5_6"
         style="@style/connect_horizontal"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="70dp"
         app:layout_constraintStart_toEndOf="@id/circle5"
         app:layout_constraintEnd_toStartOf="@id/circle6"
         app:layout_constraintTop_toTopOf="parent"
         android:contentDescription="@string/connect_circles_5_and_6"/>
 
-    <ImageButton
+    <ImageView
         android:id="@+id/connect_6_7"
         style="@style/connect_horizontal"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="70dp"
         app:layout_constraintStart_toEndOf="@id/circle6"
         app:layout_constraintEnd_toStartOf="@id/circle7"
         app:layout_constraintTop_toTopOf="parent"
         android:contentDescription="@string/connect_circles_6_and_7"/>
 
-    <ImageButton
+    <ImageView
         android:id="@+id/connect_7_8"
         style="@style/connect_horizontal"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="70dp"
         app:layout_constraintStart_toEndOf="@id/circle7"
         app:layout_constraintEnd_toStartOf="@id/circle8"
         app:layout_constraintTop_toTopOf="parent"
         android:contentDescription="@string/connect_circles_7_and_8"/>
 
-    <ImageButton
+    <ImageView
         android:id="@+id/connect_9_10"
         style="@style/connect_horizontal"
-        android:layout_marginTop="180dp"
+        android:layout_marginTop="140dp"
         app:layout_constraintStart_toEndOf="@id/circle9"
         app:layout_constraintEnd_toStartOf="@id/circle10"
         app:layout_constraintTop_toTopOf="parent"
         android:contentDescription="@string/connect_circles_9_and_10"/>
 
-    <ImageButton
+    <ImageView
         android:id="@+id/connect_10_11"
         style="@style/connect_horizontal"
-        android:layout_marginTop="180dp"
+        android:layout_marginTop="140dp"
         app:layout_constraintStart_toEndOf="@id/circle10"
         app:layout_constraintEnd_toStartOf="@id/circle11"
         app:layout_constraintTop_toTopOf="parent"
         android:contentDescription="@string/connect_circles_10_and_11"/>
 
-    <ImageButton
+    <ImageView
         android:id="@+id/connect_11_12"
         style="@style/connect_horizontal"
-        android:layout_marginTop="180dp"
+        android:layout_marginTop="140dp"
         app:layout_constraintStart_toEndOf="@id/circle11"
         app:layout_constraintEnd_toStartOf="@id/circle12"
         app:layout_constraintTop_toTopOf="parent"
         android:contentDescription="@string/connect_circles_11_and_12"/>
 
-    <ImageButton
+    <ImageView
         android:id="@+id/connect_12_13"
         style="@style/connect_horizontal"
-        android:layout_marginTop="180dp"
+        android:layout_marginTop="140dp"
         app:layout_constraintStart_toEndOf="@id/circle12"
         app:layout_constraintEnd_toStartOf="@id/circle13"
         app:layout_constraintTop_toTopOf="parent"
         android:contentDescription="@string/connect_circles_12_and_13"/>
 
-    <ImageButton
+    <ImageView
         android:id="@+id/connect_13_14"
         style="@style/connect_horizontal"
-        android:layout_marginTop="270dp"
+        android:layout_marginTop="210dp"
         app:layout_constraintStart_toEndOf="@id/circle13"
         app:layout_constraintEnd_toStartOf="@id/circle14"
         app:layout_constraintTop_toTopOf="parent"
         android:contentDescription="@string/connect_circles_13_and_14"/>
 
-    <ImageButton
+    <ImageView
         android:id="@+id/connect_14_15"
         style="@style/connect_horizontal"
-        android:layout_marginTop="270dp"
+        android:layout_marginTop="210dp"
         app:layout_constraintStart_toEndOf="@id/circle14"
         app:layout_constraintEnd_toStartOf="@id/circle15"
         app:layout_constraintTop_toTopOf="parent"
         android:contentDescription="@string/connect_circles_14_and_15"/>
 
-    <ImageButton
+    <ImageView
         android:id="@+id/connect_15_16"
         style="@style/connect_horizontal"
-        android:layout_marginTop="270dp"
+        android:layout_marginTop="210dp"
         app:layout_constraintStart_toEndOf="@id/circle15"
         app:layout_constraintEnd_toStartOf="@id/circle16"
         app:layout_constraintTop_toTopOf="parent"
         android:contentDescription="@string/connect_circles_15_and_16"/>
 
-    <ImageButton
+    <ImageView
         android:id="@+id/connect_1_5"
         style="@style/connect_vertical"
         app:layout_constraintTop_toBottomOf="@+id/circle1"
@@ -127,34 +128,34 @@
         app:layout_constraintStart_toStartOf="parent"
         android:contentDescription="@string/connect_circles_1_and_5"/>
 
-    <ImageButton
+    <ImageView
         android:id="@+id/connect_2_6"
         style="@style/connect_vertical"
-        android:layout_marginStart="90dp"
+        android:layout_marginStart="70dp"
         app:layout_constraintBottom_toTopOf="@+id/circle6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/circle2"
         android:contentDescription="@string/connect_circles_2_and_6"/>
 
-    <ImageButton
+    <ImageView
         android:id="@+id/connect_3_7"
         style="@style/connect_vertical"
-        android:layout_marginStart="180dp"
+        android:layout_marginStart="140dp"
         app:layout_constraintTop_toBottomOf="@+id/circle3"
         app:layout_constraintBottom_toTopOf="@+id/circle7"
         app:layout_constraintStart_toStartOf="parent"
         android:contentDescription="@string/connect_circles_3_and_7"/>
 
-    <ImageButton
+    <ImageView
         android:id="@+id/connect_4_8"
         style="@style/connect_vertical"
-        android:layout_marginStart="270dp"
+        android:layout_marginStart="210dp"
         app:layout_constraintTop_toBottomOf="@+id/circle4"
         app:layout_constraintBottom_toTopOf="@+id/circle8"
         app:layout_constraintStart_toStartOf="parent"
         android:contentDescription="@string/connect_circles_4_and_8"/>
 
-    <ImageButton
+    <ImageView
         android:id="@+id/connect_5_9"
         style="@style/connect_vertical"
         app:layout_constraintTop_toBottomOf="@+id/circle5"
@@ -162,34 +163,34 @@
         app:layout_constraintStart_toStartOf="parent"
         android:contentDescription="@string/connect_circles_5_and_9"/>
 
-    <ImageButton
+    <ImageView
         android:id="@+id/connect_6_10"
         style="@style/connect_vertical"
-        android:layout_marginStart="90dp"
+        android:layout_marginStart="70dp"
         app:layout_constraintTop_toBottomOf="@+id/circle6"
         app:layout_constraintBottom_toTopOf="@+id/circle10"
         app:layout_constraintStart_toStartOf="parent"
         android:contentDescription="@string/connect_circles_6_and_10"/>
 
-    <ImageButton
+    <ImageView
         android:id="@+id/connect_7_11"
         style="@style/connect_vertical"
-        android:layout_marginStart="180dp"
+        android:layout_marginStart="140dp"
         app:layout_constraintTop_toBottomOf="@+id/circle7"
         app:layout_constraintBottom_toTopOf="@+id/circle11"
         app:layout_constraintStart_toStartOf="parent"
         android:contentDescription="@string/connect_circles_7_and_11"/>
 
-    <ImageButton
+    <ImageView
         android:id="@+id/connect_8_12"
         style="@style/connect_vertical"
-        android:layout_marginStart="270dp"
+        android:layout_marginStart="210dp"
         app:layout_constraintTop_toBottomOf="@+id/circle8"
         app:layout_constraintBottom_toTopOf="@+id/circle12"
         app:layout_constraintStart_toStartOf="parent"
         android:contentDescription="@string/connect_circles_8_and_12"/>
 
-    <ImageButton
+    <ImageView
         android:id="@+id/connect_9_13"
         style="@style/connect_vertical"
         app:layout_constraintTop_toBottomOf="@+id/circle9"
@@ -197,28 +198,28 @@
         app:layout_constraintStart_toStartOf="parent"
         android:contentDescription="@string/connect_circles_9_and_13"/>
 
-    <ImageButton
+    <ImageView
         android:id="@+id/connect_10_14"
         style="@style/connect_vertical"
-        android:layout_marginStart="90dp"
+        android:layout_marginStart="70dp"
         app:layout_constraintTop_toBottomOf="@+id/circle10"
         app:layout_constraintBottom_toTopOf="@+id/circle14"
         app:layout_constraintStart_toStartOf="parent"
         android:contentDescription="@string/connect_circles_10_and_14"/>
 
-    <ImageButton
+    <ImageView
         android:id="@+id/connect_11_15"
         style="@style/connect_vertical"
-        android:layout_marginStart="180dp"
+        android:layout_marginStart="140dp"
         app:layout_constraintTop_toBottomOf="@+id/circle11"
         app:layout_constraintBottom_toTopOf="@+id/circle15"
         app:layout_constraintStart_toStartOf="parent"
         android:contentDescription="@string/connect_circles_11_and_15"/>
 
-    <ImageButton
+    <ImageView
         android:id="@+id/connect_12_16"
         style="@style/connect_vertical"
-        android:layout_marginStart="270dp"
+        android:layout_marginStart="210dp"
         app:layout_constraintTop_toBottomOf="@+id/circle12"
         app:layout_constraintBottom_toTopOf="@+id/circle16"
         app:layout_constraintStart_toStartOf="parent"
@@ -235,7 +236,7 @@
     <ImageView
         android:id="@+id/circle2"
         style="@style/circle"
-        android:layout_marginStart="60dp"
+        android:layout_marginStart="45dp"
         app:layout_constraintStart_toEndOf="@+id/circle1"
         app:layout_constraintTop_toTopOf="parent"
         android:contentDescription="@string/circle_2" />
@@ -243,7 +244,7 @@
     <ImageView
         android:id="@+id/circle3"
         style="@style/circle"
-        android:layout_marginStart="60dp"
+        android:layout_marginStart="45dp"
         app:layout_constraintStart_toEndOf="@+id/circle2"
         app:layout_constraintTop_toTopOf="parent"
         android:contentDescription="@string/circle_3" />
@@ -251,7 +252,7 @@
     <ImageView
         android:id="@+id/circle4"
         style="@style/circle"
-        android:layout_marginStart="60dp"
+        android:layout_marginStart="45dp"
         app:layout_constraintStart_toEndOf="@+id/circle3"
         app:layout_constraintTop_toTopOf="parent"
         android:contentDescription="@string/circle_4" />
@@ -259,7 +260,7 @@
     <ImageView
         android:id="@+id/circle5"
         style="@style/circle"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="45dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/circle1"
         android:contentDescription="@string/circle_5" />
@@ -267,8 +268,8 @@
     <ImageView
         android:id="@+id/circle6"
         style="@style/circle"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="45dp"
         app:layout_constraintStart_toEndOf="@+id/circle5"
         app:layout_constraintTop_toBottomOf="@id/circle2"
         android:contentDescription="@string/circle_6" />
@@ -276,8 +277,8 @@
     <ImageView
         android:id="@+id/circle7"
         style="@style/circle"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="45dp"
         app:layout_constraintStart_toEndOf="@+id/circle6"
         app:layout_constraintTop_toBottomOf="@id/circle3"
         android:contentDescription="@string/circle_7" />
@@ -285,8 +286,8 @@
     <ImageView
         android:id="@+id/circle8"
         style="@style/circle"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="45dp"
         app:layout_constraintStart_toEndOf="@+id/circle7"
         app:layout_constraintTop_toBottomOf="@id/circle4"
         android:contentDescription="@string/circle_8" />
@@ -294,7 +295,7 @@
     <ImageView
         android:id="@+id/circle9"
         style="@style/circle"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="45dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/circle5"
         android:contentDescription="@string/circle_9" />
@@ -302,8 +303,8 @@
     <ImageView
         android:id="@+id/circle10"
         style="@style/circle"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="45dp"
         app:layout_constraintStart_toEndOf="@+id/circle9"
         app:layout_constraintTop_toBottomOf="@id/circle6"
         android:contentDescription="@string/circle_10" />
@@ -311,8 +312,8 @@
     <ImageView
         android:id="@+id/circle11"
         style="@style/circle"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="45dp"
         app:layout_constraintStart_toEndOf="@+id/circle10"
         app:layout_constraintTop_toBottomOf="@id/circle7"
         android:contentDescription="@string/circle_11" />
@@ -320,8 +321,8 @@
     <ImageView
         android:id="@+id/circle12"
         style="@style/circle"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="45dp"
         app:layout_constraintStart_toEndOf="@+id/circle11"
         app:layout_constraintTop_toBottomOf="@id/circle8"
         android:contentDescription="@string/circle_12" />
@@ -329,7 +330,7 @@
     <ImageView
         android:id="@+id/circle13"
         style="@style/circle"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="45dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/circle9"
         android:contentDescription="@string/circle_13" />
@@ -337,8 +338,8 @@
     <ImageView
         android:id="@+id/circle14"
         style="@style/circle"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="45dp"
         app:layout_constraintStart_toEndOf="@+id/circle13"
         app:layout_constraintTop_toBottomOf="@id/circle10"
         android:contentDescription="@string/circle_14" />
@@ -346,8 +347,8 @@
     <ImageView
         android:id="@+id/circle15"
         style="@style/circle"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="45dp"
         app:layout_constraintStart_toEndOf="@+id/circle14"
         app:layout_constraintTop_toBottomOf="@id/circle11"
         android:contentDescription="@string/circle_15" />
@@ -355,8 +356,8 @@
     <ImageView
         android:id="@+id/circle16"
         style="@style/circle"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="45dp"
         app:layout_constraintStart_toEndOf="@+id/circle15"
         app:layout_constraintTop_toBottomOf="@id/circle12"
         android:contentDescription="@string/circle_16" />

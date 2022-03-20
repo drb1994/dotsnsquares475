@@ -25,18 +25,22 @@
     </style>
 
     <style name="circle">
-        <item name="android:layout_width">30dp</item>
-        <item name="android:layout_height">30dp</item>
+        <item name="android:layout_width">25dp</item>
+        <item name="android:layout_height">25dp</item>
         <item name="srcCompat">@drawable/black_circle</item>
     </style>
 
     <style name="connect_horizontal">
-        <item name="android:layout_height">30dp</item>
+        <item name="android:layout_height">25dp</item>
+        <item name="android:layout_width">45dp</item>
+        <item name="android:clickable">true</item>
         <item name="srcCompat">@drawable/connector_horizontal</item>
     </style>
 
     <style name="connect_vertical">
-        <item name="android:layout_width">30dp</item>
+        <item name="android:layout_height">45dp</item>
+        <item name="android:layout_width">25dp</item>
+        <item name="android:clickable">true</item>
         <item name="srcCompat">@drawable/connector_vertical</item>
     </style>
 
