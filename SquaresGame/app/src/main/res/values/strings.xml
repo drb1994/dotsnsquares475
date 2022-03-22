@@ -64,9 +64,18 @@
     <string name="connect_circles_13_and_14">Connect circles 13 and 14</string>
     <string name="connect_circles_14_and_15">Connect circles 14 and 15</string>
     <string name="connect_circles_15_and_16">Connect circles 15 and 16</string>
-
-    <string name="connect_circles_4_and_5">Connect circles 4 and 5</string>
-    <string name="connect_circles_8_and_9">Connect circles 8 and 9</string>
+    <string name="connect_circles_26_and_27">Connect circles 26 and 27</string>
+    <string name="connect_circles_27_and_28">Connect circles 27 and 28</string>
+    <string name="connect_circles_28_and_29">Connect circles 28 and 29</string>
+    <string name="connect_circles_29_and_30">Connect circles 29 and 30</string>
+    <string name="connect_circles_16_and_17">Connect circles 16 and 17</string>
+    <string name="connect_circles_17_and_18">Connect circles 17 and 18</string>
+    <string name="connect_circles_18_and_19">Connect circles 18 and 19</string>
+    <string name="connect_circles_19_and_20">Connect circles 19 and 20</string>
+    <string name="connect_circles_21_and_22">Connect circles 21 and 22</string>
+    <string name="connect_circles_22_and_23">Connect circles 22 and 23</string>
+    <string name="connect_circles_23_and_24">Connect circles 23 and 24</string>
+    <string name="connect_circles_24_and_25">Connect circles 24 and 25</string>
 
 
     <string name="connect_circles_1_and_5">Connect circles 1 and 5</string>
@@ -81,7 +90,8 @@
     <string name="connect_circles_10_and_14">Connect circles 10 and 14</string>
     <string name="connect_circles_11_and_15">Connect circles 11 and 15</string>
     <string name="connect_circles_12_and_16">Connect circles 12 and 16</string>
-
+    <string name="connect_circles_4_and_5">Connect circles 4 and 5</string>
+    <string name="connect_circles_8_and_9">Connect circles 8 and 9</string>
     <string name="connect_circles_1_and_6">Connect circles 1 and 6</string>
     <string name="connect_circles_2_and_7">Connect circles 2 and 7</string>
     <string name="connect_circles_3_and_8">Connect circles 3 and 8</string>
@@ -102,20 +112,50 @@
     <string name="connect_circles_18_and_23">Connect circles 18 and 23</string>
     <string name="connect_circles_19_and_24">Connect circles 19 and 24</string>
     <string name="connect_circles_20_and_25">Connect circles 20 and 25</string>
+    <string name="connect_circles_21_and_26">Connect circles 21 and 26</string>
+    <string name="connect_circles_22_and_27">Connect circles 22 and 27</string>
+    <string name="connect_circles_23_and_28">Connect circles 23 and 28</string>
+    <string name="connect_circles_24_and_29">Connect circles 24 and 29</string>
+    <string name="connect_circles_25_and_30">Connect circles 25 and 30</string>
+    <string name="connect_circles_13_and_17">Connect circles 13 and 17</string>
+    <string name="connect_circles_14_and_18">Connect circles 14 and 18</string>
+    <string name="connect_circles_15_and_19">Connect circles 15 and 19</string>
+    <string name="connect_circles_16_and_20">Connect circles 16 and 20</string>
+    <string name="connect_circles_1_and_4">Connect circles 1 and 4</string>
+    <string name="connect_circles_2_and_5">Connect circles 2 and 5</string>
+    <string name="connect_circles_3_and_6">Connect circles 3 and 6</string>
+    <string name="connect_circles_4_and_7">Connect circles 4 and 7</string>
+    <string name="connect_circles_5_and_8">Connect circles 5 and 8</string>
+    <string name="connect_circles_6_and_9">Connect circles 6 and 9</string>
+    <string name="connect_circles_7_and_10">Connect circles 7 and 10</string>
+    <string name="connect_circles_8_and_11">Connect circles 8 and 11</string>
+    <string name="connect_circles_9_and_12">Connect circles 9 and 12</string>
 
-    <string name="connect_circles_16_and_17">Connect circles 16 and 17</string>
-    <string name="connect_circles_17_and_18">Connect circles 17 and 18</string>
-    <string name="connect_circles_18_and_19">Connect circles 18 and 19</string>
-    <string name="connect_circles_19_and_20">Connect circles 19 and 20</string>
-    <string name="connect_circles_21_and_22">Connect circles 21 and 22</string>
-    <string name="connect_circles_22_and_23">Connect circles 22 and 23</string>
-    <string name="connect_circles_23_and_24">Connect circles 23 and 24</string>
-    <string name="connect_circles_24_and_25">Connect circles 24 and 25</string>
-    
     <string name="undo">Undo</string>
     <string name="tutorial">Tutorial</string>
     <string name="pause">Pause</string>
     <string name="_0">0</string>
     <string name="player_1">Player 1</string>
     <string name="player_2">Player 2</string>
+
+    <string name="square_1">Square 1</string>
+    <string name="square_2">Square 2</string>
+    <string name="square_3">Square 3</string>
+    <string name="square_4">Square 4</string>
+    <string name="square_5">Square 5</string>
+    <string name="square_6">Square 6</string>
+    <string name="square_7">Square 7</string>
+    <string name="square_8">Square 8</string>
+    <string name="square_9">Square 9</string>
+    <string name="square_10">Square 10</string>
+    <string name="square_11">Square 11</string>
+    <string name="square_12">Square 12</string>
+    <string name="square_13">Square 13</string>
+    <string name="square_14">Square 14</string>
+    <string name="square_15">Square 15</string>
+    <string name="square_16">Square 16</string>
+    <string name="square_17">Square 17</string>
+    <string name="square_18">Square 18</string>
+    <string name="square_19">Square 19</string>
+    <string name="square_20">Square 20</string>
 </resources>

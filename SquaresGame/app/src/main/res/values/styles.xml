@@ -24,24 +24,82 @@
         <item name="android:textSize">28sp</item>
     </style>
 
-    <style name="circle">
+    <style name="circle_large">
         <item name="android:layout_width">25dp</item>
         <item name="android:layout_height">25dp</item>
         <item name="srcCompat">@drawable/black_circle</item>
     </style>
 
-    <style name="connect_horizontal">
+    <style name="circle_medium">
+        <item name="android:layout_width">35dp</item>
+        <item name="android:layout_height">35dp</item>
+        <item name="srcCompat">@drawable/black_circle</item>
+    </style>
+
+    <style name="circle_small">
+        <item name="android:layout_width">45dp</item>
+        <item name="android:layout_height">45dp</item>
+        <item name="srcCompat">@drawable/black_circle</item>
+    </style>
+
+    <style name="connect_horizontal_large">
         <item name="android:layout_height">25dp</item>
         <item name="android:layout_width">45dp</item>
         <item name="android:clickable">true</item>
         <item name="srcCompat">@drawable/connector_horizontal</item>
     </style>
 
-    <style name="connect_vertical">
+    <style name="connect_vertical_large">
         <item name="android:layout_height">45dp</item>
         <item name="android:layout_width">25dp</item>
         <item name="android:clickable">true</item>
         <item name="srcCompat">@drawable/connector_vertical</item>
+    </style>
+
+    <style name="connect_horizontal_medium">
+        <item name="android:layout_height">35dp</item>
+        <item name="android:layout_width">55dp</item>
+        <item name="android:clickable">true</item>
+        <item name="srcCompat">@drawable/connector_horizontal</item>
+    </style>
+
+    <style name="connect_vertical_medium">
+        <item name="android:layout_height">55dp</item>
+        <item name="android:layout_width">35dp</item>
+        <item name="android:clickable">true</item>
+        <item name="srcCompat">@drawable/connector_vertical</item>
+    </style>
+
+    <style name="connect_horizontal_small">
+        <item name="android:layout_height">45dp</item>
+        <item name="android:layout_width">65dp</item>
+        <item name="android:clickable">true</item>
+        <item name="srcCompat">@drawable/connector_horizontal</item>
+    </style>
+
+    <style name="connect_vertical_small">
+        <item name="android:layout_height">65dp</item>
+        <item name="android:layout_width">45dp</item>
+        <item name="android:clickable">true</item>
+        <item name="srcCompat">@drawable/connector_vertical</item>
+    </style>
+
+    <style name="square_large">
+        <item name="android:layout_width">45dp</item>
+        <item name="android:layout_height">45dp</item>
+        <item name="srcCompat">@drawable/square</item>
+    </style>
+
+    <style name="square_medium">
+        <item name="android:layout_width">55dp</item>
+        <item name="android:layout_height">55dp</item>
+        <item name="srcCompat">@drawable/square</item>
+    </style>
+
+    <style name="square_small">
+        <item name="android:layout_width">65dp</item>
+        <item name="android:layout_height">65dp</item>
+        <item name="srcCompat">@drawable/square</item>
     </style>
 
 </resources>

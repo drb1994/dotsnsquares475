@@ -3,16 +3,13 @@ package com.example.squaresgame;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Switch;
 
 public class SettingsActivity extends AppCompatActivity {
     Button playerOneColorButton, playerTwoColorButton;
@@ -24,6 +21,8 @@ public class SettingsActivity extends AppCompatActivity {
     SharedPreferences prefs;
     SharedPreferences.Editor editor;
 
+    String boardSize;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,8 +32,6 @@ public class SettingsActivity extends AppCompatActivity {
         Bundle players = intent.getExtras();
         playerOne = (Player) players.get("Player One");
         playerTwo = (Player) players.get("Player Two");
-
-
 
         setContentView(R.layout.activity_settings);
 
@@ -57,25 +54,24 @@ public class SettingsActivity extends AppCompatActivity {
             if (value.contains("settings")) {
                 btn = (Button) findViewById(R.id.start_game_btn);
                 btn.setText("Set Rules");
-                btn.setOnClickListener(new View.OnClickListener() {
-                    public void onClick(View v) {
-                        if(boardSelected) {
-                            Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
+                btn.setOnClickListener(v -> {
+                    if(boardSelected) {
+                        Intent intent1 = new Intent(SettingsActivity.this, MainActivity.class);
 
-                            if(savePreferences){
-                                editor.putInt("p1color", playerOne.getColor());
-                                editor.putInt("p2color", playerTwo.getColor());
-                                editor.putBoolean("fb", flipBoard);
-                                editor.apply();
-                            }
-
-                            //Create a bundle to send players to GameBoardActivity
-                            Bundle players = new Bundle();
-                            players.putSerializable("Player One", playerOne);
-                            players.putSerializable("Player Two", playerTwo);
-                            intent.putExtras(players);
-                            startActivity(intent);
+                        if(savePreferences){
+                            editor.putInt("p1color", playerOne.getColor());
+                            editor.putInt("p2color", playerTwo.getColor());
+                            editor.putBoolean("fb", flipBoard);
+                            editor.apply();
                         }
+
+                        //Create a bundle to send players to GameBoardActivity
+                        Bundle players1 = new Bundle();
+                        players1.putSerializable("Player One", playerOne);
+                        players1.putSerializable("Player Two", playerTwo);
+                        intent1.putExtras(players1);
+                        intent1.putExtra("size", boardSize);
+                        startActivity(intent1);
                     }
                 });
             }
@@ -99,7 +95,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     public void onStartGame(View view) {
         if(boardSelected) {
-            Intent intent = new Intent(this, GameBoardActivity.class);
+            Intent intent = new Intent(this, GameActivity.class);
 
             if(savePreferences){
                 editor.putInt("p1color", playerOne.getColor());
@@ -113,6 +109,7 @@ public class SettingsActivity extends AppCompatActivity {
             players.putSerializable("Player One", playerOne);
             players.putSerializable("Player Two", playerTwo);
             intent.putExtras(players);
+            intent.putExtra("size", boardSize);
             startActivity(intent);
         }
     }
@@ -125,31 +122,34 @@ public class SettingsActivity extends AppCompatActivity {
 
         switch (view.getId()) {
             case R.id.small_board_btn:
+                boardSize = "small";
                 //RESET OTHER BTNS
                 deselectButton(mediumButton);
                 deselectButton(largeButton);
                 //SET PRESSED BTN
                 selectButton(smallButton, startButton);
                 //SET SAVED PREF
-                editor.putString("boardsize", "small");
+                editor.putString("boardsize", boardSize);
                 break;
             case R.id.medium_board_btn:
+                boardSize = "medium";
                 //RESET OTHER BTNS
                 deselectButton(smallButton);
                 deselectButton(largeButton);
                 //SET PRESSED BTN
                 selectButton(mediumButton, startButton);
                 //SET SAVED PREF
-                editor.putString("boardsize", "medium");
+                editor.putString("boardsize", boardSize);
                 break;
             case R.id.large_board_btn:
+                boardSize = "large";
                 //RESET OTHER BTNS
                 deselectButton(smallButton);
                 deselectButton(mediumButton);
                 //SET PRESSED BTN
                 selectButton(largeButton, startButton);
                 //SET SAVED PREF
-                editor.putString("boardsize","large");
+                editor.putString("boardsize",boardSize);
                 break;
         }
     }

@@ -9,8 +9,6 @@ import android.widget.Button;
 
 import androidx.fragment.app.DialogFragment;
 
-import java.util.Objects;
-
 public class PauseDialogFragment extends DialogFragment {
     Player playerOne, playerTwo;
     Button settings, restart, endGame;
@@ -39,7 +37,7 @@ public class PauseDialogFragment extends DialogFragment {
 
         restart = view.findViewById(R.id.restart);
         restart.setOnClickListener(view12 -> {
-            Intent intent = new Intent(getActivity(), GameBoardActivity.class);
+            Intent intent = new Intent(getActivity(), GameActivity.class);
             //Create a bundle to send players to SettingsActivity
             Bundle players = new Bundle();
             players.putSerializable("Player One", playerOne);

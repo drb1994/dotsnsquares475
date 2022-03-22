@@ -1,0 +1,888 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="305dp"
+    android:layout_height="375dp"
+    android:layout_gravity="center">
+
+    <ImageView
+        android:id="@+id/square1"
+        style="@style/square_large"
+        android:contentDescription="@string/square_1"
+        app:layout_constraintBottom_toTopOf="@+id/connect_6_7"
+        app:layout_constraintEnd_toStartOf="@+id/connect_2_7"
+        app:layout_constraintStart_toEndOf="@+id/connect_1_6"
+        app:layout_constraintTop_toBottomOf="@+id/connect_1_2" />
+
+    <ImageView
+        android:id="@+id/square2"
+        style="@style/square_large"
+        android:contentDescription="@string/square_2"
+        app:layout_constraintBottom_toTopOf="@+id/connect_7_8"
+        app:layout_constraintEnd_toStartOf="@+id/connect_3_8"
+        app:layout_constraintStart_toEndOf="@+id/connect_2_7"
+        app:layout_constraintTop_toBottomOf="@+id/connect_2_3" />
+
+    <ImageView
+        android:id="@+id/square3"
+        style="@style/square_large"
+        android:contentDescription="@string/square_3"
+        app:layout_constraintBottom_toTopOf="@+id/connect_8_9"
+        app:layout_constraintEnd_toStartOf="@+id/connect_4_9"
+        app:layout_constraintStart_toEndOf="@+id/connect_3_8"
+        app:layout_constraintTop_toBottomOf="@+id/connect_3_4" />
+
+    <ImageView
+        android:id="@+id/square4"
+        style="@style/square_large"
+        android:contentDescription="@string/square_4"
+        app:layout_constraintBottom_toTopOf="@+id/connect_9_10"
+        app:layout_constraintEnd_toStartOf="@+id/connect_5_10"
+        app:layout_constraintStart_toEndOf="@+id/connect_4_9"
+        app:layout_constraintTop_toBottomOf="@+id/connect_4_5" />
+
+    <ImageView
+        android:id="@+id/square5"
+        style="@style/square_large"
+        android:contentDescription="@string/square_5"
+        app:layout_constraintBottom_toTopOf="@+id/connect_11_12"
+        app:layout_constraintEnd_toStartOf="@+id/connect_7_12"
+        app:layout_constraintStart_toEndOf="@+id/connect_6_11"
+        app:layout_constraintTop_toBottomOf="@+id/connect_6_7" />
+
+    <ImageView
+        android:id="@+id/square6"
+        style="@style/square_large"
+        android:contentDescription="@string/square_6"
+        app:layout_constraintBottom_toTopOf="@+id/connect_12_13"
+        app:layout_constraintEnd_toStartOf="@+id/connect_8_13"
+        app:layout_constraintStart_toEndOf="@+id/connect_7_12"
+        app:layout_constraintTop_toBottomOf="@+id/connect_7_8" />
+
+    <ImageView
+        android:id="@+id/square7"
+        style="@style/square_large"
+        android:contentDescription="@string/square_7"
+        app:layout_constraintBottom_toTopOf="@+id/connect_13_14"
+        app:layout_constraintEnd_toStartOf="@+id/connect_9_14"
+        app:layout_constraintStart_toEndOf="@+id/connect_8_13"
+        app:layout_constraintTop_toBottomOf="@+id/connect_8_9" />
+
+    <ImageView
+        android:id="@+id/square8"
+        style="@style/square_large"
+        android:contentDescription="@string/square_8"
+        app:layout_constraintBottom_toTopOf="@+id/connect_14_15"
+        app:layout_constraintEnd_toStartOf="@+id/connect_10_15"
+        app:layout_constraintStart_toEndOf="@+id/connect_9_14"
+        app:layout_constraintTop_toBottomOf="@+id/connect_9_10" />
+
+    <ImageView
+        android:id="@+id/square9"
+        style="@style/square_large"
+        android:contentDescription="@string/square_9"
+        app:layout_constraintBottom_toTopOf="@+id/connect_16_17"
+        app:layout_constraintEnd_toStartOf="@+id/connect_12_17"
+        app:layout_constraintStart_toEndOf="@+id/connect_11_16"
+        app:layout_constraintTop_toBottomOf="@+id/connect_11_12" />
+
+    <ImageView
+        android:id="@+id/square10"
+        style="@style/square_large"
+        android:contentDescription="@string/square_10"
+        app:layout_constraintBottom_toTopOf="@+id/connect_17_18"
+        app:layout_constraintEnd_toStartOf="@+id/connect_13_18"
+        app:layout_constraintStart_toEndOf="@+id/connect_12_17"
+        app:layout_constraintTop_toBottomOf="@+id/connect_12_13" />
+
+    <ImageView
+        android:id="@+id/square11"
+        style="@style/square_large"
+        android:contentDescription="@string/square_11"
+        app:layout_constraintBottom_toTopOf="@+id/connect_18_19"
+        app:layout_constraintEnd_toStartOf="@+id/connect_14_19"
+        app:layout_constraintStart_toEndOf="@+id/connect_13_18"
+        app:layout_constraintTop_toBottomOf="@+id/connect_13_14" />
+
+    <ImageView
+        android:id="@+id/square12"
+        style="@style/square_large"
+        android:contentDescription="@string/square_12"
+        app:layout_constraintBottom_toTopOf="@+id/connect_19_20"
+        app:layout_constraintEnd_toStartOf="@+id/connect_15_20"
+        app:layout_constraintStart_toEndOf="@+id/connect_14_19"
+        app:layout_constraintTop_toBottomOf="@+id/connect_14_15" />
+
+    <ImageView
+        android:id="@+id/square13"
+        style="@style/square_large"
+        android:contentDescription="@string/square_13"
+        app:layout_constraintBottom_toTopOf="@+id/connect_21_22"
+        app:layout_constraintEnd_toStartOf="@+id/connect_17_22"
+        app:layout_constraintStart_toEndOf="@+id/connect_16_21"
+        app:layout_constraintTop_toBottomOf="@+id/connect_16_17" />
+
+    <ImageView
+        android:id="@+id/square14"
+        style="@style/square_large"
+        android:contentDescription="@string/square_14"
+        app:layout_constraintBottom_toTopOf="@+id/connect_22_23"
+        app:layout_constraintEnd_toStartOf="@+id/connect_18_23"
+        app:layout_constraintStart_toEndOf="@+id/connect_17_22"
+        app:layout_constraintTop_toBottomOf="@+id/connect_17_18" />
+
+    <ImageView
+        android:id="@+id/square15"
+        style="@style/square_large"
+        android:contentDescription="@string/square_15"
+        app:layout_constraintBottom_toTopOf="@+id/connect_23_24"
+        app:layout_constraintEnd_toStartOf="@+id/connect_19_24"
+        app:layout_constraintStart_toEndOf="@+id/connect_18_23"
+        app:layout_constraintTop_toBottomOf="@+id/connect_18_19" />
+
+    <ImageView
+        android:id="@+id/square16"
+        style="@style/square_large"
+        android:contentDescription="@string/square_16"
+        app:layout_constraintBottom_toTopOf="@+id/connect_24_25"
+        app:layout_constraintEnd_toStartOf="@+id/connect_20_25"
+        app:layout_constraintStart_toEndOf="@+id/connect_19_24"
+        app:layout_constraintTop_toBottomOf="@+id/connect_19_20" />
+
+    <ImageView
+        android:id="@+id/square17"
+        style="@style/square_large"
+        android:contentDescription="@string/square_17"
+        app:layout_constraintBottom_toTopOf="@+id/connect_26_27"
+        app:layout_constraintEnd_toStartOf="@+id/connect_22_27"
+        app:layout_constraintStart_toEndOf="@+id/connect_21_26"
+        app:layout_constraintTop_toBottomOf="@+id/connect_21_22" />
+
+    <ImageView
+        android:id="@+id/square18"
+        style="@style/square_large"
+        android:contentDescription="@string/square_18"
+        app:layout_constraintBottom_toTopOf="@+id/connect_27_28"
+        app:layout_constraintEnd_toStartOf="@+id/connect_23_28"
+        app:layout_constraintStart_toEndOf="@+id/connect_22_27"
+        app:layout_constraintTop_toBottomOf="@+id/connect_22_23" />
+
+    <ImageView
+        android:id="@+id/square19"
+        style="@style/square_large"
+        android:contentDescription="@string/square_19"
+        app:layout_constraintBottom_toTopOf="@+id/connect_28_29"
+        app:layout_constraintEnd_toStartOf="@+id/connect_24_29"
+        app:layout_constraintStart_toEndOf="@+id/connect_23_28"
+        app:layout_constraintTop_toBottomOf="@+id/connect_23_24" />
+
+    <ImageView
+        android:id="@+id/square20"
+        style="@style/square_large"
+        android:contentDescription="@string/square_20"
+        app:layout_constraintBottom_toTopOf="@+id/connect_29_30"
+        app:layout_constraintEnd_toStartOf="@+id/connect_25_30"
+        app:layout_constraintStart_toEndOf="@+id/connect_24_29"
+        app:layout_constraintTop_toBottomOf="@+id/connect_24_25" />
+
+    <ImageView
+        android:id="@+id/connect_1_2"
+        style="@style/connect_horizontal_large"
+        android:contentDescription="@string/connect_circles_1_and_2"
+        app:layout_constraintEnd_toStartOf="@id/circle2"
+        app:layout_constraintStart_toEndOf="@id/circle1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/connect_2_3"
+        style="@style/connect_horizontal_large"
+        android:contentDescription="@string/connect_circles_2_and_3"
+        app:layout_constraintEnd_toStartOf="@id/circle3"
+        app:layout_constraintStart_toEndOf="@id/circle2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/connect_3_4"
+        style="@style/connect_horizontal_large"
+        android:contentDescription="@string/connect_circles_3_and_4"
+        app:layout_constraintEnd_toStartOf="@id/circle4"
+        app:layout_constraintStart_toEndOf="@id/circle3"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/connect_4_5"
+        style="@style/connect_horizontal_large"
+        android:contentDescription="@string/connect_circles_4_and_5"
+        app:layout_constraintEnd_toStartOf="@id/circle5"
+        app:layout_constraintStart_toEndOf="@id/circle4"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/connect_6_7"
+        style="@style/connect_horizontal_large"
+        android:layout_marginTop="70dp"
+        android:contentDescription="@string/connect_circles_6_and_7"
+        app:layout_constraintEnd_toStartOf="@id/circle7"
+        app:layout_constraintStart_toEndOf="@id/circle6"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/connect_7_8"
+        style="@style/connect_horizontal_large"
+        android:layout_marginTop="70dp"
+        android:contentDescription="@string/connect_circles_7_and_8"
+        app:layout_constraintEnd_toStartOf="@id/circle8"
+        app:layout_constraintStart_toEndOf="@id/circle7"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/connect_8_9"
+        style="@style/connect_horizontal_large"
+        android:layout_marginTop="70dp"
+        android:contentDescription="@string/connect_circles_8_and_9"
+        app:layout_constraintEnd_toStartOf="@id/circle9"
+        app:layout_constraintStart_toEndOf="@id/circle8"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/connect_9_10"
+        style="@style/connect_horizontal_large"
+        android:layout_marginTop="70dp"
+        android:contentDescription="@string/connect_circles_9_and_10"
+        app:layout_constraintEnd_toStartOf="@id/circle10"
+        app:layout_constraintStart_toEndOf="@id/circle9"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/connect_10_11"
+        style="@style/connect_horizontal_large"
+        android:layout_marginTop="140dp"
+        android:contentDescription="@string/connect_circles_10_and_11"
+        app:layout_constraintEnd_toStartOf="@id/circle11"
+        app:layout_constraintStart_toEndOf="@id/circle10"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/connect_11_12"
+        style="@style/connect_horizontal_large"
+        android:layout_marginTop="140dp"
+        android:contentDescription="@string/connect_circles_11_and_12"
+        app:layout_constraintEnd_toStartOf="@id/circle12"
+        app:layout_constraintStart_toEndOf="@id/circle11"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/connect_12_13"
+        style="@style/connect_horizontal_large"
+        android:layout_marginTop="140dp"
+        android:contentDescription="@string/connect_circles_12_and_13"
+        app:layout_constraintEnd_toStartOf="@id/circle13"
+        app:layout_constraintStart_toEndOf="@id/circle12"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/connect_13_14"
+        style="@style/connect_horizontal_large"
+        android:layout_marginTop="140dp"
+        android:contentDescription="@string/connect_circles_13_and_14"
+        app:layout_constraintEnd_toStartOf="@id/circle14"
+        app:layout_constraintStart_toEndOf="@id/circle13"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/connect_14_15"
+        style="@style/connect_horizontal_large"
+        android:layout_marginTop="140dp"
+        android:contentDescription="@string/connect_circles_14_and_15"
+        app:layout_constraintEnd_toStartOf="@id/circle15"
+        app:layout_constraintStart_toEndOf="@id/circle14"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/connect_16_17"
+        style="@style/connect_horizontal_large"
+        android:layout_marginTop="210dp"
+        android:contentDescription="@string/connect_circles_16_and_17"
+        app:layout_constraintEnd_toStartOf="@id/circle17"
+        app:layout_constraintStart_toEndOf="@id/circle16"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/connect_17_18"
+        style="@style/connect_horizontal_large"
+        android:layout_marginTop="210dp"
+        android:contentDescription="@string/connect_circles_17_and_18"
+        app:layout_constraintEnd_toStartOf="@id/circle18"
+        app:layout_constraintStart_toEndOf="@id/circle17"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/connect_18_19"
+        style="@style/connect_horizontal_large"
+        android:layout_marginTop="210dp"
+        android:contentDescription="@string/connect_circles_18_and_19"
+        app:layout_constraintEnd_toStartOf="@id/circle19"
+        app:layout_constraintStart_toEndOf="@id/circle18"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/connect_19_20"
+        style="@style/connect_horizontal_large"
+        android:layout_marginTop="210dp"
+        android:contentDescription="@string/connect_circles_19_and_20"
+        app:layout_constraintEnd_toStartOf="@id/circle20"
+        app:layout_constraintStart_toEndOf="@id/circle19"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/connect_21_22"
+        style="@style/connect_horizontal_large"
+        android:layout_marginTop="280dp"
+        android:contentDescription="@string/connect_circles_21_and_22"
+        app:layout_constraintEnd_toStartOf="@id/circle22"
+        app:layout_constraintStart_toEndOf="@id/circle21"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/connect_22_23"
+        style="@style/connect_horizontal_large"
+        android:layout_marginTop="280dp"
+        android:contentDescription="@string/connect_circles_22_and_23"
+        app:layout_constraintEnd_toStartOf="@id/circle23"
+        app:layout_constraintStart_toEndOf="@id/circle22"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/connect_23_24"
+        style="@style/connect_horizontal_large"
+        android:layout_marginTop="280dp"
+        android:contentDescription="@string/connect_circles_23_and_24"
+        app:layout_constraintEnd_toStartOf="@id/circle24"
+        app:layout_constraintStart_toEndOf="@id/circle23"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/connect_24_25"
+        style="@style/connect_horizontal_large"
+        android:layout_marginTop="280dp"
+        android:contentDescription="@string/connect_circles_24_and_25"
+        app:layout_constraintEnd_toStartOf="@id/circle25"
+        app:layout_constraintStart_toEndOf="@id/circle24"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/connect_26_27"
+        style="@style/connect_horizontal_large"
+        android:layout_marginTop="350dp"
+        android:contentDescription="@string/connect_circles_26_and_27"
+        app:layout_constraintEnd_toStartOf="@+id/circle27"
+        app:layout_constraintStart_toEndOf="@+id/circle26"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/connect_27_28"
+        style="@style/connect_horizontal_large"
+        android:layout_marginTop="350dp"
+        android:contentDescription="@string/connect_circles_27_and_28"
+        app:layout_constraintEnd_toStartOf="@id/circle28"
+        app:layout_constraintStart_toEndOf="@id/circle27"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/connect_28_29"
+        style="@style/connect_horizontal_large"
+        android:layout_marginTop="350dp"
+        android:contentDescription="@string/connect_circles_28_and_29"
+        app:layout_constraintEnd_toStartOf="@id/circle29"
+        app:layout_constraintStart_toEndOf="@id/circle28"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/connect_29_30"
+        style="@style/connect_horizontal_large"
+        android:layout_marginTop="350dp"
+        android:contentDescription="@string/connect_circles_29_and_30"
+        app:layout_constraintEnd_toStartOf="@id/circle30"
+        app:layout_constraintStart_toEndOf="@id/circle29"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/connect_1_6"
+        style="@style/connect_vertical_large"
+        app:layout_constraintTop_toBottomOf="@+id/circle1"
+        app:layout_constraintBottom_toTopOf="@+id/circle6"
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/connect_circles_1_and_6"/>
+
+    <ImageView
+        android:id="@+id/connect_2_7"
+        style="@style/connect_vertical_large"
+        android:layout_marginStart="70dp"
+        app:layout_constraintBottom_toTopOf="@+id/circle7"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/circle2"
+        android:contentDescription="@string/connect_circles_2_and_7"/>
+
+    <ImageView
+        android:id="@+id/connect_3_8"
+        style="@style/connect_vertical_large"
+        android:layout_marginStart="140dp"
+        app:layout_constraintTop_toBottomOf="@+id/circle3"
+        app:layout_constraintBottom_toTopOf="@+id/circle8"
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/connect_circles_3_and_8"/>
+
+    <ImageView
+        android:id="@+id/connect_4_9"
+        style="@style/connect_vertical_large"
+        android:layout_marginStart="210dp"
+        app:layout_constraintTop_toBottomOf="@+id/circle4"
+        app:layout_constraintBottom_toTopOf="@+id/circle9"
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/connect_circles_4_and_9"/>
+
+    <ImageView
+        android:id="@+id/connect_5_10"
+        style="@style/connect_vertical_large"
+        android:layout_marginStart="280dp"
+        app:layout_constraintTop_toBottomOf="@+id/circle5"
+        app:layout_constraintBottom_toTopOf="@+id/circle10"
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/connect_circles_5_and_10"/>
+
+    <ImageView
+        android:id="@+id/connect_6_11"
+        style="@style/connect_vertical_large"
+        android:contentDescription="@string/connect_circles_6_and_11"
+        app:layout_constraintBottom_toTopOf="@+id/circle11"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/circle6" />
+
+    <ImageView
+        android:id="@+id/connect_7_12"
+        style="@style/connect_vertical_large"
+        android:layout_marginStart="70dp"
+        android:contentDescription="@string/connect_circles_7_and_12"
+        app:layout_constraintBottom_toTopOf="@+id/circle12"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/circle7" />
+
+    <ImageView
+        android:id="@+id/connect_8_13"
+        style="@style/connect_vertical_large"
+        android:layout_marginStart="140dp"
+        app:layout_constraintTop_toBottomOf="@+id/circle8"
+        app:layout_constraintBottom_toTopOf="@+id/circle13"
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/connect_circles_8_and_13"/>
+
+    <ImageView
+        android:id="@+id/connect_9_14"
+        style="@style/connect_vertical_large"
+        android:layout_marginStart="210dp"
+        app:layout_constraintTop_toBottomOf="@+id/circle9"
+        app:layout_constraintBottom_toTopOf="@+id/circle14"
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/connect_circles_9_and_14"/>
+
+    <ImageView
+        android:id="@+id/connect_10_15"
+        style="@style/connect_vertical_large"
+        android:layout_marginStart="280dp"
+        app:layout_constraintTop_toBottomOf="@+id/circle10"
+        app:layout_constraintBottom_toTopOf="@+id/circle15"
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/connect_circles_10_and_15"/>
+
+    <ImageView
+        android:id="@+id/connect_11_16"
+        style="@style/connect_vertical_large"
+        app:layout_constraintTop_toBottomOf="@+id/circle11"
+        app:layout_constraintBottom_toTopOf="@+id/circle16"
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/connect_circles_11_and_16"/>
+
+    <ImageView
+        android:id="@+id/connect_12_17"
+        style="@style/connect_vertical_large"
+        android:layout_marginStart="70dp"
+        app:layout_constraintTop_toBottomOf="@+id/circle12"
+        app:layout_constraintBottom_toTopOf="@+id/circle16"
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/connect_circles_12_and_17"/>
+
+    <ImageView
+        android:id="@+id/connect_13_18"
+        style="@style/connect_vertical_large"
+        android:layout_marginStart="140dp"
+        app:layout_constraintTop_toBottomOf="@+id/circle13"
+        app:layout_constraintBottom_toTopOf="@+id/circle18"
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/connect_circles_13_and_18"/>
+
+    <ImageView
+        android:id="@+id/connect_14_19"
+        style="@style/connect_vertical_large"
+        android:layout_marginStart="210dp"
+        android:contentDescription="@string/connect_circles_14_and_19"
+        app:layout_constraintBottom_toTopOf="@+id/circle19"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/circle14" />
+
+    <ImageView
+        android:id="@+id/connect_15_20"
+        style="@style/connect_vertical_large"
+        android:layout_marginStart="280dp"
+        app:layout_constraintTop_toBottomOf="@+id/circle15"
+        app:layout_constraintBottom_toTopOf="@+id/circle20"
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/connect_circles_15_and_20"/>
+
+    <ImageView
+        android:id="@+id/connect_16_21"
+        style="@style/connect_vertical_large"
+        app:layout_constraintTop_toBottomOf="@+id/circle16"
+        app:layout_constraintBottom_toTopOf="@+id/circle21"
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/connect_circles_16_and_21"/>
+
+    <ImageView
+        android:id="@+id/connect_17_22"
+        style="@style/connect_vertical_large"
+        android:layout_marginStart="70dp"
+        app:layout_constraintTop_toBottomOf="@+id/circle17"
+        app:layout_constraintBottom_toTopOf="@+id/circle22"
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/connect_circles_17_and_22"/>
+
+    <ImageView
+        android:id="@+id/connect_18_23"
+        style="@style/connect_vertical_large"
+        android:layout_marginStart="140dp"
+        app:layout_constraintTop_toBottomOf="@+id/circle18"
+        app:layout_constraintBottom_toTopOf="@+id/circle23"
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/connect_circles_18_and_23"/>
+
+    <ImageView
+        android:id="@+id/connect_19_24"
+        style="@style/connect_vertical_large"
+        android:layout_marginStart="210dp"
+        app:layout_constraintTop_toBottomOf="@+id/circle19"
+        app:layout_constraintBottom_toTopOf="@+id/circle24"
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/connect_circles_19_and_24"/>
+
+    <ImageView
+        android:id="@+id/connect_20_25"
+        style="@style/connect_vertical_large"
+        android:layout_marginStart="280dp"
+        app:layout_constraintTop_toBottomOf="@+id/circle20"
+        app:layout_constraintBottom_toTopOf="@+id/circle25"
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/connect_circles_20_and_25"/>
+
+    <ImageView
+        android:id="@+id/connect_21_26"
+        style="@style/connect_vertical_large"
+        app:layout_constraintTop_toBottomOf="@+id/circle21"
+        app:layout_constraintBottom_toTopOf="@+id/circle26"
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/connect_circles_21_and_26"/>
+
+    <ImageView
+        android:id="@+id/connect_22_27"
+        style="@style/connect_vertical_large"
+        android:layout_marginStart="70dp"
+        app:layout_constraintTop_toBottomOf="@+id/circle22"
+        app:layout_constraintBottom_toTopOf="@+id/circle27"
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/connect_circles_22_and_27"/>
+
+    <ImageView
+        android:id="@+id/connect_23_28"
+        style="@style/connect_vertical_large"
+        android:layout_marginStart="140dp"
+        app:layout_constraintTop_toBottomOf="@+id/circle23"
+        app:layout_constraintBottom_toTopOf="@+id/circle28"
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/connect_circles_23_and_28"/>
+
+    <ImageView
+        android:id="@+id/connect_24_29"
+        style="@style/connect_vertical_large"
+        android:layout_marginStart="210dp"
+        android:contentDescription="@string/connect_circles_24_and_29"
+        app:layout_constraintBottom_toTopOf="@+id/circle29"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/circle24" />
+
+    <ImageView
+        android:id="@+id/connect_25_30"
+        style="@style/connect_vertical_large"
+        android:layout_marginStart="280dp"
+        app:layout_constraintTop_toBottomOf="@+id/circle25"
+        app:layout_constraintBottom_toTopOf="@+id/circle30"
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/connect_circles_25_and_30"/>
+
+
+    <ImageView
+        android:id="@+id/circle1"
+        style="@style/circle_large"
+        android:contentDescription="@string/circle_1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/circle2"
+        style="@style/circle_large"
+        android:layout_marginStart="45dp"
+        android:contentDescription="@string/circle_2"
+        app:layout_constraintStart_toEndOf="@+id/circle1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/circle3"
+        style="@style/circle_large"
+        android:layout_marginStart="45dp"
+        android:contentDescription="@string/circle_3"
+        app:layout_constraintStart_toEndOf="@+id/circle2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/circle4"
+        style="@style/circle_large"
+        android:layout_marginStart="45dp"
+        android:contentDescription="@string/circle_4"
+        app:layout_constraintStart_toEndOf="@+id/circle3"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/circle5"
+        style="@style/circle_large"
+        android:layout_marginStart="45dp"
+        android:contentDescription="@string/circle_5"
+        app:layout_constraintStart_toEndOf="@id/circle4"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/circle6"
+        style="@style/circle_large"
+        android:layout_marginTop="45dp"
+        android:contentDescription="@string/circle_6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/circle1" />
+
+    <ImageView
+        android:id="@+id/circle7"
+        style="@style/circle_large"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="45dp"
+        android:contentDescription="@string/circle_7"
+        app:layout_constraintStart_toEndOf="@+id/circle6"
+        app:layout_constraintTop_toBottomOf="@+id/circle2" />
+
+    <ImageView
+        android:id="@+id/circle8"
+        style="@style/circle_large"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="45dp"
+        android:contentDescription="@string/circle_8"
+        app:layout_constraintStart_toEndOf="@+id/circle7"
+        app:layout_constraintTop_toBottomOf="@+id/circle3" />
+
+    <ImageView
+        android:id="@+id/circle9"
+        style="@style/circle_large"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="45dp"
+        android:contentDescription="@string/circle_9"
+        app:layout_constraintStart_toEndOf="@+id/circle8"
+        app:layout_constraintTop_toBottomOf="@+id/circle4" />
+
+    <ImageView
+        android:id="@+id/circle10"
+        style="@style/circle_large"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="45dp"
+        android:contentDescription="@string/circle_10"
+        app:layout_constraintStart_toEndOf="@+id/circle9"
+        app:layout_constraintTop_toBottomOf="@+id/circle5" />
+
+    <ImageView
+        android:id="@+id/circle11"
+        style="@style/circle_large"
+        android:layout_marginTop="43dp"
+        android:contentDescription="@string/circle_11"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/circle6" />
+
+    <ImageView
+        android:id="@+id/circle12"
+        style="@style/circle_large"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="45dp"
+        android:contentDescription="@string/circle_12"
+        app:layout_constraintStart_toEndOf="@+id/circle11"
+        app:layout_constraintTop_toBottomOf="@+id/circle7" />
+
+    <ImageView
+        android:id="@+id/circle13"
+        style="@style/circle_large"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="45dp"
+        android:contentDescription="@string/circle_13"
+        app:layout_constraintStart_toEndOf="@+id/circle12"
+        app:layout_constraintTop_toBottomOf="@+id/circle8" />
+
+    <ImageView
+        android:id="@+id/circle14"
+        style="@style/circle_large"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="45dp"
+        android:contentDescription="@string/circle_14"
+        app:layout_constraintStart_toEndOf="@+id/circle13"
+        app:layout_constraintTop_toBottomOf="@+id/circle9" />
+
+    <ImageView
+        android:id="@+id/circle15"
+        style="@style/circle_large"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="45dp"
+        android:contentDescription="@string/circle_15"
+        app:layout_constraintStart_toEndOf="@+id/circle14"
+        app:layout_constraintTop_toBottomOf="@+id/circle10" />
+
+    <ImageView
+        android:id="@+id/circle16"
+        style="@style/circle_large"
+        android:layout_marginTop="45dp"
+        android:contentDescription="@string/circle_16"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/circle11" />
+
+    <ImageView
+        android:id="@+id/circle17"
+        style="@style/circle_large"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="45dp"
+        android:contentDescription="@string/circle_17"
+        app:layout_constraintStart_toEndOf="@+id/circle16"
+        app:layout_constraintTop_toBottomOf="@+id/circle12" />
+
+    <ImageView
+        android:id="@+id/circle18"
+        style="@style/circle_large"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="45dp"
+        android:contentDescription="@string/circle_18"
+        app:layout_constraintStart_toEndOf="@+id/circle17"
+        app:layout_constraintTop_toBottomOf="@+id/circle13" />
+
+    <ImageView
+        android:id="@+id/circle19"
+        style="@style/circle_large"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="45dp"
+        android:contentDescription="@string/circle_19"
+        app:layout_constraintStart_toEndOf="@+id/circle18"
+        app:layout_constraintTop_toBottomOf="@+id/circle14" />
+
+    <ImageView
+        android:id="@+id/circle20"
+        style="@style/circle_large"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="45dp"
+        android:contentDescription="@string/circle_20"
+        app:layout_constraintStart_toEndOf="@+id/circle19"
+        app:layout_constraintTop_toBottomOf="@+id/circle15" />
+
+    <ImageView
+        android:id="@+id/circle21"
+        style="@style/circle_large"
+        android:layout_marginTop="45dp"
+        android:contentDescription="@string/circle_21"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/circle16" />
+
+    <ImageView
+        android:id="@+id/circle22"
+        style="@style/circle_large"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="45dp"
+        android:contentDescription="@string/circle_22"
+        app:layout_constraintStart_toEndOf="@+id/circle21"
+        app:layout_constraintTop_toBottomOf="@+id/circle17" />
+
+    <ImageView
+        android:id="@+id/circle23"
+        style="@style/circle_large"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="45dp"
+        android:contentDescription="@string/circle_23"
+        app:layout_constraintStart_toEndOf="@+id/circle22"
+        app:layout_constraintTop_toBottomOf="@+id/circle18" />
+
+    <ImageView
+        android:id="@+id/circle24"
+        style="@style/circle_large"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="45dp"
+        android:contentDescription="@string/circle_24"
+        app:layout_constraintStart_toEndOf="@+id/circle23"
+        app:layout_constraintTop_toBottomOf="@+id/circle19" />
+
+    <ImageView
+        android:id="@+id/circle25"
+        style="@style/circle_large"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="45dp"
+        android:contentDescription="@string/circle_25"
+        app:layout_constraintStart_toEndOf="@+id/circle24"
+        app:layout_constraintTop_toBottomOf="@+id/circle20" />
+
+    <ImageView
+        android:id="@+id/circle26"
+        style="@style/circle_large"
+        android:layout_marginTop="45dp"
+        android:contentDescription="@string/circle_26"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/circle21" />
+
+    <ImageView
+        android:id="@+id/circle27"
+        style="@style/circle_large"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="45dp"
+        android:contentDescription="@string/circle_27"
+        app:layout_constraintStart_toEndOf="@+id/circle26"
+        app:layout_constraintTop_toBottomOf="@+id/circle22" />
+
+    <ImageView
+        android:id="@+id/circle28"
+        style="@style/circle_large"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="45dp"
+        android:contentDescription="@string/circle_28"
+        app:layout_constraintStart_toEndOf="@+id/circle27"
+        app:layout_constraintTop_toBottomOf="@+id/circle23" />
+
+    <ImageView
+        android:id="@+id/circle29"
+        style="@style/circle_large"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="45dp"
+        android:contentDescription="@string/circle_29"
+        app:layout_constraintStart_toEndOf="@+id/circle28"
+        app:layout_constraintTop_toBottomOf="@+id/circle24" />
+
+    <ImageView
+        android:id="@+id/circle30"
+        style="@style/circle_large"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="45dp"
+        android:contentDescription="@string/circle_30"
+        app:layout_constraintStart_toEndOf="@+id/circle29"
+        app:layout_constraintTop_toBottomOf="@+id/circle25" />
+</androidx.constraintlayout.widget.ConstraintLayout>
