@@ -5,11 +5,15 @@ import android.app.AlertDialog;
 import android.content.Intent;
 
 
+import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
+import android.preference.PreferenceManager;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -25,6 +29,7 @@ public class GameBoardActivity extends AppCompatActivity {
 
     Integer undo = 0, currentTurn = 0;
 
+    SharedPreferences prefs;
     Player playerOne, playerTwo;
 
     @Override
@@ -76,10 +81,21 @@ public class GameBoardActivity extends AppCompatActivity {
         });
         //End of pause button functionality
         game_board.setOnClickListener(view -> {
+            changeScreenOrientation();
             changeColor();
             undo = 1;
         });
     }
+    public void changeScreenOrientation(){
+        int orientation = getWindowManager().getDefaultDisplay().getRotation();
+        if (orientation == android.view.Surface.ROTATION_0) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_REVERSE_PORTRAIT);
+        }
+        else {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
+    }
+
     public void changeColor(){
         if(currentTurn == 0){
             player_one_score.setBackgroundColor(getResources().getColor(playerOne.getColor()));
