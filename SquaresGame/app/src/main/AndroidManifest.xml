@@ -25,7 +25,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".GameBoardActivity"
+            android:name=".GameActivity"
             android:exported="false" />
     </application>
 

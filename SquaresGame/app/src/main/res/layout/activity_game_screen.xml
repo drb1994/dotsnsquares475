@@ -14,7 +14,8 @@
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_revert" />
+        app:srcCompat="@android:drawable/ic_menu_revert"
+        android:contentDescription="@string/undo" />
 
     <ImageButton
         android:id="@+id/ib_tutorial_button"
@@ -25,7 +26,9 @@
         android:onClick="onTutorial"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_help" />
+        app:srcCompat="@android:drawable/ic_menu_help"
+        android:contentDescription="@string/tutorial"
+        tools:ignore="UsingOnClickInXml" />
 
     <ImageButton
         android:id="@+id/ib_pause_menu"
@@ -35,18 +38,19 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@android:drawable/ic_media_pause" />
+        app:srcCompat="@android:drawable/ic_media_pause"
+        android:contentDescription="@string/pause" />
 
-    <ImageView
-        android:id="@+id/iv_game_board"
-        android:layout_width="297dp"
-        android:layout_height="294dp"
-        android:clickable="true"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/board_container"
+        android:layout_width="350dp"
+        android:layout_height="400dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/squares4x4" />
+        app:layout_constraintVertical_bias="0.586"/>
 
     <TextView
         android:id="@+id/tv_player_one_score"
@@ -54,7 +58,7 @@
         android:layout_height="80dp"
         android:layout_marginStart="55dp"
         android:layout_marginTop="70dp"
-        android:text="0"
+        android:text="@string/_0"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="60sp"
@@ -67,7 +71,7 @@
         android:layout_height="80dp"
         android:layout_marginTop="70dp"
         android:layout_marginEnd="55dp"
-        android:text="0"
+        android:text="@string/_0"
         android:textAlignment="center"
         android:textSize="60sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -77,7 +81,7 @@
         android:id="@+id/tv_player_one_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Player 1"
+        android:text="@string/player_1"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/tv_player_one_score"
         app:layout_constraintEnd_toEndOf="@+id/tv_player_one_score"
@@ -87,7 +91,7 @@
         android:id="@+id/tv_player_two_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Player 2"
+        android:text="@string/player_2"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/tv_player_two_score"
         app:layout_constraintEnd_toEndOf="@+id/tv_player_two_score"

@@ -2,30 +2,33 @@ package com.example.squaresgame;
 
 import android.app.AlertDialog;
 
+import android.app.FragmentTransaction;
 import android.content.Intent;
 
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import android.view.Gravity;
+import android.preference.PreferenceManager;
 import android.view.View;
-import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class GameBoardActivity extends AppCompatActivity {
+public class GameActivity extends AppCompatActivity {
     ImageButton undo_last_move, pause_button, tutorial_button;
     TextView player_one_score, player_two_score;
-    ImageView game_board;
+    FrameLayout board_container;
 
     Integer undo = 0, currentTurn = 0;
 
     Player playerOne, playerTwo;
+    String boardSize;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,14 +40,23 @@ public class GameBoardActivity extends AppCompatActivity {
         playerOne = (Player) players.get("Player One");
         playerTwo = (Player) players.get("Player Two");
 
+        if(intent.getStringExtra("size") != null) {
+            boardSize = intent.getStringExtra("size");
+        }
+
         undo_last_move = findViewById(R.id.ib_undo_button);
         pause_button = findViewById(R.id.ib_pause_menu);
         tutorial_button = findViewById(R.id.ib_tutorial_button);
         player_one_score = findViewById(R.id.tv_player_one_score);
         player_two_score = findViewById(R.id.tv_player_two_score);
-        game_board = findViewById(R.id.iv_game_board);
+        board_container = findViewById(R.id.board_container);
 
         changeColor();
+
+        Fragment gameBoard = new BoardFragment(getSize());
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.board_container, gameBoard)
+                .commit();
 
         // Undo button functionality
         undo_last_move.setOnClickListener(view -> {
@@ -75,10 +87,10 @@ public class GameBoardActivity extends AppCompatActivity {
             pauseMenu.show(fm, null);
         });
         //End of pause button functionality
-        game_board.setOnClickListener(view -> {
-            changeColor();
-            undo = 1;
-        });
+//        game_board.setOnClickListener(view -> {
+//            changeColor();
+//            undo = 1;
+//        });
     }
     public void changeColor(){
         if(currentTurn == 0){
@@ -105,5 +117,15 @@ public class GameBoardActivity extends AppCompatActivity {
     public void onTutorial(View view) {
         Intent intent = new Intent(this, TutorialActivity.class);
         startActivity(intent);
+    }
+
+    public String getSize() {
+        SharedPreferences prefs;
+        prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+
+        if(!prefs.getAll().isEmpty()) {
+            boardSize = prefs.getString("boardsize", "small");
+        }
+        return boardSize;
     }
 }

@@ -2,11 +2,9 @@ package com.example.squaresgame;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
@@ -61,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onPlay(View view) {
         if(prefs.getBoolean("sp",false)){
-            Intent intent = new Intent(this, GameBoardActivity.class);
+            Intent intent = new Intent(this, GameActivity.class);
             Bundle players = new Bundle();
             players.putSerializable("Player One",playerOne);
             players.putSerializable("Player Two",playerTwo);
@@ -69,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }else{
             Intent intent = new Intent(this, SettingsActivity.class);
-            //Create a bundle to send players to SettingsActivity
             Bundle players = new Bundle();
             players.putSerializable("Player One", playerOne);
             players.putSerializable("Player Two", playerTwo);

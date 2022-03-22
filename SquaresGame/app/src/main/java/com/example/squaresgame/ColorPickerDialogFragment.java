@@ -1,8 +1,6 @@
 package com.example.squaresgame;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +16,6 @@ public class ColorPickerDialogFragment extends DialogFragment {
     public ColorPickerDialogFragment(Player player, int takenColor) {
         this.player = player;
         this.takenColor = takenColor;
-
     }
 
     @Override
