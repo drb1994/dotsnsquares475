@@ -37,6 +37,8 @@ public class GameBoardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_screen);
 
+        prefs = getSharedPreferences("sharedprefs", MODE_PRIVATE);
+
         Intent intent = getIntent();
         Bundle players = intent.getExtras();
         playerOne = (Player) players.get("Player One");
@@ -80,12 +82,21 @@ public class GameBoardActivity extends AppCompatActivity {
             pauseMenu.show(fm, null);
         });
         //End of pause button functionality
-        game_board.setOnClickListener(view -> {
-            changeScreenOrientation();
-            changeColor();
-            undo = 1;
-        });
+
+        if(prefs.getBoolean("fb",false)){
+            game_board.setOnClickListener(view -> {
+                changeColor();
+                undo = 1;
+            });
+        } else {
+            game_board.setOnClickListener(view -> {
+                changeScreenOrientation();
+                changeColor();
+                undo = 1;
+            });
+        }
     }
+
     public void changeScreenOrientation(){
         int orientation = getWindowManager().getDefaultDisplay().getRotation();
         if (orientation == android.view.Surface.ROTATION_0) {
@@ -114,10 +125,8 @@ public class GameBoardActivity extends AppCompatActivity {
         } else {
             currentTurn = 0;
         }
-        //Tutorial button functionality
-
-        //End tutorial button functionality
     }
+
     public void onTutorial(View view) {
         Intent intent = new Intent(this, TutorialActivity.class);
         startActivity(intent);
