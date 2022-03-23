@@ -1,5 +1,6 @@
 package com.example.squaresgame;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,4 +34,5 @@ public class BoardFragment extends Fragment {
 
         return view;
     }
+
 }
