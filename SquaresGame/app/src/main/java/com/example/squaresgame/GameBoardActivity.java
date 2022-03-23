@@ -53,26 +53,11 @@ public class GameBoardActivity extends AppCompatActivity {
 
         changeColor();
 
-        // Undo button functionality
+        // Undo button
         undo_last_move.setOnClickListener(view -> {
-            if(undo == 1) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
-                builder.setMessage("Are you sure you want to undo the last move?")
-                        .setPositiveButton("OK", (dialogInterface, i) -> {
-                            changeColor();
-                            undo -= 1;
-                        }).setNegativeButton("Cancel", null);
-
-                AlertDialog alert = builder.create();
-                alert.show();
-            }
-            else if (undo == 0){
-                Toast toast = Toast.makeText(this, "You can only undo the previous move", Toast.LENGTH_LONG);
-                toast.show();
-            }
+            undoButtonFunctionality();
         });
-        // End of undo button functionality
+        // End of undo button
 
         // Pause button functionality
         pause_button = findViewById(R.id.ib_pause_menu);
@@ -124,6 +109,27 @@ public class GameBoardActivity extends AppCompatActivity {
             currentTurn = 1;
         } else {
             currentTurn = 0;
+        }
+    }
+
+    public void undoButtonFunctionality(){
+        if(undo == 1) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+            builder.setMessage("Are you sure you want to undo the last move?")
+                    .setPositiveButton("OK", (dialogInterface, i) -> {
+                        // Everything that needs to be undone goes here
+                        changeColor();
+                        changeScreenOrientation();
+                        undo -= 1;
+                    }).setNegativeButton("Cancel", null);
+
+            AlertDialog alert = builder.create();
+            alert.show();
+        }
+        else if (undo == 0){
+            Toast toast = Toast.makeText(this, "You can only undo the previous move", Toast.LENGTH_LONG);
+            toast.show();
         }
     }
 
