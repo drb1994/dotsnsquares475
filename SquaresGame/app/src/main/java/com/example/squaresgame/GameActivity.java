@@ -6,6 +6,7 @@ import android.content.Intent;
 
 
 import android.content.SharedPreferences;
+import android.graphics.Rect;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.preference.PreferenceManager;
+import android.view.TouchDelegate;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
@@ -28,6 +30,8 @@ public class GameActivity extends AppCompatActivity {
     FrameLayout board_container;
 
     ImageView sq1,sq2,sq3;
+
+    ImageView line1;
 
     Integer undo = 0, currentTurn = 1;
 
@@ -71,6 +75,7 @@ public class GameActivity extends AppCompatActivity {
         //changeColor();
         initBoard();
         gameStart();
+
 
         Fragment gameBoard = new BoardFragment(getSize());
         getSupportFragmentManager().beginTransaction()
@@ -167,32 +172,23 @@ public class GameActivity extends AppCompatActivity {
         }
     }
     public void initBoard(){
-        //squares
-        gameboard.put("sq1", false);
-        gameboard.put("sq2", false);
-        gameboard.put("sq3", false);
-        gameboard.put("sq4", false);
-        gameboard.put("sq5", false);
-        gameboard.put("sq6", false);
-        //horizontal
-        gameboard.put("h1-1", false);
-        gameboard.put("h1-2", false);
-        gameboard.put("h2-1", false);
-        gameboard.put("h2-2", false);
-        gameboard.put("h3-1", false);
-        gameboard.put("h3-2", false);
-        gameboard.put("h4-1", false);
-        gameboard.put("h4-2", false);
-        //vertical
-        gameboard.put("v1-1", false);
-        gameboard.put("v1-2", false);
-        gameboard.put("v1-3", false);
-        gameboard.put("v2-1", false);
-        gameboard.put("v2-2", false);
-        gameboard.put("v2-3", false);
-        gameboard.put("v3-1", false);
-        gameboard.put("v3-2", false);
-        gameboard.put("v3-3", false);
+        //small
+        for(int i = 1; i <= 6; i++){
+            //squares
+            gameboard.put("sq"+i, false);
+            if(i <= 4){
+                for(int j = 1; j <= 3; j++){
+                    if(j <= 2){
+                        //horizontal -- h1-1 through h4-2
+                        gameboard.put("h"+i+"-"+j, false);
+                    }
+                    if(i <= 3){
+                        //vertical -- v1-1 through v3-3
+                        gameboard.put("v"+i+"-"+j, false);
+                    }
+                }
+            }
+        }
         if(boardSize.equalsIgnoreCase("medium") || boardSize.equalsIgnoreCase("large")){
             //squares
             gameboard.put("sq7", false);
@@ -218,7 +214,37 @@ public class GameActivity extends AppCompatActivity {
             gameboard.put("v4-3", false);
             gameboard.put("v4-4", false);
         }
-        else if(boardSize.equalsIgnoreCase("large")){
+        if(boardSize.equalsIgnoreCase("large")){
+            //squares
+            gameboard.put("sq13", false);
+            gameboard.put("sq14", false);
+            gameboard.put("sq15", false);
+            gameboard.put("sq16", false);
+            gameboard.put("sq17", false);
+            gameboard.put("sq18", false);
+            gameboard.put("sq19", false);
+            gameboard.put("sq20", false);
+            //horizontal
+            gameboard.put("h1-4", false);
+            gameboard.put("h2-4", false);
+            gameboard.put("h3-4", false);
+            gameboard.put("h4-4", false);
+            gameboard.put("h5-4", false);
+            gameboard.put("h6-1", false);
+            gameboard.put("h6-2", false);
+            gameboard.put("h6-3", false);
+            gameboard.put("h6-4", false);
+
+            //vertical
+            gameboard.put("v1-5", false);
+            gameboard.put("v2-5", false);
+            gameboard.put("v3-5", false);
+            gameboard.put("v4-5", false);
+            gameboard.put("v5-1", false);
+            gameboard.put("v5-2", false);
+            gameboard.put("v5-3", false);
+            gameboard.put("v5-4", false);
+            gameboard.put("v5-5", false);
 
         }
     }
@@ -245,6 +271,33 @@ public class GameActivity extends AppCompatActivity {
             squareChecker("sq10","h4-1","h5-1","v4-1","v4-2");
             squareChecker("sq11","h4-2","h5-2","v4-2","v4-3");
             squareChecker("sq12","h4-3","h5-3","v4-3","v4-4");
+        }
+        if(boardSize.equalsIgnoreCase("large")){
+            //FIRST ROW
+            squareChecker("sq1","h1-1","h2-1","v1-1","v1-2");
+            squareChecker("sq2","h1-2","h2-2","v1-2","v1-3");
+            squareChecker("sq3","h1-3","h2-3","v1-3","v1-4");
+            squareChecker("sq4","h1-4","h2-4","v1-4","v1-5");
+            //SECOND ROW
+            squareChecker("sq5","h2-1","h3-1","v2-1","v2-2");
+            squareChecker("sq6","h2-2","h3-2","v2-2","v2-3");
+            squareChecker("sq7","h2-3","h3-3","v2-3","v2-4");
+            squareChecker("sq8","h2-4","h3-4","v2-4","v2-5");
+            //THIRD ROW
+            squareChecker("sq9","h3-1","h4-1","v3-1","v3-2");
+            squareChecker("sq10","h3-2","h4-2","v3-2","v3-3");
+            squareChecker("sq11","h3-3","h4-3","v3-3","v3-4");
+            squareChecker("sq12","h3-4","h4-4","v3-4","v3-5");
+            //FOURTH ROW
+            squareChecker("sq13","h4-1","h5-1","v4-1","v4-2");
+            squareChecker("sq14","h4-2","h5-2","v4-2","v4-3");
+            squareChecker("sq15","h4-3","h5-3","v4-3","v4-4");
+            squareChecker("sq16","h4-4","h5-4","v4-4","v4-5");
+            //FIFTH ROW
+            squareChecker("sq17","h5-1","h6-1","v5-1","v5-2");
+            squareChecker("sq18","h5-2","h6-2","v5-2","v5-3");
+            squareChecker("sq19","h5-3","h6-3","v5-3","v5-4");
+            squareChecker("sq20","h5-4","h6-4","v5-4","v5-5");
         }
 
     }
@@ -273,4 +326,6 @@ public class GameActivity extends AppCompatActivity {
         player_one_score_view.setText(String.valueOf(player_one_score));
         player_two_score_view.setText(String.valueOf(player_two_score));
     }
+
+
 }
