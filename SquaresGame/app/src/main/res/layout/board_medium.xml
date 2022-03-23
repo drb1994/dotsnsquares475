@@ -7,16 +7,17 @@
     android:layout_gravity="center">
 
     <ImageView
-        android:id="@+id/square1"
+        android:id="@+id/sq1"
         style="@style/square_medium"
         android:contentDescription="@string/square_1"
         app:layout_constraintBottom_toTopOf="@+id/connect_5_6"
         app:layout_constraintEnd_toStartOf="@+id/connect_2_6"
         app:layout_constraintStart_toEndOf="@+id/connect_1_5"
-        app:layout_constraintTop_toBottomOf="@+id/connect_1_2" />
+        app:layout_constraintTop_toBottomOf="@+id/connect_1_2"
+        />
 
     <ImageView
-        android:id="@+id/square2"
+        android:id="@+id/sq2"
         style="@style/square_medium"
         android:contentDescription="@string/square_2"
         app:layout_constraintBottom_toTopOf="@+id/connect_6_7"
@@ -25,7 +26,7 @@
         app:layout_constraintTop_toBottomOf="@+id/connect_2_3" />
 
     <ImageView
-        android:id="@+id/square3"
+        android:id="@+id/sq3"
         style="@style/square_medium"
         android:contentDescription="@string/square_3"
         app:layout_constraintBottom_toTopOf="@+id/connect_7_8"
@@ -34,7 +35,7 @@
         app:layout_constraintTop_toBottomOf="@+id/connect_3_4" />
 
     <ImageView
-        android:id="@+id/square4"
+        android:id="@+id/sq4"
         style="@style/square_medium"
         android:contentDescription="@string/square_4"
         app:layout_constraintBottom_toTopOf="@+id/connect_9_10"
@@ -43,7 +44,7 @@
         app:layout_constraintTop_toBottomOf="@+id/connect_5_6" />
 
     <ImageView
-        android:id="@+id/square5"
+        android:id="@+id/sq5"
         style="@style/square_medium"
         android:contentDescription="@string/square_5"
         app:layout_constraintBottom_toTopOf="@+id/connect_10_11"
@@ -52,7 +53,7 @@
         app:layout_constraintTop_toBottomOf="@+id/connect_6_7" />
 
     <ImageView
-        android:id="@+id/square6"
+        android:id="@+id/sq6"
         style="@style/square_medium"
         android:contentDescription="@string/square_6"
         app:layout_constraintBottom_toTopOf="@+id/connect_11_12"
@@ -61,7 +62,7 @@
         app:layout_constraintTop_toBottomOf="@+id/connect_7_8" />
 
     <ImageView
-        android:id="@+id/square7"
+        android:id="@+id/sq7"
         style="@style/square_medium"
         android:contentDescription="@string/square_7"
         app:layout_constraintBottom_toTopOf="@+id/connect_13_14"
@@ -70,7 +71,7 @@
         app:layout_constraintTop_toBottomOf="@+id/connect_9_10" />
 
     <ImageView
-        android:id="@+id/square8"
+        android:id="@+id/sq8"
         style="@style/square_medium"
         android:contentDescription="@string/square_8"
         app:layout_constraintBottom_toTopOf="@+id/connect_14_15"
@@ -79,7 +80,7 @@
         app:layout_constraintTop_toBottomOf="@+id/connect_10_11" />
 
     <ImageView
-        android:id="@+id/square9"
+        android:id="@+id/sq9"
         style="@style/square_medium"
         android:contentDescription="@string/square_9"
         app:layout_constraintBottom_toTopOf="@+id/connect_15_16"
@@ -88,7 +89,7 @@
         app:layout_constraintTop_toBottomOf="@+id/connect_11_12" />
 
     <ImageView
-        android:id="@+id/square10"
+        android:id="@+id/sq10"
         style="@style/square_medium"
         android:contentDescription="@string/square_10"
         app:layout_constraintBottom_toTopOf="@+id/connect_17_18"
@@ -97,7 +98,7 @@
         app:layout_constraintTop_toBottomOf="@+id/connect_13_14" />
 
     <ImageView
-        android:id="@+id/square11"
+        android:id="@+id/sq11"
         style="@style/square_medium"
         android:contentDescription="@string/square_11"
         app:layout_constraintBottom_toTopOf="@+id/connect_18_19"
@@ -106,7 +107,7 @@
         app:layout_constraintTop_toBottomOf="@+id/connect_14_15" />
 
     <ImageView
-        android:id="@+id/square12"
+        android:id="@+id/sq12"
         style="@style/square_medium"
         android:contentDescription="@string/square_12"
         app:layout_constraintBottom_toTopOf="@+id/connect_19_20"

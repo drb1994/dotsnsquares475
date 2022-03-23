@@ -36,10 +36,15 @@ public class GameActivity extends AppCompatActivity {
     Player playerOne, playerTwo;
     String boardSize;
 
+    SharedPreferences prefs;
+
     HashMap<String, Boolean> gameboard = new HashMap<String, Boolean>();
+    Boolean pointScored = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_screen);
 
@@ -47,6 +52,10 @@ public class GameActivity extends AppCompatActivity {
         Bundle players = intent.getExtras();
         playerOne = (Player) players.get("Player One");
         playerTwo = (Player) players.get("Player Two");
+
+        if(!prefs.getAll().isEmpty()){{
+            boardSize = prefs.getString("boardsize", "small");
+        }}
 
         if(intent.getStringExtra("size") != null) {
             boardSize = intent.getStringExtra("size");
@@ -143,12 +152,18 @@ public class GameActivity extends AppCompatActivity {
             view.setBackgroundColor(getResources().getColor(playerOne.getColor()));
             gameboard.put(String.valueOf(view.getTag()), true);
             checkForCompletedSquare();
-            changeTurn();
+            if(!pointScored){
+                changeTurn();
+            }
+            pointScored = false;
         }else if(currentTurn == 2 && !gameboard.get(String.valueOf(view.getTag()))){
             view.setBackgroundColor(getResources().getColor(playerTwo.getColor()));
             gameboard.put(String.valueOf(view.getTag()), true);
             checkForCompletedSquare();
-            changeTurn();
+            if(!pointScored){
+                changeTurn();
+            }
+            pointScored = false;
         }
     }
     public void initBoard(){
@@ -234,12 +249,19 @@ public class GameActivity extends AppCompatActivity {
 
     }
     public void squareChecker(String square, String top, String bottom, String left, String right){
+        ImageView sq;
+        int resID = getResources().getIdentifier(square, "id", getPackageName());
+        sq = findViewById(resID);
         if(!gameboard.get(square) && (gameboard.get(top) && gameboard.get(bottom)
         && gameboard.get(left) && gameboard.get(right))){
             if(currentTurn == 1){
                 player_one_score++;
+                sq.setBackgroundColor(getResources().getColor(playerOne.getColor()));
+                pointScored = true;
             }else if(currentTurn == 2){
                 player_two_score++;
+                sq.setBackgroundColor(getResources().getColor(playerTwo.getColor()));
+                pointScored = true;
             }
             gameboard.put(square, true);
             updateScores();
