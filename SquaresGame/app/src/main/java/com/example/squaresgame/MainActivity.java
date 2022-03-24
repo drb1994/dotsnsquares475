@@ -1,6 +1,7 @@
 package com.example.squaresgame;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -44,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
         startButton = findViewById(R.id.play_btn);
         clearButton = findViewById(R.id.clear_prefs_btn);
         editor = prefs.edit();
+
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         //IF SAVED PREFERENCES EXIST
         System.out.println(prefs.getAll());

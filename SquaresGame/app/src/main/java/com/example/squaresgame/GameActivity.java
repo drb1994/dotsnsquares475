@@ -6,7 +6,10 @@ import android.content.Intent;
 
 
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +19,8 @@ import androidx.fragment.app.FragmentManager;
 import android.preference.PreferenceManager;
 import android.view.TouchDelegate;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -32,6 +37,7 @@ public class GameActivity extends AppCompatActivity {
     ImageView sq1,sq2,sq3;
 
     ImageView line1;
+    View parent;
 
     Integer undo = 0, currentTurn = 1;
 
@@ -77,12 +83,13 @@ public class GameActivity extends AppCompatActivity {
         gameStart();
 
 
+        line1 = findViewById(R.id.connect_1_5);
+
         Fragment gameBoard = new BoardFragment(getSize());
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.board_container, gameBoard)
                 .commit();
 
-        // Undo button functionality
         undo_last_move.setOnClickListener(view -> {
             if(undo == 1) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -117,19 +124,24 @@ public class GameActivity extends AppCompatActivity {
 //        });
     }
     public void gameStart(){
-        player_one_score_view.setBackgroundColor(getResources().getColor(playerOne.getColor()));
+        //player_one_score_view.setBackgroundColor(getResources().getColor(playerOne.getColor()));
+        Drawable sb = player_one_score_view.getBackground();
+        sb.setColorFilter(getResources().getColor(playerOne.getColor()), PorterDuff.Mode.MULTIPLY);
     }
     public void changeTurn(){
+        Drawable p1sb = player_one_score_view.getBackground();
+        Drawable p2sb = player_two_score_view.getBackground();
         if(currentTurn == 2){
-            player_one_score_view.setBackgroundColor(getResources().getColor(playerOne.getColor()));
+            p1sb.setColorFilter(getResources().getColor(playerOne.getColor()), PorterDuff.Mode.MULTIPLY);
+            p2sb.clearColorFilter();
             player_one_score_view.setTextColor(getResources().getColor(R.color.white));
-            player_two_score_view.setBackgroundColor(getResources().getColor(R.color.white));
             player_two_score_view.setTextColor(getResources().getColor(R.color.black));
+
         }
         if(currentTurn == 1){
-            player_one_score_view.setBackgroundColor(getResources().getColor(R.color.white));
+            p1sb.clearColorFilter();
+            p2sb.setColorFilter(getResources().getColor(playerTwo.getColor()), PorterDuff.Mode.MULTIPLY);
             player_one_score_view.setTextColor(getResources().getColor(R.color.black));
-            player_two_score_view.setBackgroundColor(getResources().getColor(playerTwo.getColor()));
             player_two_score_view.setTextColor(getResources().getColor(R.color.white));
         }
         if(currentTurn == 1){
@@ -152,7 +164,38 @@ public class GameActivity extends AppCompatActivity {
         }
         return boardSize;
     }
+
+    public void expandTouchWindow(ImageView view){
+        Rect hitRect = new Rect();
+        view.getHitRect(hitRect);
+        hitRect.left -= 400;
+        hitRect.top -= 400;
+        hitRect.right += 400;
+        hitRect.bottom += 400;
+        TouchDelegate delegate = new TouchDelegate(hitRect, view);
+        ((ViewGroup) view.getParent()).setTouchDelegate(delegate);
+    }
+
     public void onMoveSelect(View view){
+
+        /*View parent = (View)view.getParent();
+        parent.post(new Runnable() {
+            public void run() {
+                Rect rect = new Rect();
+                view.getHitRect(rect);
+                rect.top -= 500;
+                rect.bottom += 500;
+                rect.left -= 500;
+                rect.right += 500;
+                TouchDelegate td = new TouchDelegate(rect, view);
+                parent.setTouchDelegate(td);
+            }
+        });*/
+
+
+        System.out.println("VIEW ---------- " + view);
+
+
         if(currentTurn == 1 && !gameboard.get(String.valueOf(view.getTag()))){
             view.setBackgroundColor(getResources().getColor(playerOne.getColor()));
             gameboard.put(String.valueOf(view.getTag()), true);
@@ -325,6 +368,20 @@ public class GameActivity extends AppCompatActivity {
         player_two_score_view = findViewById(R.id.tv_player_two_score);
         player_one_score_view.setText(String.valueOf(player_one_score));
         player_two_score_view.setText(String.valueOf(player_two_score));
+    }
+    public void expandTouchArea(final View bigView, final View smallView, final int extraPadding) {
+        bigView.post(new Runnable() {
+            @Override
+            public void run() {
+                Rect rect = new Rect();
+                smallView.getHitRect(rect);
+                rect.top -= extraPadding;
+                rect.left -= extraPadding;
+                rect.right += extraPadding;
+                rect.bottom += extraPadding;
+                bigView.setTouchDelegate(new TouchDelegate(rect, smallView));
+            }
+        });
     }
 
 
