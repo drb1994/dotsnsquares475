@@ -40,6 +40,8 @@ public class GameActivity extends AppCompatActivity {
     Player playerOne, playerTwo;
     String boardSize;
 
+    String previousLine, previousSquareID, previousSquare;
+
     SharedPreferences prefs;
 
     HashMap<String, Boolean> gameboard = new HashMap<String, Boolean>();
@@ -84,22 +86,7 @@ public class GameActivity extends AppCompatActivity {
 
         // Undo button functionality
         undo_last_move.setOnClickListener(view -> {
-            if(undo == 1) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
-                builder.setMessage("Are you sure you want to undo the last move?")
-                        .setPositiveButton("OK", (dialogInterface, i) -> {
-                            changeTurn();
-                            undo -= 1;
-                        }).setNegativeButton("Cancel", null);
-
-                AlertDialog alert = builder.create();
-                alert.show();
-            }
-            else if (undo == 0){
-                Toast toast = Toast.makeText(this, "You can only undo the previous move", Toast.LENGTH_LONG);
-                toast.show();
-            }
+            undoMoveAlertDialog();
         });
         // End of undo button functionality
 
@@ -111,10 +98,6 @@ public class GameActivity extends AppCompatActivity {
             pauseMenu.show(fm, null);
         });
         //End of pause button functionality
-//        game_board.setOnClickListener(view -> {
-//            changeColor();
-//            undo = 1;
-//        });
     }
     public void gameStart(){
         player_one_score_view.setBackgroundColor(getResources().getColor(playerOne.getColor()));
@@ -138,6 +121,57 @@ public class GameActivity extends AppCompatActivity {
             currentTurn = 1;
         }
     }
+
+    public void undoMoveAlertDialog(){
+        if(undo == 1) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+            builder.setMessage("Are you sure you want to undo the last move?")
+                    .setPositiveButton("OK", (dialogInterface, i) -> {
+                        undoMove();
+                        undo = 0;
+                    }).setNegativeButton("Cancel", null);
+
+            AlertDialog alert = builder.create();
+            alert.show();
+        }
+        else if (undo == 0){
+            Toast toast = Toast.makeText(this, "You can only undo the previous move", Toast.LENGTH_LONG);
+            toast.show();
+        }
+    }
+
+    public void undoMove(){
+        ImageView line, sq;
+
+        //Change the previous clicked line back to white
+        int resID = getResources().getIdentifier(previousLine, "id", getPackageName());
+        line = findViewById(resID);
+        line.setBackgroundColor(getResources().getColor(R.color.white));
+
+        gameboard.put(String.valueOf(line.getTag()), false);
+
+        if(pointScored){
+            //Change the previous clicked square back to white
+            int sqID = getResources().getIdentifier(previousSquareID, "id", getPackageName());
+            sq = findViewById(sqID);
+            sq.setBackgroundColor(getResources().getColor(R.color.white));
+
+            gameboard.put(previousSquare, false);
+
+            //Change the score back
+            if(currentTurn == 1){
+                player_one_score--;
+            }else if(currentTurn == 2){
+                player_two_score--;
+            }
+            updateScores();
+        }
+        else{
+            changeTurn();
+        }
+    }
+
     public void onTutorial(View view) {
         Intent intent = new Intent(this, TutorialActivity.class);
         startActivity(intent);
@@ -153,6 +187,7 @@ public class GameActivity extends AppCompatActivity {
         return boardSize;
     }
     public void onMoveSelect(View view){
+        pointScored = false;
         if(currentTurn == 1 && !gameboard.get(String.valueOf(view.getTag()))){
             view.setBackgroundColor(getResources().getColor(playerOne.getColor()));
             gameboard.put(String.valueOf(view.getTag()), true);
@@ -160,7 +195,7 @@ public class GameActivity extends AppCompatActivity {
             if(!pointScored){
                 changeTurn();
             }
-            pointScored = false;
+            //pointScored = false;  <--moved to top of function
         }else if(currentTurn == 2 && !gameboard.get(String.valueOf(view.getTag()))){
             view.setBackgroundColor(getResources().getColor(playerTwo.getColor()));
             gameboard.put(String.valueOf(view.getTag()), true);
@@ -168,8 +203,11 @@ public class GameActivity extends AppCompatActivity {
             if(!pointScored){
                 changeTurn();
             }
-            pointScored = false;
+            //pointScored = false;  <--moved to top of function
         }
+        //Keep track of last line placed for undo button
+        undo = 1;
+        previousLine = String.valueOf(view.getId());
     }
     public void initBoard(){
         //small
@@ -318,6 +356,9 @@ public class GameActivity extends AppCompatActivity {
             }
             gameboard.put(square, true);
             updateScores();
+            //Keep track of last completed square for undo button
+            previousSquareID = String.valueOf(sq.getId());
+            previousSquare = square;
         }
     }
     public void updateScores(){
@@ -326,6 +367,5 @@ public class GameActivity extends AppCompatActivity {
         player_one_score_view.setText(String.valueOf(player_one_score));
         player_two_score_view.setText(String.valueOf(player_two_score));
     }
-
 
 }
