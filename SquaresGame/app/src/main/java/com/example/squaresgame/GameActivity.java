@@ -1,5 +1,6 @@
 package com.example.squaresgame;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 
 import android.content.Intent;
@@ -50,7 +51,7 @@ public class GameActivity extends AppCompatActivity {
 
     SharedPreferences prefs;
 
-    HashMap<String, Boolean> gameboard = new HashMap<String, Boolean>();
+    HashMap<String, Boolean> gameboard = new HashMap<>();
     Boolean pointScored = false;
 
     @Override
@@ -92,9 +93,7 @@ public class GameActivity extends AppCompatActivity {
                 .add(R.id.board_container, gameBoard)
                 .commit();
 
-        undo_last_move.setOnClickListener(view -> {
-            undoMoveAlertDialog();
-        });
+        undo_last_move.setOnClickListener(view -> undoMoveAlertDialog());
         // End of undo button functionality
 
         // Pause button functionality
@@ -153,13 +152,14 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("ResourceAsColor")
     public void undoMove(){
         ImageView line, sq;
 
         //Change the previous clicked line back to white
         int resID = getResources().getIdentifier(previousLine, "id", getPackageName());
         line = findViewById(resID);
-        line.setBackgroundColor(getResources().getColor(R.color.white));
+        line.setBackgroundColor(android.R.color.transparent);
 
         gameboard.put(String.valueOf(line.getTag()), false);
 
@@ -167,7 +167,7 @@ public class GameActivity extends AppCompatActivity {
             //Change the previous clicked square back to white
             int sqID = getResources().getIdentifier(previousSquareID, "id", getPackageName());
             sq = findViewById(sqID);
-            sq.setBackgroundColor(getResources().getColor(R.color.white));
+            sq.setBackgroundColor(android.R.color.transparent);
 
             gameboard.put(previousSquare, false);
 
@@ -393,17 +393,14 @@ public class GameActivity extends AppCompatActivity {
         player_two_score_view.setText(String.valueOf(player_two_score));
     }
     public void expandTouchArea(final View bigView, final View smallView, final int extraPadding) {
-        bigView.post(new Runnable() {
-            @Override
-            public void run() {
-                Rect rect = new Rect();
-                smallView.getHitRect(rect);
-                rect.top -= extraPadding;
-                rect.left -= extraPadding;
-                rect.right += extraPadding;
-                rect.bottom += extraPadding;
-                bigView.setTouchDelegate(new TouchDelegate(rect, smallView));
-            }
+        bigView.post(() -> {
+            Rect rect = new Rect();
+            smallView.getHitRect(rect);
+            rect.top -= extraPadding;
+            rect.left -= extraPadding;
+            rect.right += extraPadding;
+            rect.bottom += extraPadding;
+            bigView.setTouchDelegate(new TouchDelegate(rect, smallView));
         });
     }
 
