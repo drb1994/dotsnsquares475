@@ -139,7 +139,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
-        android:backgroundTint="#C9FF8181"
+        android:backgroundTint="@color/red"
         app:backgroundTint="@color/white"
         android:src="@android:drawable/ic_input_delete"
         app:tint="@android:color/white"

@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
         clearButton.hide();
         editor.clear();
         editor.apply();
-        startButton.setBackgroundColor(getResources().getColor(R.color.blue_primary));
+        startButton.setBackgroundColor(getResources().getColor(R.color.cyan));
     }
 
     private void startAnimation() {

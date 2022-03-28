@@ -22,6 +22,8 @@ import android.preference.PreferenceManager;
 import android.view.TouchDelegate;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
@@ -126,13 +128,18 @@ public class GameActivity extends AppCompatActivity {
 
     public void gameStart(){
         //player_one_score_view.setBackgroundColor(getResources().getColor(playerOne.getColor()));
+        Animation pulse = AnimationUtils.loadAnimation(this, R.anim.pulse);
+        player_one_score_view.startAnimation(pulse);
         Drawable sb = player_one_score_view.getBackground();
         sb.setColorFilter(getResources().getColor(playerOne.getColor()), PorterDuff.Mode.MULTIPLY);
     }
     public void changeTurn(){
         Drawable p1sb = player_one_score_view.getBackground();
         Drawable p2sb = player_two_score_view.getBackground();
+        Animation pulse = AnimationUtils.loadAnimation(this, R.anim.pulse);
         if(currentTurn == 2){
+            player_one_score_view.startAnimation(pulse);
+            player_two_score_view.clearAnimation();
             p1sb.setColorFilter(getResources().getColor(playerOne.getColor()), PorterDuff.Mode.MULTIPLY);
             p2sb.clearColorFilter();
             player_one_score_view.setTextColor(getResources().getColor(R.color.white));
@@ -140,6 +147,8 @@ public class GameActivity extends AppCompatActivity {
 
         }
         if(currentTurn == 1){
+            player_two_score_view.startAnimation(pulse);
+            player_one_score_view.clearAnimation();
             p1sb.clearColorFilter();
             p2sb.setColorFilter(getResources().getColor(playerTwo.getColor()), PorterDuff.Mode.MULTIPLY);
             player_one_score_view.setTextColor(getResources().getColor(R.color.black));
