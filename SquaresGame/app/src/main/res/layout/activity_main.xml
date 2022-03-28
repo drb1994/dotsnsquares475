@@ -7,6 +7,8 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
+
     <ImageView
         android:id="@+id/main_logo"
         android:layout_width="150dp"
@@ -16,13 +18,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/squares_logo" />
+        app:srcCompat="@drawable/squares_name_logo"
+        android:background="@drawable/main_logo_container"
+        android:elevation="10dp"/>
 
     <Button
         android:id="@+id/play_btn"
+        android:elevation="10dp"
         android:layout_width="205dp"
         android:layout_height="60dp"
         android:layout_marginTop="100dp"
+        android:backgroundTint="@color/cyan"
         android:onClick="onPlay"
         android:text="Play"
         android:textAlignment="center"
@@ -30,18 +36,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/main_logo" />
-
-    <Button
-        android:id="@+id/settings_btn"
-        android:layout_width="180dp"
-        android:layout_height="60dp"
-        android:onClick="onSettings"
-        android:text="Settings"
-        android:textAlignment="center"
-        android:textSize="24sp"
-        app:layout_constraintTop_toBottomOf="@id/play_btn"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
 
     <ImageView
         android:id="@+id/top_left_circle"
@@ -138,20 +132,20 @@
         app:layout_constraintBottom_toTopOf="@+id/bottom_bar"
         app:layout_constraintStart_toEndOf="@id/main_logo"/>
 
-    <Button
-        android:id="@+id/clear_prefs_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="64dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="40dp"
-        android:backgroundTint="#C9FF8181"
-        android:onClick="onClearSettings"
-        android:text="Clear Saved Preferences"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/clear_prefs_fab"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:backgroundTint="#C9FF8181"
+        app:backgroundTint="@color/white"
+        android:src="@android:drawable/ic_input_delete"
+        app:tint="@android:color/white"
+        android:contentDescription="Delete Preferences Button"
+        android:layout_margin="16dp" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

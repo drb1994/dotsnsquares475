@@ -17,7 +17,6 @@
         android:elevation="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
         android:text="Set the Rules"
         android:textColor="@color/black"
         android:textSize="60sp"
@@ -168,13 +167,14 @@
         app:layout_constraintTop_toBottomOf="@+id/flip_board_switch"
         app:layout_constraintBottom_toTopOf="@+id/start_game_btn"/>
 
+
     <Button
         android:id="@+id/start_game_btn"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:backgroundTint="#ACACAC"
         android:onClick="onStartGame"
-        android:text="Start Game"
+        android:text="Play"
         android:layout_marginBottom="30dp"
         android:layout_marginTop="15dp"
         android:textSize="34sp"
@@ -183,4 +183,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/save_preferences" />
 
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
