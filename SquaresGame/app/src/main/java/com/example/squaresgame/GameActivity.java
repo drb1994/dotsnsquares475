@@ -1,5 +1,6 @@
 package com.example.squaresgame;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 
 import android.content.Intent;
@@ -20,7 +21,6 @@ import android.preference.PreferenceManager;
 import android.view.TouchDelegate;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -45,12 +45,13 @@ public class GameActivity extends AppCompatActivity {
 
     Player playerOne, playerTwo;
     String boardSize;
+    int squares;
 
     String previousLine, previousSquareID, previousSquare;
 
     SharedPreferences prefs;
 
-    HashMap<String, Boolean> gameboard = new HashMap<String, Boolean>();
+    HashMap<String, Boolean> gameboard = new HashMap<>();
     Boolean pointScored = false;
 
     @Override
@@ -65,13 +66,15 @@ public class GameActivity extends AppCompatActivity {
         playerOne = (Player) players.get("Player One");
         playerTwo = (Player) players.get("Player Two");
 
-        if(!prefs.getAll().isEmpty()){{
+        if(!prefs.getAll().isEmpty()) {
             boardSize = prefs.getString("boardsize", "small");
-        }}
+        }
 
         if(intent.getStringExtra("size") != null) {
             boardSize = intent.getStringExtra("size");
         }
+
+        squares = getSquares(boardSize);
 
         undo_last_move = findViewById(R.id.ib_undo_button);
         pause_button = findViewById(R.id.ib_pause_menu);
@@ -92,16 +95,14 @@ public class GameActivity extends AppCompatActivity {
                 .add(R.id.board_container, gameBoard)
                 .commit();
 
-        undo_last_move.setOnClickListener(view -> {
-            undoMoveAlertDialog();
-        });
+        undo_last_move.setOnClickListener(view -> undoMoveAlertDialog());
         // End of undo button functionality
 
         // Pause button functionality
         pause_button = findViewById(R.id.ib_pause_menu);
         pause_button.setOnClickListener(view -> {
             FragmentManager fm = getSupportFragmentManager();
-            PauseDialogFragment pauseMenu = new PauseDialogFragment(playerOne, playerTwo);
+            PauseDialogFragment pauseMenu = new PauseDialogFragment(playerOne, playerTwo, boardSize);
             pauseMenu.show(fm, null);
         });
         //End of pause button functionality
@@ -153,13 +154,14 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("ResourceAsColor")
     public void undoMove(){
         ImageView line, sq;
 
         //Change the previous clicked line back to white
         int resID = getResources().getIdentifier(previousLine, "id", getPackageName());
         line = findViewById(resID);
-        line.setBackgroundColor(getResources().getColor(R.color.white));
+        line.setBackgroundColor(android.R.color.transparent);
 
         gameboard.put(String.valueOf(line.getTag()), false);
 
@@ -167,7 +169,7 @@ public class GameActivity extends AppCompatActivity {
             //Change the previous clicked square back to white
             int sqID = getResources().getIdentifier(previousSquareID, "id", getPackageName());
             sq = findViewById(sqID);
-            sq.setBackgroundColor(getResources().getColor(R.color.white));
+            sq.setBackgroundColor(android.R.color.transparent);
 
             gameboard.put(previousSquare, false);
 
@@ -369,7 +371,7 @@ public class GameActivity extends AppCompatActivity {
         int resID = getResources().getIdentifier(square, "id", getPackageName());
         sq = findViewById(resID);
         if(!gameboard.get(square) && (gameboard.get(top) && gameboard.get(bottom)
-        && gameboard.get(left) && gameboard.get(right))){
+                && gameboard.get(left) && gameboard.get(right))){
             if(currentTurn == 1){
                 player_one_score++;
                 sq.setBackgroundColor(getResources().getColor(playerOne.getColor()));
@@ -391,20 +393,34 @@ public class GameActivity extends AppCompatActivity {
         player_two_score_view = findViewById(R.id.tv_player_two_score);
         player_one_score_view.setText(String.valueOf(player_one_score));
         player_two_score_view.setText(String.valueOf(player_two_score));
+
+//        if(player_one_score > squares / 2)
+//        //do this
+//        else if(player_two_score > squares / 2)
+//        //do that
     }
+
     public void expandTouchArea(final View bigView, final View smallView, final int extraPadding) {
-        bigView.post(new Runnable() {
-            @Override
-            public void run() {
-                Rect rect = new Rect();
-                smallView.getHitRect(rect);
-                rect.top -= extraPadding;
-                rect.left -= extraPadding;
-                rect.right += extraPadding;
-                rect.bottom += extraPadding;
-                bigView.setTouchDelegate(new TouchDelegate(rect, smallView));
-            }
+        bigView.post(() -> {
+            Rect rect = new Rect();
+            smallView.getHitRect(rect);
+            rect.top -= extraPadding;
+            rect.left -= extraPadding;
+            rect.right += extraPadding;
+            rect.bottom += extraPadding;
+            bigView.setTouchDelegate(new TouchDelegate(rect, smallView));
         });
+    }
+
+    public int getSquares(String boardSize) {
+        switch (boardSize) {
+            case "large":
+                return(20);
+            case "medium":
+                return(12);
+            default:
+                return(6);
+        }
     }
 
 }
