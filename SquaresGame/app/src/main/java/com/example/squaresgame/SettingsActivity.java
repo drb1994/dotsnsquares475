@@ -6,6 +6,8 @@ import androidx.fragment.app.FragmentManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
@@ -76,6 +78,17 @@ public class SettingsActivity extends AppCompatActivity {
                 });
             }
         }
+        updateBackground();
+
+    }
+
+    public void updateBackground(){
+        View bg = findViewById(R.id.background);
+        GradientDrawable bgdrawable = (GradientDrawable) bg.getBackground();
+
+        int[] playerColors = new int[]{getResources().getColor(playerOne.getColor()), getResources().getColor(playerTwo.getColor())};
+        bgdrawable.setColors(playerColors);
+        bg.getBackground().setAlpha(50);
     }
 
     public void showColorPickerDialog(Player player, int takenColor) {
@@ -91,6 +104,7 @@ public class SettingsActivity extends AppCompatActivity {
         else {
             playerTwoColorButton.setBackgroundColor(getResources().getColor(player.getColor()));
         }
+        updateBackground();
     }
 
     public void onStartGame(View view) {
