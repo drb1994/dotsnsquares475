@@ -1,15 +1,23 @@
 package com.example.squaresgame;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class SettingsActivity extends AppCompatActivity {
     Button playerOneColorButton, playerTwoColorButton;
@@ -20,6 +28,12 @@ public class SettingsActivity extends AppCompatActivity {
     private boolean flipBoard = false;
     SharedPreferences prefs;
     SharedPreferences.Editor editor;
+
+    Animation pulse;
+
+    Button smallButton;
+    Button mediumButton;
+    Button largeButton;
 
     String boardSize;
 
@@ -33,8 +47,9 @@ public class SettingsActivity extends AppCompatActivity {
         playerOne = (Player) players.get("Player One");
         playerTwo = (Player) players.get("Player Two");
 
-        setContentView(R.layout.activity_settings);
+        pulse = AnimationUtils.loadAnimation(this, R.anim.pulse);
 
+        setContentView(R.layout.activity_settings);
         playerOneColorButton = findViewById(R.id.player_one_color_btn);
         playerOneColorButton.setBackgroundColor(getResources().getColor(playerOne.getColor()));
         playerOneColorButton.setOnClickListener(view -> showColorPickerDialog(playerOne, playerTwo.getColor()));
@@ -43,40 +58,33 @@ public class SettingsActivity extends AppCompatActivity {
         playerTwoColorButton.setBackgroundColor(getResources().getColor(playerTwo.getColor()));
         playerTwoColorButton.setOnClickListener(view -> showColorPickerDialog(playerTwo, playerOne.getColor()));
 
+        smallButton = findViewById(R.id.small_board_btn);
+        mediumButton = findViewById(R.id.medium_board_btn);
+        largeButton = findViewById(R.id.large_board_btn);
+
+        smallButton.startAnimation(pulse);
+        mediumButton.startAnimation(pulse);
+        largeButton.startAnimation(pulse);
+
         //PREFERENCES
         prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         editor = prefs.edit();
         System.out.println(prefs.getAll());
-        //IF NAV'D FROM SETTINGS BUTTON
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            String value = extras.getString("from");
-            if (value.contains("settings")) {
-                btn = (Button) findViewById(R.id.start_game_btn);
-                btn.setText("Set Rules");
-                btn.setOnClickListener(v -> {
-                    if(boardSelected) {
-                        Intent intent1 = new Intent(SettingsActivity.this, MainActivity.class);
 
-                        if(savePreferences){
-                            editor.putInt("p1color", playerOne.getColor());
-                            editor.putInt("p2color", playerTwo.getColor());
-                            editor.putBoolean("fb", flipBoard);
-                            editor.apply();
-                        }
 
-                        //Create a bundle to send players to GameBoardActivity
-                        Bundle players1 = new Bundle();
-                        players1.putSerializable("Player One", playerOne);
-                        players1.putSerializable("Player Two", playerTwo);
-                        intent1.putExtras(players1);
-                        intent1.putExtra("size", boardSize);
-                        startActivity(intent1);
-                    }
-                });
-            }
-        }
+        updateBackground();
+
     }
+
+    public void updateBackground(){
+        View bg = findViewById(R.id.background);
+        GradientDrawable bgdrawable = (GradientDrawable) bg.getBackground();
+        int[] playerColors = new int[]{getResources().getColor(playerOne.getColor()), getResources().getColor(playerTwo.getColor())};
+        bgdrawable.setColors(playerColors);
+        bg.getBackground().setAlpha(50);
+    }
+
+
 
     public void showColorPickerDialog(Player player, int takenColor) {
         FragmentManager fm = getSupportFragmentManager();
@@ -91,6 +99,7 @@ public class SettingsActivity extends AppCompatActivity {
         else {
             playerTwoColorButton.setBackgroundColor(getResources().getColor(player.getColor()));
         }
+        updateBackground();
     }
 
     public void onStartGame(View view) {
@@ -115,10 +124,11 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void onBoardSelect(View view) {
-        Button smallButton = findViewById(R.id.small_board_btn);
-        Button mediumButton = findViewById(R.id.medium_board_btn);
-        Button largeButton = findViewById(R.id.large_board_btn);
         Button startButton = findViewById(R.id.start_game_btn);
+
+        smallButton.clearAnimation();
+        mediumButton.clearAnimation();
+        largeButton.clearAnimation();
 
         switch (view.getId()) {
             case R.id.small_board_btn:
@@ -162,7 +172,8 @@ public class SettingsActivity extends AppCompatActivity {
     public void selectButton(Button buttonSelected, Button startButton) {
         buttonSelected.setBackgroundColor(Color.parseColor("#000000"));
         buttonSelected.setTextColor(Color.parseColor("#FFFFFF"));
-        startButton.setBackgroundColor(getResources().getColor(R.color.green3));
+        startButton.setBackgroundColor(getResources().getColor(R.color.light_green));
+        startButton.startAnimation(pulse);
         boardSelected = true;
     }
 

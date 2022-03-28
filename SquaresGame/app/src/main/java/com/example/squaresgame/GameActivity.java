@@ -11,6 +11,7 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +22,8 @@ import android.preference.PreferenceManager;
 import android.view.TouchDelegate;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
@@ -84,6 +87,7 @@ public class GameActivity extends AppCompatActivity {
         //changeColor();
         initBoard();
         gameStart();
+        updateBackground();
 
 
         line1 = findViewById(R.id.connect_1_5);
@@ -105,15 +109,37 @@ public class GameActivity extends AppCompatActivity {
         });
         //End of pause button functionality
     }
+
+    public void updateBackground(){
+        View bg = findViewById(R.id.background);
+        GradientDrawable bgdrawable = (GradientDrawable) bg.getBackground();
+
+        if(currentTurn == 1){
+            int[] playerOneColors = new int[]{getResources().getColor(playerOne.getColor()), getResources().getColor(R.color.white)};
+            bgdrawable.setColors(playerOneColors);
+
+        }else if(currentTurn == 2){
+            int[] playerTwoColors = new int[]{getResources().getColor(R.color.white), getResources().getColor(playerTwo.getColor())};
+            bgdrawable.setColors(playerTwoColors);
+        }
+        bg.getBackground().setAlpha(50);
+
+    }
+
     public void gameStart(){
         //player_one_score_view.setBackgroundColor(getResources().getColor(playerOne.getColor()));
+        Animation pulse = AnimationUtils.loadAnimation(this, R.anim.pulse);
+        player_one_score_view.startAnimation(pulse);
         Drawable sb = player_one_score_view.getBackground();
         sb.setColorFilter(getResources().getColor(playerOne.getColor()), PorterDuff.Mode.MULTIPLY);
     }
     public void changeTurn(){
         Drawable p1sb = player_one_score_view.getBackground();
         Drawable p2sb = player_two_score_view.getBackground();
+        Animation pulse = AnimationUtils.loadAnimation(this, R.anim.pulse);
         if(currentTurn == 2){
+            player_one_score_view.startAnimation(pulse);
+            player_two_score_view.clearAnimation();
             p1sb.setColorFilter(getResources().getColor(playerOne.getColor()), PorterDuff.Mode.MULTIPLY);
             p2sb.clearColorFilter();
             player_one_score_view.setTextColor(getResources().getColor(R.color.white));
@@ -121,6 +147,8 @@ public class GameActivity extends AppCompatActivity {
 
         }
         if(currentTurn == 1){
+            player_two_score_view.startAnimation(pulse);
+            player_one_score_view.clearAnimation();
             p1sb.clearColorFilter();
             p2sb.setColorFilter(getResources().getColor(playerTwo.getColor()), PorterDuff.Mode.MULTIPLY);
             player_one_score_view.setTextColor(getResources().getColor(R.color.black));
@@ -131,6 +159,7 @@ public class GameActivity extends AppCompatActivity {
         } else {
             currentTurn = 1;
         }
+        updateBackground();
     }
 
     public void undoMoveAlertDialog(){

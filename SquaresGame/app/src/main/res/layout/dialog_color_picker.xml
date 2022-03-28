@@ -59,7 +59,7 @@
         android:contentDescription="@string/green_3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cyan"
-        android:background="@color/green3" />
+        android:background="@color/light_purple" />
 
     <View
         android:id="@+id/green3_taken"
@@ -73,7 +73,7 @@
         android:contentDescription="@string/green_4"
         app:layout_constraintStart_toEndOf="@+id/green3"
         app:layout_constraintTop_toBottomOf="@+id/blue"
-        android:background="@color/green4" />
+        android:background="@color/green" />
 
     <View
         android:id="@+id/green4_taken"
@@ -87,7 +87,7 @@
         android:contentDescription="@string/green_5"
         app:layout_constraintStart_toEndOf="@+id/green4"
         app:layout_constraintTop_toBottomOf="@+id/purple"
-        android:background="@color/green5" />
+        android:background="@color/light_green" />
 
     <View
         android:id="@+id/green5_taken"
