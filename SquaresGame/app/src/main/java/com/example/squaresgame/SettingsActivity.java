@@ -29,7 +29,11 @@ public class SettingsActivity extends AppCompatActivity {
     SharedPreferences prefs;
     SharedPreferences.Editor editor;
 
+    Animation pulse;
 
+    Button smallButton;
+    Button mediumButton;
+    Button largeButton;
 
     String boardSize;
 
@@ -43,6 +47,8 @@ public class SettingsActivity extends AppCompatActivity {
         playerOne = (Player) players.get("Player One");
         playerTwo = (Player) players.get("Player Two");
 
+        pulse = AnimationUtils.loadAnimation(this, R.anim.pulse);
+
         setContentView(R.layout.activity_settings);
         playerOneColorButton = findViewById(R.id.player_one_color_btn);
         playerOneColorButton.setBackgroundColor(getResources().getColor(playerOne.getColor()));
@@ -52,10 +58,19 @@ public class SettingsActivity extends AppCompatActivity {
         playerTwoColorButton.setBackgroundColor(getResources().getColor(playerTwo.getColor()));
         playerTwoColorButton.setOnClickListener(view -> showColorPickerDialog(playerTwo, playerOne.getColor()));
 
+        smallButton = findViewById(R.id.small_board_btn);
+        mediumButton = findViewById(R.id.medium_board_btn);
+        largeButton = findViewById(R.id.large_board_btn);
+
+        smallButton.startAnimation(pulse);
+        mediumButton.startAnimation(pulse);
+        largeButton.startAnimation(pulse);
+
         //PREFERENCES
         prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         editor = prefs.edit();
         System.out.println(prefs.getAll());
+
 
         updateBackground();
 
@@ -109,10 +124,11 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void onBoardSelect(View view) {
-        Button smallButton = findViewById(R.id.small_board_btn);
-        Button mediumButton = findViewById(R.id.medium_board_btn);
-        Button largeButton = findViewById(R.id.large_board_btn);
         Button startButton = findViewById(R.id.start_game_btn);
+
+        smallButton.clearAnimation();
+        mediumButton.clearAnimation();
+        largeButton.clearAnimation();
 
         switch (view.getId()) {
             case R.id.small_board_btn:
@@ -157,7 +173,6 @@ public class SettingsActivity extends AppCompatActivity {
         buttonSelected.setBackgroundColor(Color.parseColor("#000000"));
         buttonSelected.setTextColor(Color.parseColor("#FFFFFF"));
         startButton.setBackgroundColor(getResources().getColor(R.color.light_green));
-        Animation pulse = AnimationUtils.loadAnimation(this, R.anim.pulse);
         startButton.startAnimation(pulse);
         boardSelected = true;
     }
