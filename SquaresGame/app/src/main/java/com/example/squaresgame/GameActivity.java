@@ -11,6 +11,7 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -84,6 +85,7 @@ public class GameActivity extends AppCompatActivity {
         //changeColor();
         initBoard();
         gameStart();
+        updateBackground();
 
 
         line1 = findViewById(R.id.connect_1_5);
@@ -105,6 +107,23 @@ public class GameActivity extends AppCompatActivity {
         });
         //End of pause button functionality
     }
+
+    public void updateBackground(){
+        View bg = findViewById(R.id.background);
+        GradientDrawable bgdrawable = (GradientDrawable) bg.getBackground();
+
+        if(currentTurn == 1){
+            int[] playerOneColors = new int[]{getResources().getColor(playerOne.getColor()), getResources().getColor(R.color.white)};
+            bgdrawable.setColors(playerOneColors);
+
+        }else if(currentTurn == 2){
+            int[] playerTwoColors = new int[]{getResources().getColor(R.color.white), getResources().getColor(playerTwo.getColor())};
+            bgdrawable.setColors(playerTwoColors);
+        }
+        bg.getBackground().setAlpha(50);
+
+    }
+
     public void gameStart(){
         //player_one_score_view.setBackgroundColor(getResources().getColor(playerOne.getColor()));
         Drawable sb = player_one_score_view.getBackground();
@@ -131,6 +150,7 @@ public class GameActivity extends AppCompatActivity {
         } else {
             currentTurn = 1;
         }
+        updateBackground();
     }
 
     public void undoMoveAlertDialog(){
