@@ -394,10 +394,10 @@ public class GameActivity extends AppCompatActivity {
         player_one_score_view.setText(String.valueOf(player_one_score));
         player_two_score_view.setText(String.valueOf(player_two_score));
 
-//        if(player_one_score > squares / 2)
-//        //do this
-//        else if(player_two_score > squares / 2)
-//        //do that
+        if(player_one_score > squares / 2)
+            gameOver(1, player_one_score);
+        else if(player_two_score > squares / 2)
+            gameOver(2, player_two_score);
     }
 
     public void expandTouchArea(final View bigView, final View smallView, final int extraPadding) {
@@ -421,6 +421,12 @@ public class GameActivity extends AppCompatActivity {
             default:
                 return(6);
         }
+    }
+
+    public void gameOver(int player, int score) {
+        FragmentManager fm = getSupportFragmentManager();
+        GameOverDialogFragment gameOver = new GameOverDialogFragment(playerOne, playerTwo, boardSize, player, score);
+        gameOver.show(fm, null);
     }
 
 }
