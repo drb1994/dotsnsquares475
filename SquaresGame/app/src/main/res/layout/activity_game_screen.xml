@@ -6,6 +6,12 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF">
 
+    <View
+        android:id="@+id/background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background_gradient"/>
+
     <ImageButton
         android:id="@+id/ib_undo_button"
         android:layout_width="65dp"
@@ -44,16 +50,19 @@
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/board_container"
         android:layout_width="350dp"
-        android:layout_height="400dp"
+        android:layout_height="450dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/player_score_container"
+        android:elevation="20dp"
         app:layout_constraintVertical_bias="0.586"/>
 
     <TextView
         android:id="@+id/tv_player_one_score"
+        android:elevation="20dp"
         android:layout_width="110dp"
         android:layout_height="80dp"
         android:layout_marginStart="55dp"
@@ -62,11 +71,13 @@
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="60sp"
+        android:background="@drawable/player_score_container"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_player_two_score"
+        android:elevation="20dp"
         android:layout_width="110dp"
         android:layout_height="80dp"
         android:layout_marginTop="70dp"
@@ -74,6 +85,7 @@
         android:text="@string/_0"
         android:textAlignment="center"
         android:textSize="60sp"
+        android:background="@drawable/player_score_container"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

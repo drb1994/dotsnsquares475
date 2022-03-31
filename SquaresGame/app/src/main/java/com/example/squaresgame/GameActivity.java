@@ -1,12 +1,17 @@
 package com.example.squaresgame;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 
 import android.content.Intent;
 
 
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +21,10 @@ import androidx.fragment.app.FragmentManager;
 import android.preference.PreferenceManager;
 import android.view.TouchDelegate;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -32,6 +41,7 @@ public class GameActivity extends AppCompatActivity {
     ImageView sq1,sq2,sq3;
 
     ImageView line1;
+    View parent;
 
     Integer undo = 0, currentTurn = 1;
 
@@ -40,9 +50,11 @@ public class GameActivity extends AppCompatActivity {
     Player playerOne, playerTwo;
     String boardSize;
 
+    String previousLine, previousSquareID, previousSquare;
+
     SharedPreferences prefs;
 
-    HashMap<String, Boolean> gameboard = new HashMap<String, Boolean>();
+    HashMap<String, Boolean> gameboard = new HashMap<>();
     Boolean pointScored = false;
 
     @Override
@@ -75,32 +87,17 @@ public class GameActivity extends AppCompatActivity {
         //changeColor();
         initBoard();
         gameStart();
+        updateBackground();
 
+
+        line1 = findViewById(R.id.connect_1_5);
 
         Fragment gameBoard = new BoardFragment(getSize());
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.board_container, gameBoard)
                 .commit();
 
-        // Undo button functionality
-        undo_last_move.setOnClickListener(view -> {
-            if(undo == 1) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
-                builder.setMessage("Are you sure you want to undo the last move?")
-                        .setPositiveButton("OK", (dialogInterface, i) -> {
-                            changeTurn();
-                            undo -= 1;
-                        }).setNegativeButton("Cancel", null);
-
-                AlertDialog alert = builder.create();
-                alert.show();
-            }
-            else if (undo == 0){
-                Toast toast = Toast.makeText(this, "You can only undo the previous move", Toast.LENGTH_LONG);
-                toast.show();
-            }
-        });
+        undo_last_move.setOnClickListener(view -> undoMoveAlertDialog());
         // End of undo button functionality
 
         // Pause button functionality
@@ -111,25 +108,50 @@ public class GameActivity extends AppCompatActivity {
             pauseMenu.show(fm, null);
         });
         //End of pause button functionality
-//        game_board.setOnClickListener(view -> {
-//            changeColor();
-//            undo = 1;
-//        });
     }
+
+    public void updateBackground(){
+        View bg = findViewById(R.id.background);
+        GradientDrawable bgdrawable = (GradientDrawable) bg.getBackground();
+
+        if(currentTurn == 1){
+            int[] playerOneColors = new int[]{getResources().getColor(playerOne.getColor()), getResources().getColor(R.color.white)};
+            bgdrawable.setColors(playerOneColors);
+
+        }else if(currentTurn == 2){
+            int[] playerTwoColors = new int[]{getResources().getColor(R.color.white), getResources().getColor(playerTwo.getColor())};
+            bgdrawable.setColors(playerTwoColors);
+        }
+        bg.getBackground().setAlpha(50);
+
+    }
+
     public void gameStart(){
-        player_one_score_view.setBackgroundColor(getResources().getColor(playerOne.getColor()));
+        //player_one_score_view.setBackgroundColor(getResources().getColor(playerOne.getColor()));
+        Animation pulse = AnimationUtils.loadAnimation(this, R.anim.pulse);
+        player_one_score_view.startAnimation(pulse);
+        Drawable sb = player_one_score_view.getBackground();
+        sb.setColorFilter(getResources().getColor(playerOne.getColor()), PorterDuff.Mode.MULTIPLY);
     }
     public void changeTurn(){
+        Drawable p1sb = player_one_score_view.getBackground();
+        Drawable p2sb = player_two_score_view.getBackground();
+        Animation pulse = AnimationUtils.loadAnimation(this, R.anim.pulse);
         if(currentTurn == 2){
-            player_one_score_view.setBackgroundColor(getResources().getColor(playerOne.getColor()));
+            player_one_score_view.startAnimation(pulse);
+            player_two_score_view.clearAnimation();
+            p1sb.setColorFilter(getResources().getColor(playerOne.getColor()), PorterDuff.Mode.MULTIPLY);
+            p2sb.clearColorFilter();
             player_one_score_view.setTextColor(getResources().getColor(R.color.white));
-            player_two_score_view.setBackgroundColor(getResources().getColor(R.color.white));
             player_two_score_view.setTextColor(getResources().getColor(R.color.black));
+
         }
         if(currentTurn == 1){
-            player_one_score_view.setBackgroundColor(getResources().getColor(R.color.white));
+            player_two_score_view.startAnimation(pulse);
+            player_one_score_view.clearAnimation();
+            p1sb.clearColorFilter();
+            p2sb.setColorFilter(getResources().getColor(playerTwo.getColor()), PorterDuff.Mode.MULTIPLY);
             player_one_score_view.setTextColor(getResources().getColor(R.color.black));
-            player_two_score_view.setBackgroundColor(getResources().getColor(playerTwo.getColor()));
             player_two_score_view.setTextColor(getResources().getColor(R.color.white));
         }
         if(currentTurn == 1){
@@ -137,7 +159,60 @@ public class GameActivity extends AppCompatActivity {
         } else {
             currentTurn = 1;
         }
+        updateBackground();
     }
+
+    public void undoMoveAlertDialog(){
+        if(undo == 1) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+            builder.setMessage("Are you sure you want to undo the last move?")
+                    .setPositiveButton("OK", (dialogInterface, i) -> {
+                        undoMove();
+                        undo = 0;
+                    }).setNegativeButton("Cancel", null);
+
+            AlertDialog alert = builder.create();
+            alert.show();
+        }
+        else if (undo == 0){
+            Toast toast = Toast.makeText(this, "You can only undo the previous move", Toast.LENGTH_LONG);
+            toast.show();
+        }
+    }
+
+    @SuppressLint("ResourceAsColor")
+    public void undoMove(){
+        ImageView line, sq;
+
+        //Change the previous clicked line back to white
+        int resID = getResources().getIdentifier(previousLine, "id", getPackageName());
+        line = findViewById(resID);
+        line.setBackgroundColor(android.R.color.transparent);
+
+        gameboard.put(String.valueOf(line.getTag()), false);
+
+        if(pointScored){
+            //Change the previous clicked square back to white
+            int sqID = getResources().getIdentifier(previousSquareID, "id", getPackageName());
+            sq = findViewById(sqID);
+            sq.setBackgroundColor(android.R.color.transparent);
+
+            gameboard.put(previousSquare, false);
+
+            //Change the score back
+            if(currentTurn == 1){
+                player_one_score--;
+            }else if(currentTurn == 2){
+                player_two_score--;
+            }
+            updateScores();
+        }
+        else{
+            changeTurn();
+        }
+    }
+
     public void onTutorial(View view) {
         Intent intent = new Intent(this, TutorialActivity.class);
         startActivity(intent);
@@ -152,7 +227,21 @@ public class GameActivity extends AppCompatActivity {
         }
         return boardSize;
     }
+
+    public void expandTouchWindow(ImageView view){
+        Rect hitRect = new Rect();
+        view.getHitRect(hitRect);
+        hitRect.left -= 400;
+        hitRect.top -= 400;
+        hitRect.right += 400;
+        hitRect.bottom += 400;
+        TouchDelegate delegate = new TouchDelegate(hitRect, view);
+        ((ViewGroup) view.getParent()).setTouchDelegate(delegate);
+    }
+
     public void onMoveSelect(View view){
+
+        pointScored = false;
         if(currentTurn == 1 && !gameboard.get(String.valueOf(view.getTag()))){
             view.setBackgroundColor(getResources().getColor(playerOne.getColor()));
             gameboard.put(String.valueOf(view.getTag()), true);
@@ -160,7 +249,7 @@ public class GameActivity extends AppCompatActivity {
             if(!pointScored){
                 changeTurn();
             }
-            pointScored = false;
+            //pointScored = false;  <--moved to top of function
         }else if(currentTurn == 2 && !gameboard.get(String.valueOf(view.getTag()))){
             view.setBackgroundColor(getResources().getColor(playerTwo.getColor()));
             gameboard.put(String.valueOf(view.getTag()), true);
@@ -168,8 +257,11 @@ public class GameActivity extends AppCompatActivity {
             if(!pointScored){
                 changeTurn();
             }
-            pointScored = false;
+            //pointScored = false;  <--moved to top of function
         }
+        //Keep track of last line placed for undo button
+        undo = 1;
+        previousLine = String.valueOf(view.getId());
     }
     public void initBoard(){
         //small
@@ -318,6 +410,9 @@ public class GameActivity extends AppCompatActivity {
             }
             gameboard.put(square, true);
             updateScores();
+            //Keep track of last completed square for undo button
+            previousSquareID = String.valueOf(sq.getId());
+            previousSquare = square;
         }
     }
     public void updateScores(){
@@ -326,6 +421,16 @@ public class GameActivity extends AppCompatActivity {
         player_one_score_view.setText(String.valueOf(player_one_score));
         player_two_score_view.setText(String.valueOf(player_two_score));
     }
-
+    public void expandTouchArea(final View bigView, final View smallView, final int extraPadding) {
+        bigView.post(() -> {
+            Rect rect = new Rect();
+            smallView.getHitRect(rect);
+            rect.top -= extraPadding;
+            rect.left -= extraPadding;
+            rect.right += extraPadding;
+            rect.bottom += extraPadding;
+            bigView.setTouchDelegate(new TouchDelegate(rect, smallView));
+        });
+    }
 
 }
