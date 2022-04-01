@@ -7,7 +7,6 @@ import android.content.Intent;
 
 
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
@@ -24,7 +23,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -49,6 +47,7 @@ public class GameActivity extends AppCompatActivity {
 
     Player playerOne, playerTwo;
     String boardSize;
+    int squares;
 
     String previousLine, previousSquareID, previousSquare;
 
@@ -69,13 +68,15 @@ public class GameActivity extends AppCompatActivity {
         playerOne = (Player) players.get("Player One");
         playerTwo = (Player) players.get("Player Two");
 
-        if(!prefs.getAll().isEmpty()){{
+        if(!prefs.getAll().isEmpty()) {
             boardSize = prefs.getString("boardsize", "small");
-        }}
+        }
 
         if(intent.getStringExtra("size") != null) {
             boardSize = intent.getStringExtra("size");
         }
+
+        squares = getSquares(boardSize);
 
         undo_last_move = findViewById(R.id.ib_undo_button);
         pause_button = findViewById(R.id.ib_pause_menu);
@@ -104,7 +105,7 @@ public class GameActivity extends AppCompatActivity {
         pause_button = findViewById(R.id.ib_pause_menu);
         pause_button.setOnClickListener(view -> {
             FragmentManager fm = getSupportFragmentManager();
-            PauseDialogFragment pauseMenu = new PauseDialogFragment(playerOne, playerTwo);
+            PauseDialogFragment pauseMenu = new PauseDialogFragment(playerOne, playerTwo, boardSize);
             pauseMenu.show(fm, null);
         });
         //End of pause button functionality
@@ -398,7 +399,7 @@ public class GameActivity extends AppCompatActivity {
         int resID = getResources().getIdentifier(square, "id", getPackageName());
         sq = findViewById(resID);
         if(!gameboard.get(square) && (gameboard.get(top) && gameboard.get(bottom)
-        && gameboard.get(left) && gameboard.get(right))){
+                && gameboard.get(left) && gameboard.get(right))){
             if(currentTurn == 1){
                 player_one_score++;
                 sq.setBackgroundColor(getResources().getColor(playerOne.getColor()));
@@ -420,7 +421,13 @@ public class GameActivity extends AppCompatActivity {
         player_two_score_view = findViewById(R.id.tv_player_two_score);
         player_one_score_view.setText(String.valueOf(player_one_score));
         player_two_score_view.setText(String.valueOf(player_two_score));
+
+        if(player_one_score > squares / 2)
+            gameOver(1, player_one_score);
+        else if(player_two_score > squares / 2)
+            gameOver(2, player_two_score);
     }
+
     public void expandTouchArea(final View bigView, final View smallView, final int extraPadding) {
         bigView.post(() -> {
             Rect rect = new Rect();
@@ -431,6 +438,23 @@ public class GameActivity extends AppCompatActivity {
             rect.bottom += extraPadding;
             bigView.setTouchDelegate(new TouchDelegate(rect, smallView));
         });
+    }
+
+    public int getSquares(String boardSize) {
+        switch (boardSize) {
+            case "large":
+                return(20);
+            case "medium":
+                return(12);
+            default:
+                return(6);
+        }
+    }
+
+    public void gameOver(int player, int score) {
+        FragmentManager fm = getSupportFragmentManager();
+        GameOverDialogFragment gameOver = new GameOverDialogFragment(playerOne, playerTwo, boardSize, player, score);
+        gameOver.show(fm, null);
     }
 
 }
