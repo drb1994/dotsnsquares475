@@ -145,6 +145,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onTutorial(View view) {
         Intent intent = new Intent(this, TutorialActivity.class);
+        intent.putExtra("from", "main");
         startActivity(intent);
     }
 }

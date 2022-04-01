@@ -216,6 +216,7 @@ public class GameActivity extends AppCompatActivity {
 
     public void onTutorial(View view) {
         Intent intent = new Intent(this, TutorialActivity.class);
+        intent.putExtra("from", "game");
         startActivity(intent);
     }
 
