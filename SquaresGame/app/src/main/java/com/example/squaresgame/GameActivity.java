@@ -423,10 +423,12 @@ public class GameActivity extends AppCompatActivity {
         player_one_score_view.setText(String.valueOf(player_one_score));
         player_two_score_view.setText(String.valueOf(player_two_score));
 
-        if(player_one_score > squares / 2)
-            gameOver(1, player_one_score);
-        else if(player_two_score > squares / 2)
-            gameOver(2, player_two_score);
+        if(player_one_score + player_two_score == squares) {
+            if (player_one_score > player_two_score)
+                gameOver(1, player_one_score);
+            else
+                gameOver(2, player_two_score);
+        }
     }
 
     public void expandTouchArea(final View bigView, final View smallView, final int extraPadding) {
