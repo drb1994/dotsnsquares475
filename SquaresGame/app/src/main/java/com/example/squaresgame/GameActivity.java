@@ -41,7 +41,9 @@ public class GameActivity extends AppCompatActivity {
     ImageView line1;
     View parent;
 
-    Integer undo = 0, currentTurn = 1;
+    Integer undo = 0, currentTurn = 1, currentSquare = 0;
+    int previousScore;
+    Boolean doubleScore = false;
 
     int player_one_score = 0, player_two_score = 0;
 
@@ -49,7 +51,8 @@ public class GameActivity extends AppCompatActivity {
     String boardSize;
     int squares;
 
-    String previousLine, previousSquareID, previousSquare;
+    String previousLine;
+    String previousSquare[] = new String[2], previousSquareID[] = new String[2];
 
     SharedPreferences prefs;
 
@@ -195,18 +198,38 @@ public class GameActivity extends AppCompatActivity {
 
         if(pointScored){
             //Change the previous clicked square back to white
-            int sqID = getResources().getIdentifier(previousSquareID, "id", getPackageName());
-            sq = findViewById(sqID);
-            sq.setBackgroundColor(android.R.color.transparent);
+            if(doubleScore) {
+                int sqID1 = getResources().getIdentifier(previousSquareID[0], "id", getPackageName());
+                int sqID2 = getResources().getIdentifier(previousSquareID[1], "id", getPackageName());
+                sq = findViewById(sqID1);
+                sq.setBackgroundColor(android.R.color.transparent);
+                sq = findViewById(sqID2);
+                sq.setBackgroundColor(android.R.color.transparent);
 
-            gameboard.put(previousSquare, false);
+                gameboard.put(previousSquare[0], false);
+                gameboard.put(previousSquare[1], false);
 
-            //Change the score back
-            if(currentTurn == 1){
-                player_one_score--;
-            }else if(currentTurn == 2){
-                player_two_score--;
+                //Change the score back
+                if(currentTurn == 1){
+                    player_one_score -= 2;
+                }else if(currentTurn == 2){
+                    player_two_score -= 2;
+                }
+            } else {
+                int sqID = getResources().getIdentifier(previousSquareID[currentSquare], "id", getPackageName());
+                sq = findViewById(sqID);
+                sq.setBackgroundColor(android.R.color.transparent);
+
+                gameboard.put(previousSquare[currentSquare], false);
+
+                //Change the score back
+                if(currentTurn == 1){
+                    player_one_score--;
+                }else if(currentTurn == 2){
+                    player_two_score--;
+                }
             }
+
             updateScores();
         }
         else{
@@ -216,6 +239,7 @@ public class GameActivity extends AppCompatActivity {
 
     public void onTutorial(View view) {
         Intent intent = new Intent(this, TutorialActivity.class);
+        intent.putExtra("from", "game");
         startActivity(intent);
     }
 
@@ -241,24 +265,30 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void onMoveSelect(View view){
-
+        doubleScore = false;
         pointScored = false;
         if(currentTurn == 1 && !gameboard.get(String.valueOf(view.getTag()))){
+            previousScore = player_one_score;
             view.setBackgroundColor(getResources().getColor(playerOne.getColor()));
             gameboard.put(String.valueOf(view.getTag()), true);
             checkForCompletedSquare();
+            if(player_one_score - previousScore == 2){
+                doubleScore = true;
+            }
             if(!pointScored){
                 changeTurn();
             }
-            //pointScored = false;  <--moved to top of function
         }else if(currentTurn == 2 && !gameboard.get(String.valueOf(view.getTag()))){
+            previousScore = player_two_score;
             view.setBackgroundColor(getResources().getColor(playerTwo.getColor()));
             gameboard.put(String.valueOf(view.getTag()), true);
             checkForCompletedSquare();
+            if(player_two_score - previousScore == 2){
+                doubleScore = true;
+            }
             if(!pointScored){
                 changeTurn();
             }
-            //pointScored = false;  <--moved to top of function
         }
         //Keep track of last line placed for undo button
         undo = 1;
@@ -412,8 +442,20 @@ public class GameActivity extends AppCompatActivity {
             gameboard.put(square, true);
             updateScores();
             //Keep track of last completed square for undo button
-            previousSquareID = String.valueOf(sq.getId());
-            previousSquare = square;
+            if(currentSquare == 0){
+                currentSquare = 1;
+            } else {
+                currentSquare = 0;
+            }
+
+            if(currentSquare == 0){
+                previousSquareID[0] = String.valueOf(sq.getId());
+                previousSquare[0] = square;
+            } else if(currentSquare == 1){
+                previousSquareID[1] = String.valueOf(sq.getId());
+                previousSquare[1] = square;
+            }
+
         }
     }
     public void updateScores(){
@@ -422,10 +464,14 @@ public class GameActivity extends AppCompatActivity {
         player_one_score_view.setText(String.valueOf(player_one_score));
         player_two_score_view.setText(String.valueOf(player_two_score));
 
-        if(player_one_score > squares / 2)
-            gameOver(1, player_one_score);
-        else if(player_two_score > squares / 2)
-            gameOver(2, player_two_score);
+        if(player_one_score + player_two_score == squares) {
+            if (player_one_score > player_two_score)
+                gameOver(1, player_one_score, false);
+            else if (player_two_score > player_one_score)
+                gameOver(2, player_two_score, false);
+            else
+                gameOver(1, player_two_score, true);
+        }
     }
 
     public void expandTouchArea(final View bigView, final View smallView, final int extraPadding) {
@@ -451,9 +497,9 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
-    public void gameOver(int player, int score) {
+    public void gameOver(int player, int score, boolean draw) {
         FragmentManager fm = getSupportFragmentManager();
-        GameOverDialogFragment gameOver = new GameOverDialogFragment(playerOne, playerTwo, boardSize, player, score);
+        GameOverDialogFragment gameOver = new GameOverDialogFragment(playerOne, playerTwo, boardSize, player, score, draw);
         gameOver.show(fm, null);
     }
 

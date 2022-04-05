@@ -54,7 +54,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
-        android:text="@string/winner"
         android:textAlignment="center"
         android:textSize="56sp"
         app:layout_constraintStart_toStartOf="parent"
