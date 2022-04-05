@@ -466,9 +466,11 @@ public class GameActivity extends AppCompatActivity {
 
         if(player_one_score + player_two_score == squares) {
             if (player_one_score > player_two_score)
-                gameOver(1, player_one_score);
+                gameOver(1, player_one_score, false);
+            else if (player_two_score > player_one_score)
+                gameOver(2, player_two_score, false);
             else
-                gameOver(2, player_two_score);
+                gameOver(1, player_two_score, true);
         }
     }
 
@@ -495,9 +497,9 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
-    public void gameOver(int player, int score) {
+    public void gameOver(int player, int score, boolean draw) {
         FragmentManager fm = getSupportFragmentManager();
-        GameOverDialogFragment gameOver = new GameOverDialogFragment(playerOne, playerTwo, boardSize, player, score);
+        GameOverDialogFragment gameOver = new GameOverDialogFragment(playerOne, playerTwo, boardSize, player, score, draw);
         gameOver.show(fm, null);
     }
 

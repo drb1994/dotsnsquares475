@@ -1,5 +1,6 @@
 package com.example.squaresgame;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
@@ -19,17 +20,20 @@ public class GameOverDialogFragment extends DialogFragment {
     Button restart, home;
     String boardSize;
     int player, score;
+    boolean draw;
 
-    TextView scoreView, playerName;
+    TextView textView, scoreView, playerName;
 
-    public GameOverDialogFragment(Player playerOne, Player playerTwo, String boardSize, int player, int score) {
+    public GameOverDialogFragment(Player playerOne, Player playerTwo, String boardSize, int player, int score, boolean draw) {
         this.playerOne = playerOne;
         this.playerTwo = playerTwo;
         this.boardSize = boardSize;
         this.player = player;
         this.score = score;
+        this.draw = draw;
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -38,12 +42,21 @@ public class GameOverDialogFragment extends DialogFragment {
         Objects.requireNonNull(getDialog()).setCancelable(false);
         getDialog().setCanceledOnTouchOutside(false);
 
+        textView = view.findViewById(R.id.textView);
         scoreView = view.findViewById(R.id.tv_player_score);
         playerName = view.findViewById(R.id.tv_player_name);
-        if(player == 1)
-            setPlayer(playerOne, "Player One");
-        else
-            setPlayer(playerTwo, "Player Two");
+
+        if(draw) {
+            textView.setText("Draw");
+            setPlayer();
+        }
+        else {
+            textView.setText("Winner");
+            if(player == 1)
+                setPlayer(playerOne, "Player One");
+            else
+                setPlayer(playerTwo, "Player Two");
+        }
         scoreView.setText(String.valueOf(score));
 
         restart = view.findViewById(R.id.restart);
@@ -68,6 +81,13 @@ public class GameOverDialogFragment extends DialogFragment {
         });
 
         return view;
+    }
+
+    public void setPlayer() {
+//        GradientDrawable scoreBackground = (GradientDrawable) scoreView.getBackground();
+//        int[] playerColors = new int[]{getResources().getColor(playerOne.getColor()), getResources().getColor(playerTwo.getColor())};
+//        scoreBackground.setColors(playerColors);
+        scoreView.setTextColor(getResources().getColor(R.color.black));
     }
 
     public void setPlayer(Player thisPlayer, String playerText) {
