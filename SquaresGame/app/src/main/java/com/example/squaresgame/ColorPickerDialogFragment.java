@@ -26,7 +26,7 @@ public class ColorPickerDialogFragment extends DialogFragment {
         int[] idButton = new int[] {R.id.cyan, R.id.blue, R.id.purple, R.id.green3, R.id.green4, R.id.green5};
         View[] taken = new View[6];
         int[] idView = new int[] {R.id.cyan_taken, R.id.blue_taken, R.id.purple_taken, R.id.green3_taken, R.id.green4_taken, R.id.green5_taken};
-        int[] color = new int[] {R.color.cyan, R.color.blue, R.color.purple, R.color.light_purple, R.color.green, R.color.light_green};
+        int[] color = new int[] {R.color.red1, R.color.blue1, R.color.yellow1, R.color.green1, R.color.orange1, R.color.purple1};
 
         //Initialize the buttons
         for(int i = 0; i < colorButton.length; i++) {

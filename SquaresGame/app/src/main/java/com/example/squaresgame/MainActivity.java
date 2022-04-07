@@ -9,6 +9,7 @@ import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
@@ -22,8 +23,8 @@ import android.widget.ImageView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity {
-    Player playerOne = new Player(1, R.color.cyan);
-    Player playerTwo = new Player(2, R.color.green);
+    Player playerOne = new Player(1, R.color.red1);
+    Player playerTwo = new Player(2, R.color.blue1);
 
     protected AlphaAnimation fadeInTop = new AlphaAnimation(0.0f , 1.0f ) ;
     protected AlphaAnimation fadeInLeft = new AlphaAnimation(0.0f , 1.0f ) ;
@@ -68,15 +69,13 @@ public class MainActivity extends AppCompatActivity {
         if(!prefs.getAll().isEmpty()){
             clearButton.show();
             //startButton.getBackground().setColorFilter(getResources().getColor(R.color.green3), PorterDuff.Mode.MULTIPLY);
-            startButton.setBackgroundColor(getResources().getColor(R.color.light_green));
+            startButton.setBackgroundColor(getResources().getColor(R.color.green1));
             playerOne.setColor(prefs.getInt("p1color", 0));
             playerTwo.setColor(prefs.getInt("p2color", 0));
         }else{
             clearButton.hide();
         }
     }
-
-
 
     public void onPlay(View view) {
         if(prefs.getBoolean("sp",false)){
@@ -119,10 +118,10 @@ public class MainActivity extends AppCompatActivity {
         bottomBar = findViewById(R.id.bottom_bar);
         rightBar = findViewById(R.id.right_bar);
 
-        topBar.setBackgroundColor(getResources().getColor(R.color.blue));
-        leftBar.setBackgroundColor(getResources().getColor(R.color.cyan));
-        bottomBar.setBackgroundColor(getResources().getColor(R.color.green));
-        rightBar.setBackgroundColor(getResources().getColor(R.color.light_green));
+        topBar.setBackgroundColor(getResources().getColor(R.color.red1));
+        leftBar.setBackgroundColor(getResources().getColor(R.color.blue1));
+        bottomBar.setBackgroundColor(getResources().getColor(R.color.red1));
+        rightBar.setBackgroundColor(getResources().getColor(R.color.blue1));
 
         fadeInTop.setDuration(1200);
         fadeInTop.setFillAfter(true);

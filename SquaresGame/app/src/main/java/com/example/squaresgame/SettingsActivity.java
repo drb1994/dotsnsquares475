@@ -172,7 +172,7 @@ public class SettingsActivity extends AppCompatActivity {
     public void selectButton(Button buttonSelected, Button startButton) {
         buttonSelected.setBackgroundColor(Color.parseColor("#000000"));
         buttonSelected.setTextColor(Color.parseColor("#FFFFFF"));
-        startButton.setBackgroundColor(getResources().getColor(R.color.light_green));
+        startButton.setBackgroundColor(getResources().getColor(R.color.green1));
         startButton.startAnimation(pulse);
         boardSelected = true;
     }

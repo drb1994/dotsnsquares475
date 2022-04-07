@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".MainActivity">
 
 
@@ -26,7 +27,7 @@
         android:layout_width="205dp"
         android:layout_height="60dp"
         android:layout_marginTop="100dp"
-        android:backgroundTint="@color/cyan"
+        android:backgroundTint="@color/blue1"
         android:elevation="10dp"
         android:onClick="onPlay"
         android:text="Play"
