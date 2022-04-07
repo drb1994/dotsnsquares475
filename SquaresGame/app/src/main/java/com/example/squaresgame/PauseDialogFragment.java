@@ -12,10 +12,12 @@ import androidx.fragment.app.DialogFragment;
 public class PauseDialogFragment extends DialogFragment {
     Player playerOne, playerTwo;
     Button settings, restart, endGame;
+    String boardSize;
 
-    public PauseDialogFragment(Player playerOne, Player playerTwo) {
+    public PauseDialogFragment(Player playerOne, Player playerTwo, String boardSize) {
         this.playerOne = playerOne;
         this.playerTwo = playerTwo;
+        this.boardSize = boardSize;
     }
 
     @Override
@@ -44,6 +46,7 @@ public class PauseDialogFragment extends DialogFragment {
             players.putSerializable("Player Two", playerTwo);
             intent.putExtras(players);
             intent.putExtra("from","");
+            intent.putExtra("size", boardSize);
             //Close the current activity
             requireActivity().finish();
             startActivity(intent);

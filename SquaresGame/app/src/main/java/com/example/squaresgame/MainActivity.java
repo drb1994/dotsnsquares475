@@ -142,4 +142,10 @@ public class MainActivity extends AppCompatActivity {
         bottomBar.startAnimation(fadeInBottom);
         rightBar.startAnimation(fadeInRight);
     }
+
+    public void onTutorial(View view) {
+        Intent intent = new Intent(this, TutorialActivity.class);
+        intent.putExtra("from", "main");
+        startActivity(intent);
+    }
 }
