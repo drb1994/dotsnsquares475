@@ -83,7 +83,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     public void showColorPickerDialog(Player player, int takenColor) {
         FragmentManager fm = getSupportFragmentManager();
-        ColorPickerDialogFragment colorPicker = new ColorPickerDialogFragment(player, takenColor);
+        ColorPickerDialogFragment colorPicker = ColorPickerDialogFragment.newInstance(player, takenColor);
         colorPicker.show(fm, null);
     }
 

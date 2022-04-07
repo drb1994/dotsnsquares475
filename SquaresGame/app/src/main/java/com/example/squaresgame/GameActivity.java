@@ -7,7 +7,6 @@ import android.content.Intent;
 
 
 import android.content.SharedPreferences;
-import android.content.pm.ActivityInfo;
 import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
@@ -164,14 +163,16 @@ public class GameActivity extends AppCompatActivity {
             player_two_score_view.setTextColor(getResources().getColor(R.color.white));
         }
         if(currentTurn == 1){
-            if (flipBoard)
+            if (flipBoard) {
                 this.findViewById(android.R.id.content).setScaleY(-1);
                 this.findViewById(android.R.id.content).setScaleX(-1);
+            }
             currentTurn = 2;
         } else {
-            if (flipBoard)
+            if (flipBoard) {
                 this.findViewById(android.R.id.content).setScaleY(1);
                 this.findViewById(android.R.id.content).setScaleX(1);
+            }
             currentTurn = 1;
         }
         updateBackground();
@@ -510,7 +511,7 @@ public class GameActivity extends AppCompatActivity {
 
     public void gameOver(int player, int score, boolean draw) {
         FragmentManager fm = getSupportFragmentManager();
-        GameOverDialogFragment gameOver = new GameOverDialogFragment(playerOne, playerTwo, boardSize, player, score, draw);
+        GameOverDialogFragment gameOver = GameOverDialogFragment.newInstance(playerOne, playerTwo, boardSize, player, score, draw);
         gameOver.show(fm, null);
     }
 

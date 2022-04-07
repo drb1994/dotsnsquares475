@@ -24,13 +24,17 @@ public class GameOverDialogFragment extends DialogFragment {
 
     TextView textView, scoreView, playerName;
 
-    public GameOverDialogFragment(Player playerOne, Player playerTwo, String boardSize, int player, int score, boolean draw) {
-        this.playerOne = playerOne;
-        this.playerTwo = playerTwo;
-        this.boardSize = boardSize;
-        this.player = player;
-        this.score = score;
-        this.draw = draw;
+    public static GameOverDialogFragment newInstance(Player playerOne, Player playerTwo, String boardSize, int player, int score, boolean draw) {
+        Bundle args = new Bundle();
+        args.putSerializable("playerOne", playerOne);
+        args.putSerializable("playerTwo", playerTwo);
+        args.putString("boardSize", boardSize);
+        args.putInt("player", player);
+        args.putInt("score", score);
+        args.putBoolean("draw", draw);
+        GameOverDialogFragment gameOverDialogFragment = new GameOverDialogFragment();
+        gameOverDialogFragment.setArguments(args);
+        return(gameOverDialogFragment);
     }
 
     @SuppressLint("SetTextI18n")
@@ -38,6 +42,14 @@ public class GameOverDialogFragment extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.dialog_game_over, container, false);
+
+        assert getArguments() != null;
+        playerOne = (Player) getArguments().getSerializable("playerOne");
+        playerTwo = (Player) getArguments().getSerializable("playerTwo");
+        boardSize = getArguments().getString("boardSize");
+        player = getArguments().getInt("player");
+        score = getArguments().getInt("score");
+        draw = getArguments().getBoolean("draw");
 
         Objects.requireNonNull(getDialog()).setCancelable(false);
         getDialog().setCanceledOnTouchOutside(false);
