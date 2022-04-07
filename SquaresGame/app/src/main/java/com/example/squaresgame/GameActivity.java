@@ -7,6 +7,7 @@ import android.content.Intent;
 
 
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
@@ -44,6 +45,7 @@ public class GameActivity extends AppCompatActivity {
     Integer undo = 0, currentTurn = 1, currentSquare = 0;
     int previousScore;
     Boolean doubleScore = false;
+    Boolean flipBoard;
 
     int player_one_score = 0, player_two_score = 0;
 
@@ -52,7 +54,7 @@ public class GameActivity extends AppCompatActivity {
     int squares;
 
     String previousLine;
-    String previousSquare[] = new String[2], previousSquareID[] = new String[2];
+    String[] previousSquare = new String[2], previousSquareID = new String[2];
 
     SharedPreferences prefs;
 
@@ -70,9 +72,11 @@ public class GameActivity extends AppCompatActivity {
         Bundle players = intent.getExtras();
         playerOne = (Player) players.get("Player One");
         playerTwo = (Player) players.get("Player Two");
+        flipBoard = intent.getBooleanExtra("fb", false);
 
         if(!prefs.getAll().isEmpty()) {
             boardSize = prefs.getString("boardsize", "small");
+            flipBoard = prefs.getBoolean("fb", false);
         }
 
         if(intent.getStringExtra("size") != null) {
@@ -96,7 +100,8 @@ public class GameActivity extends AppCompatActivity {
 
         line1 = findViewById(R.id.connect_1_5);
 
-        Fragment gameBoard = new BoardFragment(getSize());
+//        Fragment gameBoard = new BoardFragment(getSize());
+        Fragment gameBoard = BoardFragment.newInstance(getSize());
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.board_container, gameBoard)
                 .commit();
@@ -141,7 +146,7 @@ public class GameActivity extends AppCompatActivity {
         Drawable p1sb = player_one_score_view.getBackground();
         Drawable p2sb = player_two_score_view.getBackground();
         Animation pulse = AnimationUtils.loadAnimation(this, R.anim.pulse);
-        if(currentTurn == 2){
+        if(currentTurn == 2) {
             player_one_score_view.startAnimation(pulse);
             player_two_score_view.clearAnimation();
             p1sb.setColorFilter(getResources().getColor(playerOne.getColor()), PorterDuff.Mode.MULTIPLY);
@@ -159,8 +164,14 @@ public class GameActivity extends AppCompatActivity {
             player_two_score_view.setTextColor(getResources().getColor(R.color.white));
         }
         if(currentTurn == 1){
+            if (flipBoard)
+                this.findViewById(android.R.id.content).setScaleY(-1);
+                this.findViewById(android.R.id.content).setScaleX(-1);
             currentTurn = 2;
         } else {
+            if (flipBoard)
+                this.findViewById(android.R.id.content).setScaleY(1);
+                this.findViewById(android.R.id.content).setScaleX(1);
             currentTurn = 1;
         }
         updateBackground();

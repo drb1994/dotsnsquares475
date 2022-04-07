@@ -1,6 +1,5 @@
 package com.example.squaresgame;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,12 +12,19 @@ import androidx.fragment.app.Fragment;
 public class BoardFragment extends Fragment {
     String boardSize;
 
-    public BoardFragment(String boardSize) {
-        this.boardSize = boardSize;
+    public static BoardFragment newInstance(String boardSize) {
+        Bundle args = new Bundle();
+        args.putString("boardSize", boardSize);
+        BoardFragment boardFragment = new BoardFragment();
+        boardFragment.setArguments(args);
+        return(boardFragment);
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = null;
+
+        assert getArguments() != null;
+        boardSize = getArguments().getString("boardSize");
 
         switch(boardSize) {
             case "small":
