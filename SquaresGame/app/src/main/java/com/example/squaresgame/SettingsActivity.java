@@ -1,13 +1,11 @@
 package com.example.squaresgame;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -15,9 +13,6 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.ImageView;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class SettingsActivity extends AppCompatActivity {
     Button playerOneColorButton, playerTwoColorButton;
@@ -88,7 +83,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     public void showColorPickerDialog(Player player, int takenColor) {
         FragmentManager fm = getSupportFragmentManager();
-        ColorPickerDialogFragment colorPicker = new ColorPickerDialogFragment(player, takenColor);
+        ColorPickerDialogFragment colorPicker = ColorPickerDialogFragment.newInstance(player, takenColor);
         colorPicker.show(fm, null);
     }
 
@@ -119,6 +114,7 @@ public class SettingsActivity extends AppCompatActivity {
             players.putSerializable("Player Two", playerTwo);
             intent.putExtras(players);
             intent.putExtra("size", boardSize);
+            intent.putExtra("fb", flipBoard);
             startActivity(intent);
         }
     }
