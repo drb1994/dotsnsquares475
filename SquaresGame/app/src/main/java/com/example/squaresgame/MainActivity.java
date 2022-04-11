@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -86,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
             players.putSerializable("Player Two",playerTwo);
             intent.putExtras(players);
             startActivity(intent);
+            overridePendingTransition(R.anim.card_flip_in,R.anim.card_flip_out);
         }else{
             Intent intent = new Intent(this, SettingsActivity.class);
             Bundle players = new Bundle();
@@ -94,6 +96,8 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtras(players);
             intent.putExtra("from","play");
             startActivity(intent);
+            overridePendingTransition(R.anim.card_flip_in,R.anim.card_flip_out);
+
         }
     }
 

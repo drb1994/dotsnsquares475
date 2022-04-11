@@ -384,7 +384,6 @@ public class GameActivity extends AppCompatActivity {
         }
     }
     public void checkForCompletedSquare(){
-        ImageView sq1,sq2,sq3;
         if(boardSize.equalsIgnoreCase("small")){
             squareChecker("sq1","h1-1","h2-1","v1-1","v1-2");
             squareChecker("sq2","h1-2","h2-2","v1-2","v1-3");
