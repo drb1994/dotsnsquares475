@@ -73,7 +73,7 @@
         android:contentDescription="@string/green_4"
         app:layout_constraintStart_toEndOf="@+id/green3"
         app:layout_constraintTop_toBottomOf="@+id/blue"
-        android:background="@color/orange1" />
+        android:background="@color/pink1" />
 
     <View
         android:id="@+id/green4_taken"
