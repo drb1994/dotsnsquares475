@@ -23,9 +23,9 @@ public class ColorPickerDialogFragment extends DialogFragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.dialog_color_picker, container, false);
 
-        int[] idButton = new int[] {R.id.cyan, R.id.blue, R.id.purple, R.id.green3, R.id.green4, R.id.green5};
+        int[] idButton = new int[] {R.id.red, R.id.blue, R.id.yellow, R.id.green, R.id.pink, R.id.purple};
         View[] taken = new View[6];
-        int[] idView = new int[] {R.id.cyan_taken, R.id.blue_taken, R.id.purple_taken, R.id.green3_taken, R.id.green4_taken, R.id.green5_taken};
+        int[] idView = new int[] {R.id.red_taken, R.id.blue_taken, R.id.yellow_taken, R.id.green_taken, R.id.pink_taken, R.id.purple_taken};
         int[] color = new int[] {R.color.red1, R.color.blue1, R.color.yellow1, R.color.green1, R.color.pink1, R.color.purple1};
 
         //Initialize the buttons
