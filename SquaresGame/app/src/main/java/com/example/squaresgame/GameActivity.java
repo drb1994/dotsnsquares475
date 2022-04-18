@@ -50,6 +50,8 @@ public class GameActivity extends AppCompatActivity {
     int player_one_score = 0, player_two_score = 0;
 
     Player playerOne, playerTwo;
+    TextView playerOneTV, playerTwoTV;
+    String playerOneName, playerTwoName;
     String boardSize;
     int squares;
 
@@ -72,6 +74,12 @@ public class GameActivity extends AppCompatActivity {
         Bundle players = intent.getExtras();
         playerOne = (Player) players.get("Player One");
         playerTwo = (Player) players.get("Player Two");
+
+        playerOneTV = findViewById(R.id.tv_player_one_name);
+        playerOneTV.setText(playerOne.getName());
+        playerTwoTV = findViewById(R.id.tv_player_two_name);
+        playerTwoTV.setText(playerTwo.getName());
+
         flipBoard = intent.getBooleanExtra("fb", false);
 
         if(!prefs.getAll().isEmpty()) {

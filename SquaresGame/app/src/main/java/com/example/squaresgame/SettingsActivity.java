@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.EditText;
 
 public class SettingsActivity extends AppCompatActivity {
     Button playerOneColorButton, playerTwoColorButton;
@@ -30,6 +31,8 @@ public class SettingsActivity extends AppCompatActivity {
     Button mediumButton;
     Button largeButton;
 
+    EditText playerOneField, playerTwoField;
+
     String boardSize;
 
     @Override
@@ -45,6 +48,10 @@ public class SettingsActivity extends AppCompatActivity {
         pulse = AnimationUtils.loadAnimation(this, R.anim.pulse);
 
         setContentView(R.layout.activity_settings);
+
+        playerOneField = findViewById(R.id.player_one_header);
+        playerTwoField = findViewById(R.id.player_two_header);
+
         playerOneColorButton = findViewById(R.id.player_one_color_btn);
         playerOneColorButton.setBackgroundColor(getResources().getColor(playerOne.getColor()));
         playerOneColorButton.setOnClickListener(view -> showColorPickerDialog(playerOne, playerTwo.getColor()));
@@ -88,7 +95,7 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void updatePlayerColor(Player player) {
-        if(player.getPlayerNum() == 1) {
+        if(player.getNum() == 1) {
             playerOneColorButton.setBackgroundColor(getResources().getColor(player.getColor()));
         }
         else {
@@ -101,13 +108,19 @@ public class SettingsActivity extends AppCompatActivity {
         if(boardSelected) {
             Intent intent = new Intent(this, GameActivity.class);
 
+            String playerOneName = playerOneField.getText().toString();
+            String playerTwoName = playerTwoField.getText().toString();
+
             if(savePreferences){
                 editor.putInt("p1color", playerOne.getColor());
                 editor.putInt("p2color", playerTwo.getColor());
                 editor.putBoolean("fb", flipBoard);
+                editor.putString("p1name", playerOneName);
+                editor.putString("p2name", playerTwoName);
                 editor.apply();
             }
-
+            playerOne.setName(playerOneName);
+            playerTwo.setName(playerTwoName);
             //Create a bundle to send players to GameBoardActivity
             Bundle players = new Bundle();
             players.putSerializable("Player One", playerOne);
