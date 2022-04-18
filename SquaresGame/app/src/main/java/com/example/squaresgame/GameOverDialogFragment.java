@@ -20,11 +20,11 @@ public class GameOverDialogFragment extends DialogFragment {
     Button restart, home;
     String boardSize;
     int player, score;
-    boolean draw;
+    boolean draw, flipBoard;
 
     TextView textView, scoreView, playerName;
 
-    public static GameOverDialogFragment newInstance(Player playerOne, Player playerTwo, String boardSize, int player, int score, boolean draw) {
+    public static GameOverDialogFragment newInstance(Player playerOne, Player playerTwo, String boardSize, int player, int score, boolean draw, boolean flipBoard) {
         Bundle args = new Bundle();
         args.putSerializable("playerOne", playerOne);
         args.putSerializable("playerTwo", playerTwo);
@@ -32,6 +32,7 @@ public class GameOverDialogFragment extends DialogFragment {
         args.putInt("player", player);
         args.putInt("score", score);
         args.putBoolean("draw", draw);
+        args.putBoolean("flipBoard", flipBoard);
         GameOverDialogFragment gameOverDialogFragment = new GameOverDialogFragment();
         gameOverDialogFragment.setArguments(args);
         return(gameOverDialogFragment);
@@ -50,6 +51,7 @@ public class GameOverDialogFragment extends DialogFragment {
         player = getArguments().getInt("player");
         score = getArguments().getInt("score");
         draw = getArguments().getBoolean("draw");
+        flipBoard = getArguments().getBoolean("flipBoard");
 
         Objects.requireNonNull(getDialog()).setCancelable(false);
         getDialog().setCanceledOnTouchOutside(false);
@@ -81,6 +83,7 @@ public class GameOverDialogFragment extends DialogFragment {
             intent.putExtras(players);
             intent.putExtra("from","");
             intent.putExtra("size", boardSize);
+            intent.putExtra("fb", flipBoard);
             //Close the current activity
             requireActivity().finish();
             startActivity(intent);

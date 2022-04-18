@@ -3,12 +3,22 @@ package com.example.squaresgame;
 import java.io.Serializable;
 
 public class Player implements Serializable {
-    public int playerNum;
+    public String name;
+    public int num;
     public int color;
 
-    public Player(int playerNum, int color) {
-        this.playerNum = playerNum;
+    public Player(String name, int num, int color) {
+        this.name = name;
+        this.num = num;
         this.color = color;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getColor() {
@@ -19,7 +29,7 @@ public class Player implements Serializable {
         this.color = color;
     }
 
-    public int getPlayerNum() {
-        return playerNum;
+    public int getNum() {
+        return num;
     }
 }

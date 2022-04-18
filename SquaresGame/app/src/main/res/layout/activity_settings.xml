@@ -10,13 +10,15 @@
         android:id="@+id/background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background_gradient"/>
+        android:background="@drawable/background_gradient"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
 
     <TextView
         android:id="@+id/set_rules_header"
-        android:elevation="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:elevation="10dp"
         android:text="Set the Rules"
         android:textColor="@color/black"
         android:textSize="60sp"
@@ -36,39 +38,45 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/set_rules_header" />
 
-    <TextView
+    <EditText
         android:id="@+id/player_one_header"
-        android:layout_width="wrap_content"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
-        android:layout_marginTop="15dp"
         android:layout_marginEnd="10dp"
+        android:inputType="text"
+        android:maxLines="1"
         android:text="Player One"
+        android:maxLength="10"
+        android:textAlignment="center"
         android:textSize="34sp"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/player_two_header"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/choose_colors_header" />
 
-    <TextView
+    <EditText
         android:id="@+id/player_two_header"
-        android:layout_width="wrap_content"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="80dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginEnd="80dp"
+        android:inputType="text"
+        android:maxLines="1"
         android:text="Player Two"
+        android:maxLength="10"
+        android:textAlignment="center"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/choose_colors_header"
-        app:layout_constraintStart_toEndOf="@+id/player_one_header"/>
+        app:layout_constraintStart_toEndOf="@+id/player_one_header"
+        app:layout_constraintTop_toBottomOf="@+id/choose_colors_header" />
 
     <Button
         android:id="@+id/player_one_color_btn"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="-175dp"
+        android:layout_marginTop="2dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.22"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/player_one_header" />
 
@@ -76,9 +84,9 @@
         android:id="@+id/player_two_color_btn"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="-175dp"
+        android:layout_marginTop="2dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.765"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/player_two_header" />
 
@@ -86,10 +94,10 @@
         android:id="@+id/choose_board_size_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:text="Choose the Board Size"
-        android:textSize="34sp"
         android:layout_marginTop="120dp"
+        android:text="Choose the Board Size"
+        android:textColor="@color/black"
+        android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/choose_colors_header" />
@@ -102,12 +110,12 @@
         android:backgroundTint="#ACACAC"
         android:onClick="onBoardSelect"
         android:text="Small - 3x4"
-        android:textSize="24sp"
         android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/medium_board_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/choose_board_size_header"
-        app:layout_constraintBottom_toTopOf="@+id/medium_board_btn"/>
+        app:layout_constraintTop_toBottomOf="@+id/choose_board_size_header" />
 
     <Button
         android:id="@+id/medium_board_btn"
@@ -117,12 +125,12 @@
         android:backgroundTint="#ACACAC"
         android:onClick="onBoardSelect"
         android:text="Medium - 4x5"
-        android:textSize="24sp"
         android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/large_board_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/small_board_btn"
-        app:layout_constraintBottom_toTopOf="@+id/large_board_btn"/>
+        app:layout_constraintTop_toBottomOf="@+id/small_board_btn" />
 
     <Button
         android:id="@+id/large_board_btn"
@@ -132,12 +140,12 @@
         android:backgroundTint="#ACACAC"
         android:onClick="onBoardSelect"
         android:text="Large - 5x6"
-        android:textSize="24sp"
         android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/flip_board_switch"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/medium_board_btn"
-        app:layout_constraintBottom_toTopOf="@+id/flip_board_switch"/>
+        app:layout_constraintTop_toBottomOf="@+id/medium_board_btn" />
 
     <Switch
         android:id="@+id/flip_board_switch"
@@ -148,10 +156,10 @@
         android:text="Flip UI?"
         android:textAlignment="center"
         android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/save_preferences"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/large_board_btn"
-        app:layout_constraintBottom_toTopOf="@+id/save_preferences"/>
+        app:layout_constraintTop_toBottomOf="@+id/large_board_btn" />
 
     <Switch
         android:id="@+id/save_preferences"
@@ -162,21 +170,21 @@
         android:text="Save Preferences?"
         android:textAlignment="center"
         android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/start_game_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/flip_board_switch"
-        app:layout_constraintBottom_toTopOf="@+id/start_game_btn"/>
+        app:layout_constraintTop_toBottomOf="@+id/flip_board_switch" />
 
 
     <Button
         android:id="@+id/start_game_btn"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="30dp"
         android:backgroundTint="#ACACAC"
         android:onClick="onStartGame"
         android:text="Play"
-        android:layout_marginBottom="30dp"
-        android:layout_marginTop="15dp"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
