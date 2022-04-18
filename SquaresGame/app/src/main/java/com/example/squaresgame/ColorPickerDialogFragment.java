@@ -13,15 +13,23 @@ public class ColorPickerDialogFragment extends DialogFragment {
     Player player;
     int takenColor;
 
-    public ColorPickerDialogFragment(Player player, int takenColor) {
-        this.player = player;
-        this.takenColor = takenColor;
+    public static ColorPickerDialogFragment newInstance(Player player, int takenColor) {
+        Bundle args = new Bundle();
+        args.putSerializable("player", player);
+        args.putInt("takenColor", takenColor);
+        ColorPickerDialogFragment colorPickerDialogFragment = new ColorPickerDialogFragment();
+        colorPickerDialogFragment.setArguments(args);
+        return(colorPickerDialogFragment);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.dialog_color_picker, container, false);
+
+        assert getArguments() != null;
+        player = (Player) getArguments().getSerializable("player");
+        takenColor = getArguments().getInt("takenColor");
 
         int[] idButton = new int[] {R.id.cyan, R.id.blue, R.id.purple, R.id.green3, R.id.green4, R.id.green5};
         View[] taken = new View[6];

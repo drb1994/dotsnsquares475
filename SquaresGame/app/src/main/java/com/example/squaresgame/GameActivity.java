@@ -7,6 +7,7 @@ import android.content.Intent;
 
 
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
@@ -44,6 +45,7 @@ public class GameActivity extends AppCompatActivity {
     Integer undo = 0, currentTurn = 1, currentSquare = 0;
     int previousScore;
     Boolean doubleScore = false;
+    Boolean flipBoard;
 
     int player_one_score = 0, player_two_score = 0;
 
@@ -52,7 +54,7 @@ public class GameActivity extends AppCompatActivity {
     int squares;
 
     String previousLine;
-    String previousSquare[] = new String[2], previousSquareID[] = new String[2];
+    String[] previousSquare = new String[2], previousSquareID = new String[2];
 
     SharedPreferences prefs;
 
@@ -70,9 +72,11 @@ public class GameActivity extends AppCompatActivity {
         Bundle players = intent.getExtras();
         playerOne = (Player) players.get("Player One");
         playerTwo = (Player) players.get("Player Two");
+        flipBoard = intent.getBooleanExtra("fb", false);
 
         if(!prefs.getAll().isEmpty()) {
             boardSize = prefs.getString("boardsize", "small");
+            flipBoard = prefs.getBoolean("fb", false);
         }
 
         if(intent.getStringExtra("size") != null) {
@@ -96,7 +100,8 @@ public class GameActivity extends AppCompatActivity {
 
         line1 = findViewById(R.id.connect_1_5);
 
-        Fragment gameBoard = new BoardFragment(getSize());
+//        Fragment gameBoard = new BoardFragment(getSize());
+        Fragment gameBoard = BoardFragment.newInstance(getSize());
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.board_container, gameBoard)
                 .commit();
@@ -137,11 +142,12 @@ public class GameActivity extends AppCompatActivity {
         Drawable sb = player_one_score_view.getBackground();
         sb.setColorFilter(getResources().getColor(playerOne.getColor()), PorterDuff.Mode.MULTIPLY);
     }
+    @SuppressLint("SourceLockedOrientationActivity")
     public void changeTurn(){
         Drawable p1sb = player_one_score_view.getBackground();
         Drawable p2sb = player_two_score_view.getBackground();
         Animation pulse = AnimationUtils.loadAnimation(this, R.anim.pulse);
-        if(currentTurn == 2){
+        if(currentTurn == 2) {
             player_one_score_view.startAnimation(pulse);
             player_two_score_view.clearAnimation();
             p1sb.setColorFilter(getResources().getColor(playerOne.getColor()), PorterDuff.Mode.MULTIPLY);
@@ -159,8 +165,14 @@ public class GameActivity extends AppCompatActivity {
             player_two_score_view.setTextColor(getResources().getColor(R.color.white));
         }
         if(currentTurn == 1){
+            if (flipBoard) {
+                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_REVERSE_PORTRAIT);
+            }
             currentTurn = 2;
         } else {
+            if (flipBoard) {
+                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+            }
             currentTurn = 1;
         }
         updateBackground();
@@ -169,7 +181,6 @@ public class GameActivity extends AppCompatActivity {
     public void undoMoveAlertDialog(){
         if(undo == 1) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
             builder.setMessage("Are you sure you want to undo the last move?")
                     .setPositiveButton("OK", (dialogInterface, i) -> {
                         undoMove();
@@ -372,7 +383,6 @@ public class GameActivity extends AppCompatActivity {
         }
     }
     public void checkForCompletedSquare(){
-        ImageView sq1,sq2,sq3;
         if(boardSize.equalsIgnoreCase("small")){
             squareChecker("sq1","h1-1","h2-1","v1-1","v1-2");
             squareChecker("sq2","h1-2","h2-2","v1-2","v1-3");
@@ -466,11 +476,11 @@ public class GameActivity extends AppCompatActivity {
 
         if(player_one_score + player_two_score == squares) {
             if (player_one_score > player_two_score)
-                gameOver(1, player_one_score, false);
+                gameOver(1, player_one_score, false, flipBoard);
             else if (player_two_score > player_one_score)
-                gameOver(2, player_two_score, false);
+                gameOver(2, player_two_score, false, flipBoard);
             else
-                gameOver(1, player_two_score, true);
+                gameOver(1, player_two_score, true, flipBoard);
         }
     }
 
@@ -497,9 +507,9 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
-    public void gameOver(int player, int score, boolean draw) {
+    public void gameOver(int player, int score, boolean draw, boolean flipBoard) {
         FragmentManager fm = getSupportFragmentManager();
-        GameOverDialogFragment gameOver = new GameOverDialogFragment(playerOne, playerTwo, boardSize, player, score, draw);
+        GameOverDialogFragment gameOver = GameOverDialogFragment.newInstance(playerOne, playerTwo, boardSize, player, score, draw, flipBoard);
         gameOver.show(fm, null);
     }
 

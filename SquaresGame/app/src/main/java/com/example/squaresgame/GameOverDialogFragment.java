@@ -20,17 +20,22 @@ public class GameOverDialogFragment extends DialogFragment {
     Button restart, home;
     String boardSize;
     int player, score;
-    boolean draw;
+    boolean draw, flipBoard;
 
     TextView textView, scoreView, playerName;
 
-    public GameOverDialogFragment(Player playerOne, Player playerTwo, String boardSize, int player, int score, boolean draw) {
-        this.playerOne = playerOne;
-        this.playerTwo = playerTwo;
-        this.boardSize = boardSize;
-        this.player = player;
-        this.score = score;
-        this.draw = draw;
+    public static GameOverDialogFragment newInstance(Player playerOne, Player playerTwo, String boardSize, int player, int score, boolean draw, boolean flipBoard) {
+        Bundle args = new Bundle();
+        args.putSerializable("playerOne", playerOne);
+        args.putSerializable("playerTwo", playerTwo);
+        args.putString("boardSize", boardSize);
+        args.putInt("player", player);
+        args.putInt("score", score);
+        args.putBoolean("draw", draw);
+        args.putBoolean("flipBoard", flipBoard);
+        GameOverDialogFragment gameOverDialogFragment = new GameOverDialogFragment();
+        gameOverDialogFragment.setArguments(args);
+        return(gameOverDialogFragment);
     }
 
     @SuppressLint("SetTextI18n")
@@ -38,6 +43,15 @@ public class GameOverDialogFragment extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.dialog_game_over, container, false);
+
+        assert getArguments() != null;
+        playerOne = (Player) getArguments().getSerializable("playerOne");
+        playerTwo = (Player) getArguments().getSerializable("playerTwo");
+        boardSize = getArguments().getString("boardSize");
+        player = getArguments().getInt("player");
+        score = getArguments().getInt("score");
+        draw = getArguments().getBoolean("draw");
+        flipBoard = getArguments().getBoolean("flipBoard");
 
         Objects.requireNonNull(getDialog()).setCancelable(false);
         getDialog().setCanceledOnTouchOutside(false);
@@ -69,6 +83,7 @@ public class GameOverDialogFragment extends DialogFragment {
             intent.putExtras(players);
             intent.putExtra("from","");
             intent.putExtra("size", boardSize);
+            intent.putExtra("fb", flipBoard);
             //Close the current activity
             requireActivity().finish();
             startActivity(intent);
