@@ -38,6 +38,7 @@
         android:id="@+id/restart"
         style="@style/pause_menu_button"
         android:text="@string/restart"
+        android:backgroundTint="@color/blue1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_player_score" />
 
@@ -45,6 +46,7 @@
         android:id="@+id/home"
         style="@style/pause_menu_button"
         android:text="@string/home"
+        android:backgroundTint="@color/blue1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/restart" />
 
