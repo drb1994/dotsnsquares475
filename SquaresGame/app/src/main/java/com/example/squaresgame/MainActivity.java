@@ -23,8 +23,8 @@ import android.widget.ImageView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity {
-    Player playerOne = new Player(1, R.color.cyan);
-    Player playerTwo = new Player(2, R.color.green);
+    Player playerOne = new Player("Player One", 1, R.color.cyan);
+    Player playerTwo = new Player("Player Two", 2, R.color.green);
 
     protected AlphaAnimation fadeInTop = new AlphaAnimation(0.0f , 1.0f ) ;
     protected AlphaAnimation fadeInLeft = new AlphaAnimation(0.0f , 1.0f ) ;
