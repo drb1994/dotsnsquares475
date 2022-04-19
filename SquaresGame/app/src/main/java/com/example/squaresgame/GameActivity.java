@@ -51,7 +51,6 @@ public class GameActivity extends AppCompatActivity {
 
     Player playerOne, playerTwo;
     TextView playerOneTV, playerTwoTV;
-    String playerOneName, playerTwoName;
     String boardSize;
     int squares;
 
@@ -76,15 +75,20 @@ public class GameActivity extends AppCompatActivity {
         playerTwo = (Player) players.get("Player Two");
 
         playerOneTV = findViewById(R.id.tv_player_one_name);
-        playerOneTV.setText(playerOne.getName());
         playerTwoTV = findViewById(R.id.tv_player_two_name);
-        playerTwoTV.setText(playerTwo.getName());
 
         flipBoard = intent.getBooleanExtra("fb", false);
 
         if(!prefs.getAll().isEmpty()) {
+            playerOneTV.setText(prefs.getString("p1name", "Player One"));
+            playerTwoTV.setText(prefs.getString("p2name", "Player Two"));
             boardSize = prefs.getString("boardsize", "small");
             flipBoard = prefs.getBoolean("fb", false);
+        }
+
+        if(!playerOne.getName().equals("Player One") && !playerTwo.getName().equals("Player Two")) {
+            playerOneTV.setText(playerOne.getName());
+            playerTwoTV.setText(playerTwo.getName());
         }
 
         if(intent.getStringExtra("size") != null) {
