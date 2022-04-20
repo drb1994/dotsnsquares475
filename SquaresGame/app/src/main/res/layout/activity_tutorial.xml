@@ -6,58 +6,40 @@
     android:layout_height="match_parent"
     tools:context=".TutorialActivity">
 
-    <Button
-        android:id="@+id/return_btn"
-        android:layout_width="224dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="93dp"
-        android:layout_marginTop="450dp"
-        android:layout_marginEnd="94dp"
-        android:text="Return To Game"
-        android:backgroundTint="@color/blue1"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tutorialText" />
-
     <TextView
         android:id="@+id/tutorialText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="111dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="111dp"
+        android:layout_marginTop="48dp"
         android:text="Tutorial"
         android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tutorialTextbox"
-        android:layout_width="350dp"
-        android:layout_height="224dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="31dp"
-        android:text="Each player takes turns connecting dots next to each other. \n\nThe goal is to claim as many boxes as possible. If you draw the fourth side of a box, you get to claim that square. If you claim a box, you get another turn, whcih means you can potentially claim two, three, or even more boxes on a single turn. \n\nThe game ends when all lines have been drawn, all boxes have been claimed, and the person with the most boxes wins!"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        app:layout_constraintBottom_toTopOf="@+id/return_btn"
+        android:layout_width="361dp"
+        android:layout_height="317dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="44dp"
+        android:gravity="center"
+        android:text="Goal:\nClaim more boxes than your opponent\n\n Rules:\nEach player takes turns connecting dots next to each other. If you draw the fourth side of a box, you get to claim that square. If you claim a box, you get another turn, which means you can potentially claim two, three, or even more boxes on a single turn. \n\nThe game ends when all lines have been drawn, all boxes have been claimed, and the person with the most boxes wins!"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/tutorial_gif"/>
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="96dp"
-        android:layout_marginTop="125dp"
-        android:layout_marginEnd="97dp"
-        app:layout_constraintBottom_toTopOf="@+id/tutorialTextbox"
-        app:layout_constraintEnd_toEndOf="parent"
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/tutorial_gif"
+        android:layout_width="253dp"
+        android:layout_height="259dp"
+        android:src="@drawable/tutorialtrim"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/squares4x4" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tutorialText" />
 </androidx.constraintlayout.widget.ConstraintLayout>
