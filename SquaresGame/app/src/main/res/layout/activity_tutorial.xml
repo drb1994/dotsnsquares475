@@ -1,62 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".TutorialActivity">
 
-    <Button
-        android:id="@+id/return_btn"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="18dp"
-        android:text="X"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/tutorial_gif"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tutorialText"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:text="Tutorial"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-        android:textColor="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
-    <TextView
-        android:id="@+id/tutorialTextbox"
-        android:layout_width="361dp"
-        android:layout_height="317dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginBottom="44dp"
+        <Button
+            android:id="@+id/return_btn"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="18dp"
+            android:text="X"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/header_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:text="Help"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+            android:textColor="#000000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:gravity="center"
-        android:text="Goal:\nClaim more boxes than your opponent\n\n Rules:\nEach player takes turns connecting dots next to each other. If you draw the fourth side of a box, you get to claim that square. If you claim a box, you get another turn, which means you can potentially claim two, three, or even more boxes on a single turn. \n\nThe game ends when all lines have been drawn, all boxes have been claimed, and the person with the most boxes wins!"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tutorial_gif" />
+        app:layout_constraintTop_toBottomOf="@+id/header"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:padding="16dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tutorial_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Tutorial"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:textColor="#000000"/>
+
+            <pl.droidsonroids.gif.GifImageView
+                android:id="@+id/tutorial_gif"
+                android:layout_width="253dp"
+                android:layout_height="259dp"
+                android:layout_gravity="center"
+                android:src="@drawable/tutorialtrim"
+                tools:ignore="MissingClass" />
+
+            <TextView
+                android:id="@+id/tutorialTextbox"
+                android:layout_width="361dp"
+                android:layout_height="317dp"
+                android:layout_gravity="center"
+                android:text="Goal:\nClaim more boxes than your opponent\n\n Rules:\nEach player takes turns connecting dots next to each other. If you draw the fourth side of a box, you get to claim that square. If you claim a box, you get another turn, which means you can potentially claim two, three, or even more boxes on a single turn. \n\nThe game ends when all lines have been drawn, all boxes have been claimed, and the person with the most boxes wins!"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="#000000" />
+        </LinearLayout>
+    </ScrollView>
 
 
-    <pl.droidsonroids.gif.GifImageView
-        android:id="@+id/tutorial_gif"
-        android:layout_width="253dp"
-        android:layout_height="259dp"
-        android:layout_marginStart="70dp"
-        android:layout_marginTop="120dp"
-        android:src="@drawable/tutorialtrim"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

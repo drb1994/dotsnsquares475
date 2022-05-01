@@ -17,14 +17,12 @@ public class TutorialActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String from = intent.getStringExtra("from");
 
-        Button returnBtn = (Button) findViewById(R.id.return_btn);
+        Button returnBtn = findViewById(R.id.return_btn);
         if (from.equals("game")) {
-            returnBtn.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View view) {
-                    Intent intent = new Intent();
-                    setResult(RESULT_OK, intent);
-                    finish();
-                }
+            returnBtn.setOnClickListener(view -> {
+                Intent intent1 = new Intent();
+                setResult(RESULT_OK, intent1);
+                finish();
             });
         }
         else
